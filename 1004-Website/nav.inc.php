@@ -17,7 +17,24 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li>
-                <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span></a> 
+                   <?php
+                if (isset($_SESSION["user"])) {
+                    echo "<li class='nav-item'> <a class='nav-link'><span class='material-icons'>account_box</span> Welcome back, " . $_SESSION["lname"] . "</a></li>";                
+                    echo "<li class='nav-item'> <a class='nav-link' href='account.php'><span class='material-icons'>account_circle</span>Edit Account</a></li>";
+                    echo "<li class='nav-item'> <a class='nav-link' href='logout.php'><span class='material-icons'>logout</span>Logout</a></li>";
+                    
+                } else { ?>
+                    <li class="nav-item">
+                         <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span>Register</a> 
+                     </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="login.php"><span class="material-icons">login</span>Login</a> 
+                     </li>
+                     
+            <?php
+                }
+            ?>
+                
             </li>
         </ul>
     </div>

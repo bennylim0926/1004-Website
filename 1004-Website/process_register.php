@@ -11,38 +11,44 @@
         $pwd = $pwd_comfirm = "";
         $pwd_hashed = "";
         $success = true;
-        if (empty($_POST["email"])) {
-            $errorMsg .= "Email is required.<br>";
-        } else {
-            $email = sanitize_input($_POST["email"]);
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errorMsg .= "Invalid email format.";
+        foreach($_POST as $key=>$value) 
+    {
+        if ($key != "fname") // check for all keys except for fname
+        {
+            if (empty($value)) //if value of the key is empty
+            {
+                $errorMsg .= $fields[$key] . " is required.<br>"; // add this field key to errorMsg
+                $success = false; // return success = false             
             }
         }
-        if (empty($_POST["lname"])) {
-            $errorMsg .= "Last name is required.<br>";
-        } else {
-            $lname = sanitize_input($_POST["lname"]);
+        
+        $value = sanitize_input($value);
+        if ($key == "email") {
+            if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                $errorMsg .= "Invalid Email Format. <br>";
+                $success = false;
+            } else {
+                $email = $value; 
+            }
         }
-        if (empty($_POST["pwd"])) {
-            $errorMsg .= "Password is required.<br>";
-        } else {
-            $pwd = $_POST["pwd"];
+        elseif ($key == "lname") 
+        {
+            $lname = $value; 
         }
-        if (empty($_POST["pwd_confirm"])) {
-            $errorMsg .= "Please comfirm your password.<br>";
-        } else {
-            $pwd_comfirm = $_POST["pwd_confirm"];
-            $pwd_hashed = password_hash($pwd_comfirm,PASSWORD_DEFAULT);
+        elseif($key == "fname")
+        {
+            $fname = $value; 
         }
-        if ($pwd != $pwd_comfirm) {
-            $errorMsg .= "Please re-confrim your password<br>";
+        elseif($key == "pwd")
+        {
+            $pwd_hashed = password_hash($value, PASSWORD_DEFAULT);
         }
-        echo "<div class='space'>";
+    }
+        echo "<div class='space text-center'>";
         if ($success) {
-            echo "<h1>Registrarion is succeful!</h1>";
+            echo "<h1>Registration was successful!</h1>";
             echo "<h2>Thanks for signing up, " . $lname . "</h2>";
-            echo "<a href='index.php' class='btn btn-success'>Login</a>";
+            echo "<a href='login.php' class='btn btn-success'>Login</a>";
             saveMemberToDB();
         } else {
             echo "<h1>The following errors were detected: </h1>";
@@ -58,13 +64,14 @@
             $data = htmlspecialchars($data);
             return $data;
         }
-
+        
         function saveMemberToDB(){
             global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
             
             // Create database connection
             $config = parse_ini_file('../../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+            
             
             // Check connection
             if($conn->connect_error){
@@ -78,7 +85,7 @@
                 // Bind & execute the query statement
                 $stmt->bind_param("ssss", $fname, $lname, $email, $pwd_hashed);
                 if(!$stmt->execute()){
-                    $errorMsg = "Execute Failed: (' . $stmt->errno')". $stmt->error;
+                    $errorMsg = "Execute Failed: (' . $stmt->error')". $stmt->error;
                     $success =false;
                 }
                 $stmt->close();

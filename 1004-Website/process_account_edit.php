@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } 
 else 
 {
-    if (isset($_SESSION['user'])) {
+    if (isset($_SESSION['uname'])) {
         echo "<h2>This page is not meant to be run directly.</h2>";
         echo "<a href='account.php'>Go to My Account Page...</a>";
     } else {
@@ -43,7 +43,7 @@ function saveMemberToDB() {
 
     // Create database connection.
     $config = parse_ini_file('../../private/db-config.ini');
-    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+     $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 
     // Check connection
     if ($conn->connect_error) {
@@ -51,7 +51,7 @@ function saveMemberToDB() {
         $success = false;
     } else {
         // Prepare the statement:
-        $stmt = $conn->prepare("SELECT password FROM world_of_pets_members WHERE email=?");
+        $stmt = $conn->prepare("SELECT * FROM accounts WHERE email=?");
 
         // Bind & execute the query statement:
         $stmt->bind_param("s", $_SESSION['email']);
@@ -70,7 +70,7 @@ function saveMemberToDB() {
                 $errorMsg = "Incorrect password..";
                 $success = false;
             } else {
-                $stmt_change = $conn->prepare("UPDATE world_of_pets_members SET password=? WHERE email=?");
+                $stmt_change = $conn->prepare("UPDATE accounts SET password=? WHERE email=?");
                 $stmt_change->bind_param("ss", $pwd_hashed, $_SESSION['email']);
                 if (!$stmt_change->execute()) {
                     $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;

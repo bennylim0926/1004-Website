@@ -18,8 +18,8 @@
         <ul class="navbar-nav ml-auto">
             <li>
                    <?php
-                if (isset($_SESSION["user"])) {
-                    echo "<li class='nav-item'> <a class='nav-link'><span class='material-icons'>account_box</span> Welcome back, " . $_SESSION["lname"] . "</a></li>";                
+                if (isset($_SESSION["uname"])) {
+                    echo "<li class='nav-item'> <a class='nav-link'><span class='material-icons'>account_box</span> Welcome back, " . $_SESSION["uname"] . "</a></li>";                
                     echo "<li class='nav-item'> <a class='nav-link' href='account.php'><span class='material-icons'>account_circle</span>Edit Account</a></li>";
                     echo "<li class='nav-item'> <a class='nav-link' href='logout.php'><span class='material-icons'>logout</span>Logout</a></li>";
                     

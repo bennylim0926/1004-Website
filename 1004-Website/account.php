@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['user'])){ //if login in session is not set
-    header("Location: login.php");
+if(!isset($_SESSION['uname'])){ //if login session is not set, redirect user to 401 page.
+    header("Location: 401.php");
     exit();
 }
 ?>

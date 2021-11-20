@@ -22,14 +22,20 @@
             $pwd = $_POST["pwd"];
         }
         authenticateUser();
-        echo "<div class='space'>";
+        echo "<div class='space text-center'>";
         //authenticateUser();
         if ($success) {
-            echo "<h1>Login succefully!</h1>";
-            echo "<h2>Welcome, " . $lname . "!</h2>";
-            echo "<a href='index.php' class='btn btn-success'>Back to Menu</a>";
+             $_SESSION["fname"] = $fname;
+             $_SESSION["lname"] = $lname;
+             $_SESSION["email"] = $email;
+             $_SESSION["user"] = true;
+           
+            echo "<h4 class='display-4'>Login Successful!</h4>";
+            echo "<p><b>Welcome back," . $lname ."</b></p>";
+            echo "<p><a href='index.php' class='btn btn-success'>Back to Home</a></p>";
+               
         } else {
-            echo "<h1>The following errors were detected: </h1>";
+            echo "<p><h1>The following errors were detected: </h1>";
             echo  "<h3>" . $errorMsg . "</p>";
             echo "<a href='login.php' class='btn btn-danger'>Try again</a>";
         }
@@ -50,7 +56,7 @@
                 $success = false;
             } else {
                 // Prepare statement
-                $stmt = $conn->prepare("SELECT * FROM world_of_pets_members WHERE email=?");
+                $stmt = $conn->prepare("SELECT * FROM accounts WHERE email=?");
 
                 // Bind & execute the query statement:
                 $stmt->bind_param("s", $email);

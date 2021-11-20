@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <head>
     <title>World of Pets</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 

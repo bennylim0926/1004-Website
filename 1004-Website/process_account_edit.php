@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pwd_hashed = password_hash($_POST["edit_npwd"], PASSWORD_DEFAULT);
         }
     }
-
     saveMemberToDB();
 } 
 else 
@@ -108,7 +107,6 @@ function saveMemberToDB() {
                 echo "<a class=\"btn btn-danger\" href=\"account.php\">Return to My Account</a>";
             }
             ?>
-
         </main>
         <?php
         include "footer.inc.php";

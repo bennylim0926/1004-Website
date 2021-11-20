@@ -1,17 +1,12 @@
 <?php
 session_start();
 //  CHECK IF ADMIN IS SIGNED IN
-if (($_SESSION['admin']) == false)  
+if (($_SESSION['admin']) == false || !isset($_SESSION['uname']))  
 { 
+    printf(($_SESSION['admin']));
     header("Location: 401.php");
     exit();
     die("Unauthorized");//terminate script
-}
-
-if (!isset($_SESSION['uname'])) 
-{ //if login in session is not set
-    header("Location: 401.php");
-    exit();
 }
 ?>
 

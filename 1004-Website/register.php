@@ -17,7 +17,7 @@
         <form action="process_register.php" method="post">
             <div class="form-group">
                 <label for="fname">
-                    First Name:
+                    First Name(optional):
                 </label>
                 <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter First Name" maxlength="45">
             </div>
@@ -27,8 +27,12 @@
                     Last Name:
                 </label>
                 <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name" maxlength="45" required>
-               
-
+            </div>
+            <div class="form-group">
+                <label for="uname">
+                    Username:
+                </label>
+                <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter your preferred Username" maxlength="45" required>
             </div>
             
             <div class="form-group">  

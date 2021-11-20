@@ -24,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     saveMemberToDB();
-} else 
+} 
+else 
 {
     if (isset($_SESSION['user'])) {
         echo "<h2>This page is not meant to be run directly.</h2>";

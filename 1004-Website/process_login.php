@@ -56,7 +56,7 @@
                 $success = false;
             } else {
                 // Prepare statement
-                $stmt = $conn->prepare("SELECT * FROM world_of_pets_members WHERE email=?");
+                $stmt = $conn->prepare("SELECT * FROM accounts WHERE email=?");
 
                 // Bind & execute the query statement:
                 $stmt->bind_param("s", $email);

@@ -1,10 +1,15 @@
 <?php
 session_start();
-if(!isset($_SESSION['uname'])){ //if login session is not set, redirect user to 401 page.
+//  CHECK IF ADMIN IS SIGNED IN
+if (($_SESSION['admin']) == false || !isset($_SESSION['uname']))  
+{ 
+    printf(($_SESSION['admin']));
     header("Location: 401.php");
     exit();
+    die("Unauthorized");//terminate script
 }
 ?>
+
 <?php
     include "head.inc.php";
 ?>
@@ -14,14 +19,14 @@ if(!isset($_SESSION['uname'])){ //if login session is not set, redirect user to 
     ?>
     
     <main class="container">
-        <h1>Change Account Password</h1>
+        <h1>Delete User account using Ajax</h1>
         
         <form action="process_account_edit.php" class="sign-in-form" method="POST">
             <div class="form-group">
                 <label for="edit_pwd">
                     Old Password:
                 </label>
-               <input type="password" aria-label="Enter your old password." id="edit_pwd" name="edit_pwd">
+               <input type="password" aria-label="Not ready." id="edit_pwd" name="edit_pwd">
             </div>
             
             <div class="form-group">

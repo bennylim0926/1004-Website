@@ -1,4 +1,4 @@
-<<!doctype html>
+<!doctype html>
 <html>
     <?php
     include 'head.inc.php';
@@ -28,10 +28,11 @@
              $_SESSION["fname"] = $fname;
              $_SESSION["lname"] = $lname;
              $_SESSION["email"] = $email;
-             $_SESSION["user"] = true;
+             $_SESSION["uname"] = $uname;
+             $_SESSION["admin"] = $admin;
            
             echo "<h4 class='display-4'>Login Successful!</h4>";
-            echo "<p><b>Welcome back," . $lname ."</b></p>";
+            echo "<p><b>Welcome back," . $uname ."</b></p>";
             echo "<p><a href='index.php' class='btn btn-success'>Back to Home</a></p>";
                
         } else {
@@ -43,12 +44,11 @@
         
         // Helper function to authenticate the login
         function authenticateUser() {
-            global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
+            global $fname, $lname, $email, $admin, $pwd_hashed, $uname, $errorMsg, $success;
 
             // Create database connection
             $config = parse_ini_file('../../private/db-config.ini');
-            $conn = new mysqli($config['servername'], $config['username'], $config['password'],
-                    $config['dbname']);
+            $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 
             // Check connection
             if ($conn->connect_error) {
@@ -68,6 +68,11 @@
                     $row = $result->fetch_assoc();
                     $fname = $row['fname'];
                     $lname = $row['lname'];
+                    $uname = $row['uname'];
+                    if($row['admin']==1)
+                        $admin = true;
+                    else
+                        $admin = false;
                     $pwd_hashed = $row['password'];
 
                     // Check password if matches

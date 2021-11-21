@@ -14,6 +14,7 @@ include('../Session/SessionExpiry.php');// check for session expiry
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/checkout.css">
 
     <!<!-- jQuery -->
     <script defer 

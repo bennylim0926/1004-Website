@@ -1,3 +1,10 @@
+<?php //
+//session_start();
+//if(!isset($_SESSION['uname'])){ //if login session is not set, redirect user to 401 page.
+//    header("Location: ../401.php");
+//    exit();
+//}
+?>
 <!doctype html>
 <html>
     <?php
@@ -6,7 +13,7 @@
     <body>
         <?php
         include 'nav.inc.php';
-        ?>
+        ?>        
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="collapse navbar-collapse">
                 <a class="navbar-brand">Shopping Cart</a>
@@ -67,7 +74,7 @@
                             </button>
                         </td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -101,7 +108,7 @@
             <div>
                 <h3>YOU MAY ALSO LIKE</h3>
                 <figure style="display:inline;margin:auto">
-                    <img src="images/dogeLogo.jfif" alt="Poodle"
+                    <img src="../images/dogeLogo.jfif" alt="Poodle"
                          title="View larger image..." />                                                                          
                     <img src="images/dogeLogo.jfif" alt="Poodle"
                          title="View larger image..." />                                                                            
@@ -110,7 +117,7 @@
                     <img src="images/dogeLogo.jfif" alt="Poodle"
                          title="View larger image..." />  
                     <img src="images/dogeLogo.jfif" alt="Poodle"
-                                 title="View larger image..." />       
+                         title="View larger image..." />       
                 </figure>
             </div>
         </main>

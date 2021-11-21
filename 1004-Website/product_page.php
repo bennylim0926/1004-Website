@@ -9,16 +9,37 @@ and open the template in the editor.
     include 'head.inc.php';
     ?>
     <body>
-        <?php
-        include 'nav.inc.php';
-        ?>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="index.php"><img src="images/home.png" alt="Home" title="Home" width="60" height="60"/></a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#monitors">MONITOR</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#keyboards">KEYBOARD</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#mouse">MOUSE</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li>
+                <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span></a> 
+            </li>
+        </ul>
+    </div>
+</nav>
         <header class="jumbotron text-center">
             <h1 class="display-4">Product Page</h1>
             <h2>All our products</h2>
         </header>       
         <main class="container">
-            <section id="dogs">
-                <h2 class="sectiontitle">Monitors</h2>
+            <section id="monitors">
+                <h2 class="producttitle">Monitor</h2>
                 <div class="row">
                     <article class="col-sm">
                         <figure>                            
@@ -26,9 +47,6 @@ and open the template in the editor.
                                  title="View larger image..." />                                                                          
                             <figcaption>Monitor 1</figcaption>
                         </figure>
-                        <p>
-                            Monitor 1 $12
-                        </p>
                     </article>
                     <article class="col-sm">
                         <figure>
@@ -37,9 +55,6 @@ and open the template in the editor.
 
                             <figcaption>Monitor 2</figcaption>
                         </figure>
-                        <p>
-                            Monitor 2 $35
-                        </p>
                     </article>
                     <article class="col-sm">
                         <figure>
@@ -48,48 +63,12 @@ and open the template in the editor.
 
                             <figcaption>Monitor 3</figcaption>
                         </figure>
-                        <p>
-                            Monitor 3 $45
-                        </p>
                     </article>
                 </div>
-                <div class="row">
-                    <article class="col-sm">
-                        <figure>                            
-                            <img class="img-thumbnail" src="images/monitors/monitor4.jpg" alt="Monitor"
-                                 title="View larger image..." />                                                                          
-                            <figcaption>Monitor 4</figcaption>
-                        </figure>
-                        <p>
-                            Monitor 4 $12
-                        </p>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <img class="img-thumbnail" src="images/monitors/monitor5.jpg" alt="Monitor"
-                                 title="View larger image..."/>                                                                               
-
-                            <figcaption>Monitor 5</figcaption>
-                        </figure>
-                        <p>
-                            Monitor 5 $35
-                        </p>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <img class="img-thumbnail" src="images/monitors/monitor6.jpg" alt="Monitor"
-                                 title="View larger image..."/>                                                                               
-
-                            <figcaption>Monitor 6</figcaption>
-                        </figure>
-                        <p>
-                            Monitor 6 $45
-                        </p>
-                    </article>
-                </div>
+                
             </section>
-            <section id="cats">
-                <h2 class="sectiontitle">Keyboards</h2>
+            <section id="keyboards">
+                <h2 class="producttitle">Keyboard</h2>
                 <div class="row">
                     <article class="col-sm">
                         <figure>
@@ -97,9 +76,6 @@ and open the template in the editor.
                                  title="View larger image..." />                                              
                             <figcaption>Keyboard 1</figcaption>
                         </figure>
-                        <p>
-                            Keyboard 1 $2
-                        </p>
                     </article>
                     <article class="col-sm">
                         <figure>
@@ -107,31 +83,39 @@ and open the template in the editor.
                                  title="View larger image..." />                                              
                             <figcaption>Keyboard 2</figcaption>
                         </figure>
-                        <p>
-                            Keyboard 2 $5
-                        </p>
                     </article>
-                </div>
-                <div class="row">
                     <article class="col-sm">
                         <figure>
                             <img class="img-thumbnail" src="images/keyboards/keyboard3.jpg" alt="Keyboard"
                                  title="View larger image..." />                                              
                             <figcaption>Keyboard 3</figcaption>
                         </figure>
-                        <p>
-                            Keyboard 3 $10
-                        </p>
+                    </article>
+                </div>
+            </section>
+            <section id="mouse">
+                <h2 class="producttitle">Computer Mouse</h2>
+                <div class="row">
+                    <article class="col-sm">
+                        <figure>
+                            <img class="img-thumbnail" src="images/mouse/mouse1.jpg" alt="Mouse"
+                                 title="View larger image..." />                                              
+                            <figcaption>Mouse 1</figcaption>
+                        </figure>
                     </article>
                     <article class="col-sm">
                         <figure>
-                            <img class="img-thumbnail" src="images/keyboards/keyboard4.jpg" alt="Keyboard"
+                            <img class="img-thumbnail" src="images/mouse/mouse2.jpg" alt="Mouse"
                                  title="View larger image..." />                                              
-                            <figcaption>Keyboard 4</figcaption>
+                            <figcaption>Mouse 2</figcaption>
                         </figure>
-                        <p>
-                            Keyboard 4 $15
-                        </p>
+                    </article>
+                    <article class="col-sm">
+                        <figure>
+                            <img class="img-thumbnail" src="images/mouse/mouse3.jpeg" alt="Mouse"
+                                 title="View larger image..." />                                              
+                            <figcaption>Mouse 3</figcaption>
+                        </figure>
                     </article>
                 </div>
             </section>

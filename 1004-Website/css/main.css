@@ -17,6 +17,12 @@ img{
     text-decoration: underline;
 }
 
+.producttitle{
+    font-family: Georgia, serif;
+    font-size: 60px;
+    color: blueviolet;
+    text-align: center;
+}
 
 figure{
     display:inline-block;

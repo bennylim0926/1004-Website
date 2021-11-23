@@ -31,7 +31,7 @@ if (isset($_GET['id'])) {
 <div>
     <img src="../images/<?= $product['img'] ?>" width="500" height="500" alt="<?= $product['name'] ?>">
     <div>
-        <h1 class="name"><?= $product['name'] ?></h1>
+        <h1 class="name"><?= $product['name'] ?><?= $product['id'] ?></h1>
         <span class="price">
             &dollar;<?= $product['price'] ?>
             <?php if ($product['rrp'] > 0): ?>
@@ -39,8 +39,8 @@ if (isset($_GET['id'])) {
             <?php endif; ?>
         </span>
         <form action="add_to_cart.php" method="post">
-            <input type="number" name="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
-            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+            <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
+            <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
             <input type="submit" value="Add To Cart">
         </form>
         <div class="description">

@@ -3,16 +3,13 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="index.php"><img src="images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
+        <a class="navbar-brand" href="index.php"><img src="images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link" href="about.php">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=index.php#dogs">Dogs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.php#cats">Cats</a>
+                <a class="nav-link" href="product_page.php">OUR PRODUCTS</a>
             </li>                   
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -33,10 +30,10 @@
                 else 
                 { ?>
                     <li class="nav-item">
-                         <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span>Register</a> 
+                         <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span>REGISTER</a> 
                      </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="login.php"><span class="material-icons">login</span>Login</a> 
+                         <a class="nav-link" href="login.php"><span class="material-icons">login</span>LOGIN</a> 
                      </li>
                      
             <?php

@@ -14,7 +14,8 @@ and open the template in the editor.
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="index.php"><img src="images/home.png" alt="Home" title="Home" width="60" height="60"/></a>
+        
+        <a class="nav-link" href="index.php"><span class="material-icons">home</span></a>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="#monitors">MONITOR</a>
@@ -27,9 +28,12 @@ and open the template in the editor.
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li>
-                <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span></a> 
-            </li>
+            <li class="nav-item">
+                         <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span>REGISTER</a> 
+                     </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="login.php"><span class="material-icons">login</span>LOGIN</a> 
+                     </li>
         </ul>
     </div>
 </nav>

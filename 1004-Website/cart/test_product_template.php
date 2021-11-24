@@ -109,7 +109,7 @@ if (isset($_GET['id'])) {
         <form id="add-to-cart" action="test_product_template.php?id=<?= $product['id'] ?>" method="post">
             <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
             <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
-            <input id="myWish" type="submit" value="Add To Cart">
+            <input type="submit" value="Add To Cart">
         </form>
         <div class="description">
             <?= $product['desc'] ?>

@@ -42,10 +42,10 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
     exit;
 }
 
-if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+if (isset($_GET['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     unset($_SESSION['cart']);
-    header("location: place_order.php");
-    exit;
+//    header("location: place_order.php");
+//    exit;
 }
 
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
@@ -80,6 +80,7 @@ if ($products_in_cart) {
 }
 ?>
 <head>
+    <link rel="stylesheet" href="../css/checkout.css">
     <script 
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -168,8 +169,9 @@ if ($products_in_cart) {
                             <td class="text-right align-middle">&dollar;<?= $subtotal ?></td>
                             <td class="text-right">
                             <td class="align-middle">  
-                                <form action="add_to_cart.php" method="post">
-                                    <input type="submit" value="Check Out" name="placeorder">
+                                <form id='checkout' action="add_to_cart.php" method="post">
+                                    <input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">
+                                    <input type="submit" value="Check Out" name="placeorder" id='placeorder'>
                                 </form>
                             </td>
                             </td>

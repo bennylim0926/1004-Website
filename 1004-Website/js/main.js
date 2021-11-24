@@ -13,6 +13,7 @@ $(document).ready(function (e) {
     activateMenu();
     submitCartItem();
     removeCartItem();
+    checkEmptyCart();
 
 });
 
@@ -83,6 +84,53 @@ function submitCartItem() {
                 $("#success-alert").delay(4000).slideUp(200, function () {
                     $("#success-alert").alert('close');
                 });
+            }
+        });
+        return false;
+    })
+}
+function checkEmptyCart() {
+    $("#checkout").submit(function (e) {
+        var formData = {
+            total_item: $("#total_item").val(),
+            //placeorder: $("#placeorder").name,
+        };
+        $.ajax({
+            type: "POST",
+            url: "add_to_cart.php", //?id=" + $('#product_id').val(),
+            data: formData,
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+                console.log("Somethinghere");
+                console.log(formData.total_item);
+                if (formData.total_item == 0) {
+                    console.log("zero Item");
+                    var overlay = jQuery("<div class='alert alert-danger' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
+                    overlay.appendTo(document.body);
+                    $("#success-alert").delay(4000).slideUp(200, function () {
+                        $("#success-alert").alert('close');
+                    });
+                } else {
+                    $.ajax({
+                        type: "GET",
+                        url: "add_to_cart.php?placeorder=1", //?id=" + $('#product_id').val(),
+                        error: function ()
+                        {
+                            alert("Request Failed");
+                        },
+                        success: function (response)
+                        {
+                            console.log("succesful checckout")
+                            window.location.href = 'place_order.php';                       
+                        }
+                    });
+                    
+//                    console.log("more than zero Item");
+                }
             }
         });
         return false;

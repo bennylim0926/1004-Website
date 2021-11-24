@@ -3,44 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-// If the user clicked the add to cart button on the product page we can check for the form data
-if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
-// Set the post variables so we easily identify them, also make sure they are integer
-    $product_id = (int) $_POST['product_id'];
-    $quantity = (int) $_POST['quantity'];
-    $config = parse_ini_file('../../../private/db-config.ini');
-    $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
-    if ($conn->connect_error) {
-        $success = false;
-    } else {
-        // Prepare the SQL statement, we basically are checking if the product exists in our databaser
-        // Fetch the product from the database and return the result as an Array 
-        $stmt = $conn->prepare('SELECT * FROM products WHERE id = ?');
-        $stmt->bind_param("i", $product_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $productList = array();
-        while ($row = $result->fetch_assoc()) {
-            $productList[] = $row;
-        }
-    }
-    if ($productList && $quantity > 0) {
-        // Product exists in database, now we can create/update the session variable for the cart
-        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-            if (array_key_exists($product_id, $_SESSION['cart'])) {
-                //Product exists in cart so just update the quanity
-                $_SESSION['cart'][$product_id] += $quantity;
-            } else {
-                // Product is not in cart so add it
-                $_SESSION['cart'][$product_id] = $quantity;
-            }
-        } else {
-            $_SESSION['cart'] = array($product_id => $quantity);
-        }
-        header("location: add_to_cart.php");
-        exit;
-    }
-}
+
 //for remove button
 if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['cart']) && isset($_SESSION['cart'][$_GET['remove']])) {
     // Remove the product from the shopping cart
@@ -51,6 +14,16 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['ca
     header("location: add_to_cart.php");
     exit;
 }
+if (isset($_GET['removeAll']) && is_numeric($_GET['removeAll']) && isset($_SESSION['cart'])) {
+    // Remove the product from the shopping cart
+    //unset($_SESSION['cart'][$_GET["remove"]]);
+//    $data = $_SESSION['cart'];    // Get the value
+    unset($_SESSION['cart']);
+    header("location: add_to_cart.php");
+    exit; // Remove an item (hardcoded the second here)
+}
+
+
 // for update button
 if (isset($_POST['update']) && isset($_SESSION['cart'])) {
     // Loop through the post data so we can update the quantities for every product in cart
@@ -68,9 +41,17 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
     header("location: add_to_cart.php");
     exit;
 }
+
+if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    unset($_SESSION['cart']);
+    header("location: place_order.php");
+    exit;
+}
+
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
-print_r($products_in_cart);
+//print_r($products_in_cart);
 $subtotal = 0.00;
+$totalItem = 0;
 $products = array();
 ////// If there are products in cart
 if ($products_in_cart) {
@@ -94,58 +75,128 @@ if ($products_in_cart) {
 //    echo $result->num_rows;
     foreach ($products as $product) {
         $subtotal += (float) $product["price"] * (int) $products_in_cart[$product['id']];
+        $totalItem += (int) $products_in_cart[$product['id']];
     }
 }
 ?>
+<head>
+    <script 
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"
+        >
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script 
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+        crossorigin="anonymous">
+    </script>
+    <script  src="../js/main.js"></script>
+</head>
 <html>
-    <div>
-        <h1>Shopping Cart</h1>
-        <form action="add_to_cart.php" method="post">
-            <table>
-                <thead>
-                    <tr>
-                        <td colspan="2">Product</td>
-                        <td>Price</td>
-                        <td>Quantity</td>
-                        <td>Total</td>
-                    </tr>
-                </thead>
-                <tbody>
-<?php if (empty($products)): ?>
-                            <tr>
+    <?php
+    include '../head.inc.php';
+    ?>
+    <body>
+        <?php
+        include '../nav.inc.php';
+        ?>   
+
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="collapse navbar-collapse">
+                <a class="navbar-brand">Shopping Cart</a>
+            </div>
+        </nav>
+        <main class="container">
+            <!--<form action="add_to_cart.php" method="post">-->
+            <div class="table-responsive-sm" id='cart_table'>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Product(s)</td>
+                            <td class="text-right">Unit Price</td>
+                            <td class="text-right">Quantity</td>
+                            <td class="text-right">Total Price</td>
+                            <td class="text-right">Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($products)): ?>
+                            <tr class='cartStatus'>
                                 <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
                             </tr>
-<?php else: ?>
-    <?php foreach ($products as $product): ?>
-                                    <tr>
-                                        <td class="img">
-                                            <a href="test_product_template.php?id=<?= $product['id'] ?>">
-                                                <img src="../images/<?= $product['img'] ?>" width="50" height="50" alt="<?= $product['name'] ?>">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="test_product_template.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
-                                            <br>
-                                            <a href="add_to_cart.php?remove=<?= $product['id'] ?>" class="remove">Remove</a>
-                                        </td>
-                                        <td class="price">&dollar;<?= $product['price'] ?></td>
-                                        <td class="quantity">
+                        <?php else: ?>
+                            <?php foreach ($products as $product): ?>
+                                <tr class='wholeCart'>
+                                    <td class="cart-img">
+                                        <a href="test_product_template.php?id=<?= $product['id'] ?>">
+                                            <img src="../images/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
+                                        </a>
+                                        <a href="test_product_template.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
+                                    </td>
+                                    <td class="price text-right align-middle">&dollar;<?= $product['price'] ?></td>
+                                    <td class="quantity text-right align-middle">
+                                        <form action="add_to_cart.php" method="post">
                                             <input type="number" name="quantity-<?= $product['id'] ?>" value="<?= $products_in_cart[$product['id']] ?>" min="1" max="<?= $product['quantity'] ?>" placeholder="<?= $products_in_cart[$product['id']] ?>" >
-                                        </td>
-                                        <td class="price">&dollar;<?= $product['price'] * $products_in_cart[$product['id']] ?></td>
-                                    </tr>
-    <?php endforeach; ?>
-<?php endif; ?>
-                </tbody>
-            </table>
-            <div class="subtotal">
-                <span class="text">Subtotal</span>
-                <span class="price">&dollar;<?= $subtotal ?></span>
+                                        </form>
+                                    </td>
+                                    <td class="price text-right align-middle">&dollar;<?= $product['price'] * $products_in_cart[$product['id']] ?></td>
+                                    <td class="text-right align-middle"><a href="add_to_cart.php?remove=<?= $product['id'] ?>" class="remove">Remove</a></td> 
+
+                                </tr>
+
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <tr>
+                            <td class="align-middle">
+                                <form action="add_to_cart.php" method="post">
+                                    <input type="submit" value="Update" name="update">
+                                </form>
+                                <a href="add_to_cart.php?removeAll=1" class=" align-middle">Remove All</a>
+                            </td>
+                            <td>
+                                <!--<form id="cart_page" action="add_to_cart.php?removeAll=1" method="GET">-->  
+                                <form action="add_to_cart.php" method="post">
+                                    <input type="hidden" name="remove" id='remove' type="submit" value="1">
+                                </form>
+                                <!--</form>-->
+                            </td> 
+                            <td class="text-right"></td>
+                            <td class="text-right align-middle"> Total Item(s): <?= $totalItem ?></td>
+                            <td class="text-right align-middle">&dollar;<?= $subtotal ?></td>
+                            <td class="text-right">
+                            <td class="align-middle">  
+                                <form action="add_to_cart.php" method="post">
+                                    <input type="submit" value="Check Out" name="placeorder">
+                                </form>
+                            </td>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
-            <div class="buttons">
-                <input type="submit" value="Update" name="update">
-                <input type="submit" value="Place Order" name="placeorder">
+            <!--</form>-->
+            <div>
+                <h3>YOU MAY ALSO LIKE</h3>
+                <figure style="display:inline;margin:auto">
+                    <img src="../images/dogeLogo.jfif" alt="Poodle"
+                         title="View larger image..." />                                                                          
+                    <img src="../images/dogeLogo.jfif" alt="Poodle"
+                         title="View larger image..." />                                                                            
+                    <img src="../images/dogeLogo.jfif" alt="Poodle"
+                         title="View larger image..." />   
+                    <img src="../images/dogeLogo.jfif" alt="Poodle"
+                         title="View larger image..." />  
+                    <img src="../images/dogeLogo.jfif" alt="Poodle"
+                         title="View larger image..." />       
+                </figure>
             </div>
-        </form>
-    </div>
+        </main>
+        <?php
+        include '../footer.inc.php';
+        ?>
+    </body>
 </html>

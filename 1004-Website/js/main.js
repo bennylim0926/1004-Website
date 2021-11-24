@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function () {
+$(document).ready(function (e) {
     $(".img-thumbnail").on("click", showPopUp);
     //without the stopPropagation, this will be fired when clicking the thumbnail
     $(document).on("click", function () {
         $(".img-popup").remove();
     });
     activateMenu();
+    submitCartItem();
+    removeCartItem();
+
 });
 
 function showPopUp(e) {
@@ -35,7 +38,7 @@ function showPopUp(e) {
     });
     var popUp = $("<span class='img-popup'></span>").append(popUpImage);
     $(this).parent().append(popUp);
-
+    console.log("Hi");
     //prevent the event furhter bubbling.
     e.stopPropagation();
 }
@@ -53,6 +56,58 @@ function activateMenu()
             return false;
         }
     });
+}
+
+//make sure test product template has the correct access to js 
+function submitCartItem() {
+    $("#add-to-cart").submit(function (e) {
+        var formData = {
+            product_id: $("#product_id").val(),
+            quantity: $("#quantity").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "test_product_template.php", //?id=" + $('#product_id').val(),
+            data: formData,
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+//                $("#dialog").dialog();
+//                console.log("This is being fired");
+                var overlay = jQuery("<div class='alert alert-success' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
+
+                overlay.appendTo(document.body)
+                $("#success-alert").delay(4000).slideUp(200, function () {
+                    $("#success-alert").alert('close');
+                });
+            }
+        });
+        return false;
+    })
+}
+
+function removeCartItem() {
+    $("#cart_page").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: "add_to_cart.php?removeAll=1",
+//            data: formData,
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+                $('#cart_table').empty();
+                $('#cart_table').load(location.href + ' #cart_table>*', "");
+            }
+        });
+        return false;
+    })
 }
 
 

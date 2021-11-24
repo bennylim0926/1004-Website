@@ -13,7 +13,13 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="index.php#cats">Cats</a>
-            </li>                   
+            </li>    
+            <li class="nav-item">
+                <a class="nav-link" href="cart/test_home.php">Products</a>
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="cart/add_to_cart.php">Products</a>
+            </li>  
         </ul>
         <ul class="navbar-nav ml-auto">
             <li>

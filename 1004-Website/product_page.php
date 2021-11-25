@@ -45,99 +45,134 @@ and open the template in the editor.
             <section id="monitors">
                 <h2 class="producttitle">Monitor</h2>
                 <div class="row">
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/monitors/monitor1.jpeg" alt="Monitor"
-                                 title="Click to view details..." />
-                            </a>
-                            <figcaption>Monitor 1</figcaption>
-                        </figure>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/monitors/monitor2.jpeg" alt="Monitor"
-                                 title="Click to view details..."/>                                                                               
-                            </a>
-                            <figcaption>Monitor 2</figcaption>
-                        </figure>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/monitors/monitor3.jpg" alt="Monitor"
-                                 title="Click to view details..."/>                                                                               
-                            </a>
-                            <figcaption>Monitor 3</figcaption>
-                        </figure>
-                    </article>
-                </div>
-                
+                    <?php 
+                    require_once('component.php');
+                    $config =  parse_ini_file('/var/www/private/db-config.ini');
+                    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    
+   if ($conn->connect_error)
+{
+$errorMsg = "Connection failed: " . $conn->connect_error;
+}
+
+$sql = "SELECT * FROM world_of_pets.productlist WHERE categoryid = 1";
+$result =  $conn->query($sql);
+
+
+if($result->num_rows > 0)
+{
+    while($row = $result->fetch_assoc())
+    {
+        component($name, $id);
+    }
+}
+    ?>
             </section>
-            <section id="keyboards">
-                <h2 class="producttitle">Keyboard</h2>
+            <section id="Keyboards">
+                <h2 class="producttitle">Keyboards</h2>
                 <div class="row">
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/keyboards/keyboard1.jpg" alt="Keyboard"
-                                 title="Click to view details..." />
-                            </a>
-                            <figcaption>Keyboard 1</figcaption>
-                        </figure>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/keyboards/keyboard2.jpg" alt="Keyboard"
-                                 title="Click to view details..." />
-                            </a>
-                            <figcaption>Keyboard 2</figcaption>
-                        </figure>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/keyboards/keyboard3.jpg" alt="Keyboard"
-                                 title="Click to view details..." />  
-                            </a>
-                            <figcaption>Keyboard 3</figcaption>
-                        </figure>
-                    </article>
-                </div>
+                    <?php 
+                    require_once('component.php');
+                    $config =  parse_ini_file('/var/www/private/db-config.ini');
+                    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    
+   if ($conn->connect_error)
+{
+$errorMsg = "Connection failed: " . $conn->connect_error;
+}
+
+$sql = "SELECT * FROM world_of_pets.productlist WHERE categoryid = 2";
+$result =  $conn->query($sql);
+
+
+if($result->num_rows > 0)
+{
+    while($row = $result->fetch_assoc())
+    {
+        component($name, $id);
+    }
+}
+    ?>
             </section>
-            <section id="mouse">
+            <section id="computer-mouse">
                 <h2 class="producttitle">Computer Mouse</h2>
                 <div class="row">
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/mouse/mouse1.jpg" alt="Mouse"
-                                 title="Click to view details..." />                                              
-                            <figcaption>Mouse 1</figcaption>
-                            </a>
-                        </figure>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/mouse/mouse2.jpg" alt="Mouse"
-                                 title="Click to view details..." />                                              
-                            <figcaption>Mouse 2</figcaption>
-                            </a>
-                        </figure>
-                    </article>
-                    <article class="col-sm">
-                        <figure>
-                            <a href="product_page_1.php">
-                            <img class="img-thumbnail" src="images/mouse/mouse3.jpeg" alt="Mouse"
-                                 title="Click to view details..." />
-                            </a>
-                            <figcaption>Mouse 3</figcaption>
-                        </figure>
-                    </article>
-                </div>
+                    <?php 
+                    require_once('component.php');
+                    $config =  parse_ini_file('/var/www/private/db-config.ini');
+                    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    
+   if ($conn->connect_error)
+{
+$errorMsg = "Connection failed: " . $conn->connect_error;
+}
+
+$sql = "SELECT * FROM world_of_pets.productlist WHERE categoryid = 3";
+$result =  $conn->query($sql);
+
+
+if($result->num_rows > 0)
+{
+    while($row = $result->fetch_assoc())
+    {
+        component($name, $id);
+    }
+}
+    ?>
+            
+            </section>
+            <section id="webcams">
+                <h2 class="producttitle">Webcams</h2>
+                <div class="row">
+                    <?php 
+                    require_once('component.php');
+                    $config =  parse_ini_file('/var/www/private/db-config.ini');
+                    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    
+   if ($conn->connect_error)
+{
+$errorMsg = "Connection failed: " . $conn->connect_error;
+}
+
+$sql = "SELECT * FROM world_of_pets.productlist WHERE categoryid = 4";
+$result =  $conn->query($sql);
+
+
+if($result->num_rows > 0)
+{
+    while($row = $result->fetch_assoc())
+    {
+        component($name, $id);
+    }
+}
+    ?>
+        </section>
+            
+            <section id="speakers">
+                <h2 class="producttitle">Speakers</h2>
+                <div class="row">
+                    <?php 
+                    require_once('component.php');
+                    $config =  parse_ini_file('/var/www/private/db-config.ini');
+                    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    
+   if ($conn->connect_error)
+{
+$errorMsg = "Connection failed: " . $conn->connect_error;
+}
+
+$sql = "SELECT * FROM world_of_pets.productlist WHERE categoryid = 1";
+$result =  $conn->query($sql);
+
+
+if($result->num_rows > 0)
+{
+    while($row = $result->fetch_assoc())
+    {
+        component($name, $id);
+    }
+}
+    ?>
             </section>
         </main>
         <?php

@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function () {
+$(document).ready(function (e) {
     $(".img-thumbnail").on("click", showPopUp);
     //without the stopPropagation, this will be fired when clicking the thumbnail
     $(document).on("click", function () {
         $(".img-popup").remove();
     });
     activateMenu();
+    submitCartItem();
+    removeCartItem();
+    checkEmptyCart();
+
 });
 
 function showPopUp(e) {
@@ -35,7 +39,7 @@ function showPopUp(e) {
     });
     var popUp = $("<span class='img-popup'></span>").append(popUpImage);
     $(this).parent().append(popUp);
-
+    console.log("Hi");
     //prevent the event furhter bubbling.
     e.stopPropagation();
 }
@@ -53,6 +57,114 @@ function activateMenu()
             return false;
         }
     });
+}
+
+function submitCartItem() {
+    $("#add-to-cart").submit(function (e) {
+        var formData = {
+            product_id: $("#product_id").val(),
+            quantity: $("#quantity").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "product_page.php",
+            data: formData,
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+                var overlay = jQuery("<div class='alert alert-success' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
+                overlay.appendTo(document.body)
+                $("#success-alert").delay(4000).slideUp(200, function () {
+                    $("#success-alert").alert('close');
+                });
+            }
+        });
+        return false;
+    })
+}
+function checkEmptyCart() {
+    $("#checkout").submit(function (e) {
+        e.preventDefault();
+        var formData = {
+            total_item: $("#total_item").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "cart.php",
+            data: formData,
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+                if (formData.total_item == 0) {
+                    var overlay = jQuery("<div class='alert alert-danger' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
+                    overlay.appendTo(document.body);
+                    $("#failed-alert").delay(4000).slideUp(200, function () {
+                        $("#failed-alert").alert('close');
+                    });
+                } else {
+                    $.ajax({
+                        type: "GET",
+                        url: "cart.php?placeorder=1",
+                        error: function ()
+                        {
+                            alert("Request Failed");
+                        },
+                        success: function (response)
+                        {
+                            console.log("succesful checckout")
+                            window.location.href = 'place_order.php';                       
+                        }
+                    });
+                }
+            }
+        });
+        return false;
+    })
+}
+
+function removeCartItem() {
+    $("#cart_page").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: "cart.php?removeAll=1",
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+                $('#cart_table').empty();
+                $('#cart_table').load(location.href + ' #cart_table>*', "");
+            }
+        });
+        return false;
+    })
+}
+function updateCartItem() {
+    $("#cart_page").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: "cart.php?update=1",
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+//                $('#cart_table').empty();
+//                $('#cart_table').load(location.href + ' #cart_table>*', "");
+            }
+        });
+        return false;
+    })
 }
 
 

@@ -32,7 +32,7 @@
              $_SESSION["admin"] = $admin;
            
             echo "<h4 class='display-4'>Login Successful!</h4>";
-            echo "<p><b>Welcome back," . $uname ."</b></p>";
+            echo "<p><b>Welcome back, " . $uname ."</b></p>";
             echo "<p><a href='index.php' class='btn btn-success'>Back to Home</a></p>";
                
         } else {

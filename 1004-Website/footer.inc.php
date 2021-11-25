@@ -1,3 +1,4 @@
 <footer class="container">
-            <p>Copyright copy; 2021 World of Pets Pte. Ltd</p>
+            <p>Copyright &copy; 2021 ICT1004 Group 5</p>
+
         </footer>

@@ -13,8 +13,8 @@ and open the template in the editor.
         include 'nav.inc.php';
         ?>
         <header class="jumbotron text-center">
-            <h1 class="display-4">Welcome to World of Pets</h1>
-            <h2>Home of Singapore's Pet Lovers</h2>
+            <h1 class="display-4">Welcome to ICT1004 Group 5 Website!</h1>
+            <h2>Home of your favourite IT peripherals</h2>
         </header>       
         <main class="container">
             <section id="dogs">
@@ -22,7 +22,7 @@ and open the template in the editor.
                 <div class="row">
                     <article class="col-sm">
                         <h3>Poodles</h3>
-                        <figure>                            
+                        <figure>
                             <img class="img-thumbnail" src="images/poodle_small.jpg" alt="Poodle"
                                  title="View larger image..." />                                                                          
                             <figcaption>Standard Poodle</figcaption>

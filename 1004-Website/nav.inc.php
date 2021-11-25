@@ -2,18 +2,30 @@
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+<<<<<<< Updated upstream
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
         <a class="navbar-brand" href="index.php"><img src="images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
         <ul class="navbar-nav" >
+=======
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
+        <ul class="navbar-nav">
+>>>>>>> Stashed changes
             <li class="nav-item">
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link" href="/1004-Website/index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=index.php#dogs">Dogs</a>
+                <a class="nav-link" href="/1004-Website/index.php#dogs">Dogs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php#cats">Cats</a>
-            </li>                   
+                <a class="nav-link" href="/1004-Website/index.php#cats">Cats</a>
+            </li>    
+            <li class="nav-item">
+                <a class="nav-link" href="/1004-Website/cart/test_home.php">Products</a>
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="/1004-Website/cart/add_to_cart.php">Products</a>
+            </li>  
         </ul>
         <ul class="navbar-nav ml-auto">
             <li>
@@ -33,10 +45,10 @@
                 else 
                 { ?>
                     <li class="nav-item">
-                         <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span>Register</a> 
+                         <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>Register</a> 
                      </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="login.php"><span class="material-icons">login</span>Login</a> 
+                         <a class="nav-link" href="/1004-Website/login.php"><span class="material-icons">login</span>Login</a> 
                      </li>
                      
             <?php

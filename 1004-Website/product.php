@@ -21,6 +21,7 @@ $config =  parse_ini_file('/var/www/private/db-config.ini');
                     <div class="col-md-12">
                                 <img class="card-img-top" src="images/camera.jpg" alt="product">
                                 <div class="dog">
+                                    <a href="productid.php?id=<?php echo $row['id']?>">
                                     <span><?php echo $row['name']?></span>
                                     <p><?php echo $row['price']?></p>
                                 </div>
@@ -29,7 +30,7 @@ $config =  parse_ini_file('/var/www/private/db-config.ini');
                                     <i class="fa fa-plus-circle iconn" aria-hidden="true"></i>
                                     <input type ="submit" name="a" value="Add to cart">
                                 </div>
-                            </div>
+                        </div>
             </div>
 </div>
 
@@ -37,6 +38,9 @@ $config =  parse_ini_file('/var/www/private/db-config.ini');
                 
                 }
             }
+            $conn->close();
             ?>
+
+
              
      

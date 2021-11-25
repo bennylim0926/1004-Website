@@ -24,44 +24,61 @@ and open the template in the editor.
     </head>
     <body>
         <main>
-            <?php
-                include "nav.inc.php";
-                require_once 'component.php';
-            ?>
-            <div class ="main-category">
+<?php
+include "nav.inc.php";
+?>
+    <div class ="main-category">
                 <div class="col-md-5 col-sm-6 my-3 my-md-0">
                     <div class="category-heading">
                         <p>CATEGORIES</p>
                     </div>
                     <div class ="items">
-                        <?php
-                                include 'categories.php';                                
-                        ?>
+<?php
+    include "categories.php";
+    
+    ?>
                     </div>
                 </div>
-                
-                <div class="product">
-                    <div class ="featured-products">
-                        <p>FEATURED PRODUCTS</p>
-                    </div>
-                    <div class ="product-info">    
-                        <div class="camera">
-                           <?php
-                                include "product.php"
-                          ?>      
+    </div>
+            <?php 
+        $config =  parse_ini_file('/var/www/private/db-config.ini');
+        $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+   
+        if ($conn->connect_error)   
+    {
+           $errorMsg = "Connection failed: " . $conn->connect_error;
+    }
+            $cid = $_GET['cid'];
+            $sql= "SELECT * FROM world_of_pets.productlist WHERE categoryid = $cid";    
+            $result = $conn->query($sql);
 
+            if($result->num_rows >0)
+            {
+                while($row=mysqli_fetch_assoc($result))
+                {
+            ?>     
+            <div class="product-info">
+                <div class="product-pic">
+                    <div class ="img">
+                        <img src="images/smalldog.jpg">
                     </div>
                     
-                    
+                    <div class="product">
+                        <p><?php echo $row['name']?></p>
+                    </div>
                     
                 </div>
-                
-                
-                
-                
             </div>
-
-        </main>
+             
+            <?php   
+                } 
+            }?>
+          
+     
+     
+     
+     
+</main>
 <?php
 include "footer.inc.php";
 ?>

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?php
 session_start();
 //  CHECK IF ADMIN IS SIGNED IN
@@ -8,6 +9,10 @@ if (($_SESSION['admin']) == false || !isset($_SESSION['uname']))
     exit();
     die("Unauthorized");//terminate script
 }
+=======
+<?php include('connection.php');
+include('../Session/Session/CheckAdmin.php');
+>>>>>>> Stashed changes
 ?>
 
 <?php

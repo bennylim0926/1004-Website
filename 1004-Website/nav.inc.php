@@ -6,7 +6,7 @@
         <ul class="navbar-nav" >
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
-                <a class="navbar-brand" href="index.php"><img src="images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>
+                <a class="navbar-brand" href="index.php"><img src="/1004-Website/images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>
                 <ul class="navbar-nav"> 
                 <li class="nav-item">
                 <a class="nav-link" href="about.php">ABOUT</a>

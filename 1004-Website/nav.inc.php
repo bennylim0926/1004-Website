@@ -3,18 +3,17 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
-        <ul class="navbar-nav" >
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
                 <ul class="navbar-nav">                    
                     <li class="nav-item">
                         <a class="nav-link" href="/1004-Website/index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/1004-Website/index.php#dogs">Dogs</a>
+                        <a class="nav-link" href="/1004-Website/about-us.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/1004-Website/index.php#cats">Cats</a>
+                        <a class="nav-link" href="/1004-Website/locate-us.php">Locate Us</a>
                     </li>    
                     <li class="nav-item">
                         <a class="nav-link" href="/1004-Website/cart/test_home.php">Products</a>
@@ -23,7 +22,7 @@
                         <a class="nav-link" href="/1004-Website/cart/add_to_cart.php">Products</a>
                     </li>  
                 </ul>
-                <ul class="navbar-nav ml-auto">
+                <ul class="nav navbar-nav navbar-right ml-auto">
                     <li>
                         <?php
                         if (isset($_SESSION["uname"])) {
@@ -37,6 +36,9 @@
                         } else {
                             ?>
                         <li class="nav-item">
+                            <a class="nav-link" href="#"><span class="material-icons">shopping_cart</span>Shopping Cart</a> 
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>Register</a> 
                         </li>
                         <li class="nav-item">
@@ -49,6 +51,5 @@
 
                     </li>
                 </ul>
-        </ul>
     </div>
 </nav>     

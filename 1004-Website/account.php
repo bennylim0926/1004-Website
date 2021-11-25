@@ -1,6 +1,6 @@
  <?php
 session_start();
-include('../Session/SessionCheckUser.php');
+include('session/SessionCheckUser.php');
 ?>
 <?php
     include "head.inc.php";

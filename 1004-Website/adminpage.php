@@ -2,8 +2,8 @@
 
 <?php
 session_start(); 
-include('connection.php');
-include('../Session/SessionCheckAdmin.php');
+include('session/SessionCheckAdmin.php');
+include('Connection/connection.php');
 ?>
  
 <head>

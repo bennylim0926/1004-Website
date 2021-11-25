@@ -24,7 +24,7 @@ if ($conn->connect_error) {
         <h2>Recently Added Products</h2>
         <div >
             <?php foreach ($array as $product): ?>    
-                <a href="test_product_template.php?id=<?= $product['id'] ?>" class="product">
+            <a href="product_page.php?id=<?= $product['id'] ?>" class="product">
                     <img src="../images/<?= $product['img'] ?>" width="200" height="200" alt="<?= $product['name'] ?>">
                     <span class="name"><?= $product['name'] ?></span>>
                     <span class="price">

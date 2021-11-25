@@ -13,8 +13,8 @@ include('../Session/SessionExpiry.php');// check for session expiry
           crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="/1004-Website/css/main.css">
+    <link rel="stylesheet" href="/1004-Website/css/checkout.css">
 
     <!<!-- jQuery -->
     <script defer 
@@ -32,7 +32,7 @@ include('../Session/SessionExpiry.php');// check for session expiry
     </script>
 
     <!<!-- Custom JS -->
-    <script defer src="js/main.js"></script>
+    <script defer src="/1004-Website/js/main.js"></script>
 
    
     </style>

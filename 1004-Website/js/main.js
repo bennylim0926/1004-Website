@@ -59,7 +59,6 @@ function activateMenu()
     });
 }
 
-//make sure test product template has the correct access to js 
 function submitCartItem() {
     $("#add-to-cart").submit(function (e) {
         var formData = {
@@ -68,7 +67,7 @@ function submitCartItem() {
         };
         $.ajax({
             type: "POST",
-            url: "test_product_template.php", //?id=" + $('#product_id').val(),
+            url: "product_page.php",
             data: formData,
             error: function ()
             {
@@ -76,10 +75,7 @@ function submitCartItem() {
             },
             success: function (response)
             {
-//                $("#dialog").dialog();
-//                console.log("This is being fired");
                 var overlay = jQuery("<div class='alert alert-success' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
-
                 overlay.appendTo(document.body)
                 $("#success-alert").delay(4000).slideUp(200, function () {
                     $("#success-alert").alert('close');
@@ -91,13 +87,13 @@ function submitCartItem() {
 }
 function checkEmptyCart() {
     $("#checkout").submit(function (e) {
+        e.preventDefault();
         var formData = {
             total_item: $("#total_item").val(),
-            //placeorder: $("#placeorder").name,
         };
         $.ajax({
             type: "POST",
-            url: "add_to_cart.php", //?id=" + $('#product_id').val(),
+            url: "cart.php",
             data: formData,
             error: function ()
             {
@@ -105,19 +101,16 @@ function checkEmptyCart() {
             },
             success: function (response)
             {
-                console.log("Somethinghere");
-                console.log(formData.total_item);
                 if (formData.total_item == 0) {
-                    console.log("zero Item");
-                    var overlay = jQuery("<div class='alert alert-danger' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
+                    var overlay = jQuery("<div class='alert alert-danger' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
                     overlay.appendTo(document.body);
-                    $("#success-alert").delay(4000).slideUp(200, function () {
-                        $("#success-alert").alert('close');
+                    $("#failed-alert").delay(4000).slideUp(200, function () {
+                        $("#failed-alert").alert('close');
                     });
                 } else {
                     $.ajax({
                         type: "GET",
-                        url: "add_to_cart.php?placeorder=1", //?id=" + $('#product_id').val(),
+                        url: "cart.php?placeorder=1",
                         error: function ()
                         {
                             alert("Request Failed");
@@ -128,8 +121,6 @@ function checkEmptyCart() {
                             window.location.href = 'place_order.php';                       
                         }
                     });
-                    
-//                    console.log("more than zero Item");
                 }
             }
         });
@@ -142,8 +133,7 @@ function removeCartItem() {
         e.preventDefault();
         $.ajax({
             type: "GET",
-            url: "add_to_cart.php?removeAll=1",
-//            data: formData,
+            url: "cart.php?removeAll=1",
             error: function ()
             {
                 alert("Request Failed");
@@ -152,6 +142,25 @@ function removeCartItem() {
             {
                 $('#cart_table').empty();
                 $('#cart_table').load(location.href + ' #cart_table>*', "");
+            }
+        });
+        return false;
+    })
+}
+function updateCartItem() {
+    $("#cart_page").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: "cart.php?update=1",
+            error: function ()
+            {
+                alert("Request Failed");
+            },
+            success: function (response)
+            {
+//                $('#cart_table').empty();
+//                $('#cart_table').load(location.href + ' #cart_table>*', "");
             }
         });
         return false;

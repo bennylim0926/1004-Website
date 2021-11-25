@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 session_start();
 
 // Check to make sure the id parameter is specified in the URL
@@ -69,51 +69,31 @@ if (isset($_GET['id'])) {
     exit('Product does not exist!');
 }
 ?>
-<head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
-              crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet">
-    <link rel="stylesheet" href="../css/checkout.css">
-    <script 
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"
-        >
-    </script>
-
-    <!-- Bootstrap JS -->
-    <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
-            integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
-            crossorigin="anonymous">
-    </script>
-    <script defer src="../js/main.js"></script>    
-
-</head>
-
 <div>
     <?php
     include '../head.inc.php';
     ?>
-    <img src="../images/<?= $product['img'] ?>" width="500" height="500" alt="<?= $product['name'] ?>">
-    <div>
-        <h1 class="name"><?= $product['name'] ?><?= $product['id'] ?></h1>
-        <span class="price">
-            &dollar;<?= $product['price'] ?>
-            <?php if ($product['rrp'] > 0): ?>
-                <span class="rrp">&dollar;<?= $product['rrp'] ?></span>
-            <?php endif; ?>
-        </span>
-        <form id="add-to-cart" action="test_product_template.php?id=<?= $product['id'] ?>" method="post">
-            <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
-            <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
-            <input type="submit" value="Add To Cart">
-        </form>
-        <div class="description">
-            <?= $product['desc'] ?>
+    <body>
+        <?php
+        include '../nav.inc.php';
+        ?> 
+        <img src="../images/<?= $product['img'] ?>" width="500" height="500" alt="<?= $product['name'] ?>">
+        <div>
+            <h1 class="name"><?= $product['name'] ?><?= $product['id'] ?></h1>
+            <span class="price">
+                &dollar;<?= $product['price'] ?>
+                <?php if ($product['rrp'] > 0): ?>
+                    <span class="rrp">&dollar;<?= $product['rrp'] ?></span>
+                <?php endif; ?>
+            </span>
+            <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
+                <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
+                <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
+                <input type="submit" value="Add To Cart">
+            </form>
+            <div class="description">
+                <?= $product['desc'] ?>
+            </div>
         </div>
-
-    </div>
+    </body>
 </div>

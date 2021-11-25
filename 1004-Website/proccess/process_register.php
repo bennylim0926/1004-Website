@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <?php
-    include 'head.inc.php';
+    include '../head.inc.php';
     ?>
     <body>
         <?php
-        include 'nav.inc.php';
+        include '../nav.inc.php';
         
         $email = $errorMsg = "";
         $lname = "";
@@ -71,25 +71,25 @@
             {
             echo "<h1>Registration was successful!</h1>";
             echo "<h2>Thanks for signing up, " . $lname . "</h2>";
-            echo "<a href='login.php' class='btn btn-success'>Login</a>"; 
+            echo "<a href='../login.php' class='btn btn-success'>Login</a>"; 
             }
             else 
             {   if(strpos($errorMsg, $email) !== false)
                 { // check if errormsg from sql states email that user input is already being used.
                     echo "<h1>The following errors were detected: </h1>";
                     echo  "<h3> Email Address is Already Registered, Please use another email address </p>";
-                    echo "<a href='register.php' class='btn btn-danger'>Try again</a>"; 
+                    echo "<a href='../register.php' class='btn btn-danger'>Try again</a>"; 
                 }
                else if(strpos($errorMsg, $uname) !== false)
                 {
                     echo "<h1>The following errors were detected: </h1>";
                     echo  "<h3>The username," . $uname . " is taken, please user another username</p>"; 
-                    echo "<a href='register.php' class='btn btn-danger'>Try again</a>";
+                    echo "<a href='../register.php' class='btn btn-danger'>Try again</a>";
                 }
                 else{
                     echo "<h1>The following errors were detected: </h1>";
                     echo  "<h3>" . $errorMsg . "</p>";
-                    echo "<a href='register.php' class='btn btn-danger'>Try again</a>";
+                    echo "<a href='../register.php' class='btn btn-danger'>Try again</a>";
                 }
             }
         }  
@@ -124,7 +124,7 @@
             global $fname, $lname, $email, $uname, $pwd_hashed, $errorMsg, $success;
             
             // Create database connection
-            $config = parse_ini_file('../../private/db-config.ini');
+            $config = parse_ini_file('../../../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
             
             

@@ -1,5 +1,18 @@
 <?php 
-include('../Connection/connection.php');
+global $errorMsg, $success;
+             $config = parse_ini_file('../../../private/db-config.ini');
+             $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
+             
+             if ($conn->connect_error) 
+             {
+                $errorMsg = "Connection failed: " . $conn->connect_error;
+                $success = false;
+             }
+             if(mysqli_connect_errno())
+            {
+            echo 'Database Connection Error';
+            }
+            
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['$password'];
@@ -16,7 +29,7 @@ if($query ==true)
         'status'=>'true',
        
     );
-
+  
     echo json_encode($data);
 }
 else
@@ -25,7 +38,7 @@ else
         'status'=>'false',
       
     );
-
+ 
     echo json_encode($data);
 } 
 

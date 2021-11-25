@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
     <?php
-    include 'head.inc.php';
+    include '../head.inc.php';
     ?>
     <body>
         <?php
-        include 'nav.inc.php';
+        include '../nav.inc.php';
         $email = $errorMsg = $pwd = "";
         $success =true;
         if(empty($_POST['email'])){
@@ -33,12 +33,12 @@
            
             echo "<h4 class='display-4'>Login Successful!</h4>";
             echo "<p><b>Welcome back, " . $uname ."</b></p>";
-            echo "<p><a href='index.php' class='btn btn-success'>Back to Home</a></p>";
+            echo "<p><a href='/1004-Website/index.php' class='btn btn-success'>Back to Home</a></p>";
                
         } else {
             echo "<p><h1>The following errors were detected: </h1>";
             echo  "<h3>" . $errorMsg . "</p>";
-            echo "<a href='login.php' class='btn btn-danger'>Try again</a>";
+            echo "<a href='1004-Website/login.php' class='btn btn-danger'>Try again</a>";
         }
         echo "</div>";
         
@@ -47,7 +47,7 @@
             global $fname, $lname, $email, $admin, $pwd_hashed, $uname, $errorMsg, $success;
 
             // Create database connection
-            $config = parse_ini_file('../../private/db-config.ini');
+            $config = parse_ini_file('../../../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 
             // Check connection

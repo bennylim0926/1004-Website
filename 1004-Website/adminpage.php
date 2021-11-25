@@ -3,7 +3,7 @@
 <?php
 session_start(); 
 include('session/SessionCheckAdmin.php');
-include('Connection/connection.php');
+
 ?>
  
 <head>
@@ -91,7 +91,7 @@ include('Connection/connection.php');
         <div class="col-md-8">
          <table id="example" class="table">
           <thead>
-            <th>Id</th>
+            <th>ID</th>
             <th>Username</th>
             <th>Email</th>
             <th>Last Name</th>
@@ -124,7 +124,7 @@ include('Connection/connection.php');
         'paging':'true',
         'order':[],
         'ajax': {
-          'url':'fetch_data.php',
+          'url':'fetch_data/fetch_data.php',
           'type':'post',
         },
         "columnDefs": [{
@@ -142,7 +142,7 @@ include('Connection/connection.php');
       if(password != '' && username != '' && lname != '' && email != '' )
       {
        $.ajax({
-         url:"add_user.php",
+         url:"action/add_user.php",
          type:"post",
          data:{password:password,username:username,lname:lname,email:email},
          success:function(data)
@@ -178,7 +178,7 @@ include('Connection/connection.php');
        if(lname != '' && username != '' && mobile != '' && email != '' )
        {
          $.ajax({
-           url:"update_user.php",
+           url:"action/update_user.php",
            type:"post",
            data:{lname:lname,username:username,mobile:mobile,email:email,id:id},
            success:function(data)
@@ -216,7 +216,7 @@ include('Connection/connection.php');
      $('#exampleModal').modal('show');
 
      $.ajax({
-      url:"get_single_data.php",
+      url:"fetch_data/get_single_data.php",
       data:{id:id},
       type:'post',
       success:function(data)
@@ -240,7 +240,7 @@ include('Connection/connection.php');
       if(confirm("Are you sure want to delete this User ? "))
       {
       $.ajax({
-        url:"delete_user.php",
+        url:"action/delete_user.php",
         data:{id:id},
         type:"post",
         success:function(data)
@@ -249,10 +249,16 @@ include('Connection/connection.php');
           status = json.status;
           if(status=='success')
           {
+              
             //table.fnDeleteRow( table.$('#' + id)[0] );
              //$("#example tbody").find(id).remove();
              //table.row($(this).closest("tr")) .remove();
              $("#"+id).closest('tr').remove();
+             mytable =$('#example').DataTable();
+            mytable.draw();
+            $('#addUserModal').modal('hide');
+              
+             
           }
           else
           {

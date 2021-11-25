@@ -39,32 +39,36 @@ and open the template in the editor.
 </nav>
         <header class="jumbotron text-center">
             <h1 class="display-4">Product Page</h1>
-            <h2>All our products</h2>
+            <h5>Click on each product for more details!</h5>
         </header>       
         <main class="container">
             <section id="monitors">
                 <h2 class="producttitle">Monitor</h2>
                 <div class="row">
                     <article class="col-sm">
-                        <figure>                            
+                        <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/monitors/monitor1.jpeg" alt="Monitor"
-                                 title="View larger image..." />                                                                          
+                                 title="Click to view details..." />
+                            </a>
                             <figcaption>Monitor 1</figcaption>
                         </figure>
                     </article>
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/monitors/monitor2.jpeg" alt="Monitor"
-                                 title="View larger image..."/>                                                                               
-
+                                 title="Click to view details..."/>                                                                               
+                            </a>
                             <figcaption>Monitor 2</figcaption>
                         </figure>
                     </article>
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/monitors/monitor3.jpg" alt="Monitor"
-                                 title="View larger image..."/>                                                                               
-
+                                 title="Click to view details..."/>                                                                               
+                            </a>
                             <figcaption>Monitor 3</figcaption>
                         </figure>
                     </article>
@@ -76,22 +80,28 @@ and open the template in the editor.
                 <div class="row">
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/keyboards/keyboard1.jpg" alt="Keyboard"
-                                 title="View larger image..." />                                              
+                                 title="Click to view details..." />
+                            </a>
                             <figcaption>Keyboard 1</figcaption>
                         </figure>
                     </article>
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/keyboards/keyboard2.jpg" alt="Keyboard"
-                                 title="View larger image..." />                                              
+                                 title="Click to view details..." />
+                            </a>
                             <figcaption>Keyboard 2</figcaption>
                         </figure>
                     </article>
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/keyboards/keyboard3.jpg" alt="Keyboard"
-                                 title="View larger image..." />                                              
+                                 title="Click to view details..." />  
+                            </a>
                             <figcaption>Keyboard 3</figcaption>
                         </figure>
                     </article>
@@ -102,22 +112,28 @@ and open the template in the editor.
                 <div class="row">
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/mouse/mouse1.jpg" alt="Mouse"
-                                 title="View larger image..." />                                              
+                                 title="Click to view details..." />                                              
                             <figcaption>Mouse 1</figcaption>
+                            </a>
                         </figure>
                     </article>
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/mouse/mouse2.jpg" alt="Mouse"
-                                 title="View larger image..." />                                              
+                                 title="Click to view details..." />                                              
                             <figcaption>Mouse 2</figcaption>
+                            </a>
                         </figure>
                     </article>
                     <article class="col-sm">
                         <figure>
+                            <a href="product_page_1.php">
                             <img class="img-thumbnail" src="images/mouse/mouse3.jpeg" alt="Mouse"
-                                 title="View larger image..." />                                              
+                                 title="Click to view details..." />
+                            </a>
                             <figcaption>Mouse 3</figcaption>
                         </figure>
                     </article>

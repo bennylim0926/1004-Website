@@ -22,7 +22,7 @@ and open the template in the editor.
                 <div class="row">
                     <article class="col-sm">
                         <h3>Poodles</h3>
-                        <figure>                            
+                        <figure>
                             <img class="img-thumbnail" src="images/poodle_small.jpg" alt="Poodle"
                                  title="View larger image..." />                                                                          
                             <figcaption>Standard Poodle</figcaption>

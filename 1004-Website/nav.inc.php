@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" >
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
         <a class="navbar-brand" href="index.php"><img src="images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" >
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Home</a>
             </li>
@@ -24,7 +24,7 @@
                      if (($_SESSION['admin']) == true)  
                     {
                        echo "<li class='nav-item'> <a class='nav-link' href='adminpage.php'><span class='material-icons'>account_circle</span>User management</a></li>"; 
-                    }
+                    }         
                     echo "<li class='nav-item'> <a class='nav-link' href='uploadimages.php'><span class='material-icons'>account_circle</span>Upload Images</a></li>";
                     echo "<li class='nav-item'> <a class='nav-link' href='logout.php'><span class='material-icons'>logout</span>Logout</a></li>";
                    

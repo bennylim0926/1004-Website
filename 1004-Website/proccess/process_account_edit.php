@@ -41,7 +41,7 @@ function saveMemberToDB() {
     global $email, $pwd_hashed, $old_password, $errorMsg, $success;
 
     // Create database connection.
-    $config = parse_ini_file('../../private/db-config.ini');
+     $config = parse_ini_file('../../private/db-config.ini');
      $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 
     // Check connection

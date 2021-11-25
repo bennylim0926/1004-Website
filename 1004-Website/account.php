@@ -1,9 +1,6 @@
  <?php
 session_start();
-if(!isset($_SESSION['uname'])){ //if login session is not set, redirect user to 401 page.
-    header("Location: 401.php");
-    exit();
-}
+include('../Session/SessionCheckUser.php');
 ?>
 <?php
     include "head.inc.php";
@@ -35,7 +32,7 @@ if(!isset($_SESSION['uname'])){ //if login session is not set, redirect user to 
             </div>
             
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-success" type="submit">Update</button>
             </div>
         </form>
     </main>

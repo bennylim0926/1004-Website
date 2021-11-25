@@ -34,8 +34,7 @@ function saveImageToDB() {
     // Create database connection.
     $curDateTime = date("Y-m-d H:i:s");
     $config = parse_ini_file('../../private/dbconfig.ini');
-    $conn = new mysqli($config['servername'], $config['username'],
-            $config['password'], 'ITshop');
+    $conn = new mysqli($config['servername'], $config['username'],$config['password'], 'ITshop');
     // Check connection
     if ($conn->connect_error) {
         $errorMsg = "Connection failed: " . $conn->connect_error;

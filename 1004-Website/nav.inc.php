@@ -6,7 +6,14 @@
         <ul class="navbar-nav" >
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
-                <ul class="navbar-nav">                    
+                <a class="navbar-brand" href="index.php"><img src="/1004-Website/images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>
+                <ul class="navbar-nav"> 
+                <li class="nav-item">
+                <a class="nav-link" href="about.php">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="product_page.php">OUR PRODUCTS</a>
+            </li>                    
                     <li class="nav-item">
                         <a class="nav-link" href="/1004-Website/index.php">Home</a>
                     </li>
@@ -37,10 +44,10 @@
                         } else {
                             ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>Register</a> 
+                            <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>REGISTER</a> 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/1004-Website/login.php"><span class="material-icons">login</span>Login</a> 
+                            <a class="nav-link" href="/1004-Website/login.php"><span class="material-icons">login</span>LOGIN</a> 
                         </li>
 
                         <?php

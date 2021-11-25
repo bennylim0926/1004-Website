@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function (e) {
+
+//$(document).ready(function (e) {
+    //$(".img-thumbnail").on("click", showPopUp);
+$(document).ready(function () {
+    $(".img-thumbnail").on("click", goToProductDesc);
     $(".img-thumbnail").on("click", showPopUp);
     //without the stopPropagation, this will be fired when clicking the thumbnail
     $(document).on("click", function () {
@@ -14,16 +18,16 @@ $(document).ready(function (e) {
     submitCartItem();
     removeCartItem();
     checkEmptyCart();
-
 });
 
 function showPopUp(e) {
+    //window.open("product_page_1.php");
     //console.log($(e.currentTarget).parent().children().length)
     //cannot directly use e.target/e.currentTarget because this function is not 
     //added to listener using the classic way
     //since we are using jquery, there need a jquery way to access e.target
     //which is $(e.target) / $(e.currentTarget) to access.
-    if ($(this).parent().children().length > 2) {
+    /*if ($(this).parent().children().length > 2) {
         $(".img-popup").remove();
         return;
     }
@@ -41,7 +45,7 @@ function showPopUp(e) {
     $(this).parent().append(popUp);
     console.log("Hi");
     //prevent the event furhter bubbling.
-    e.stopPropagation();
+    e.stopPropagation();*/
 }
 
 function activateMenu()
@@ -165,6 +169,10 @@ function updateCartItem() {
         });
         return false;
     })
+}
+function goToProductDesc()
+{
+    window.open("product_page_1.php",'_blank');
 }
 
 

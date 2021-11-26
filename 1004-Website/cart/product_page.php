@@ -1,22 +1,17 @@
 <?php
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
 session_start();
-
 // Check to make sure the id parameter is specified in the URL
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
-// Set the post variables so we easily identify them, also make sure they are integer
+    // Set the post variables so we easily identify them, also make sure they are integer
     $product_id = (int) $_POST['product_id'];
-
     $quantity = (int) $_POST['quantity'];
     $config = parse_ini_file('../../../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
     if ($conn->connect_error) {
         $success = false;
     } else {
-// Prepare the SQL statement, we basically are checking if the product exists in our databaser
-// Fetch the product from the database and return the result as an Array 
+        // Prepare the SQL statement, we basically are checking if the product exists in our databaser
+        // Fetch the product from the database and return the result as an Array 
         $stmt = $conn->prepare('SELECT * FROM products WHERE id = ?');
         $stmt->bind_param("i", $product_id);
         $stmt->execute();
@@ -27,45 +22,80 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
         }
     }
     if ($productList && $quantity > 0) {
-// Product exists in database, now we can create/update the session variable for the cart
-        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-            if (array_key_exists($product_id, $_SESSION['cart'])) {
-//Product exists in cart so just update the quanity
-                $_SESSION['cart'][$product_id] += $quantity;
+        //if user login 
+        if (isset($_SESSION['uname'])) {
+            $stmt = $conn->prepare("SELECT acc_id FROM accounts WHERE uname=?");
+            $stmt->bind_param("s", $_SESSION["uname"]);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            //$row['acc_id'] is the user id
+            //select from accountsHasProducts table see whether user id and item got result
+            $stmt = $conn->prepare("SELECT * FROM accounts_has_products WHERE products_id=? AND accounts_acc_id=?");
+            $stmt->bind_param("ii", $product_id, $row['acc_id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row2 = $result->fetch_assoc();
+//            echo $row2['quantity'];
+            if ($result->num_rows == 1) {
+                //update exsting value
+                $new_value = $row2["quantity"] + $quantity;
+                echo $new_value;
+                $stmt = $conn->prepare('UPDATE accounts_has_products SET quantity=? '
+                        . 'WHERE products_id=?');
+                $stmt->bind_param("ii", $new_value, $product_id);
+                $stmt->execute();
             } else {
-// Product is not in cart so add it
-                $_SESSION['cart'][$product_id] = $quantity;
+                //add into new column
+                $stmt = $conn->prepare('INSERT INTO accounts_has_products(accounts_acc_id, products_id, quantity)'
+                        . 'VALUE(?,?,?)');
+                $stmt->bind_param("iii", $row['acc_id'], $product_id, $quantity);
+                $stmt->execute();
             }
         } else {
-            $_SESSION['cart'] = array($product_id => $quantity);
+            if (isset($_COOKIE['cart'])) {
+                $cookie_data = stripslashes($_COOKIE['cart']);
+                $cart_data = json_decode($cookie_data, true);
+                if (array_key_exists($product_id, $cart_data)) {
+                    //Product exists in cart so just update the quanity
+                    $cart_data[$product_id] += $quantity;
+                    $item_data = json_encode($cart_data);
+                    setcookie('cart', $item_data, time() + (86400 * 30));
+                } else {
+                    // Product is not in cart so add it
+                    $cart_data[$product_id] = $quantity;
+                    $item_data = json_encode($cart_data);
+                    setcookie('cart', $item_data, time() + (86400 * 30));
+                }
+            } else {
+                $_COOKIE['cart'] = array($product_id => $quantity);
+                $item_data = json_encode($_COOKIE['cart']);
+                setcookie('cart', $item_data, time() + (86400 * 30));
+            }
         }
     }
 }
 
 if (isset($_GET['id'])) {
-// Prepare statement and execute, prevents SQL injection
+    // Prepare statement and execute, prevents SQL injection
     $config = parse_ini_file('../../../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
     $stmt = $conn->prepare('SELECT * FROM products WHERE id = ?');
     $stmt->bind_param("i", $_GET['id']);
     $stmt->execute();
     $result = $stmt->get_result();
-//echo $result->num_rows ;
     $array = array();
     while ($row = $result->fetch_assoc()) {
         $array[] = $row;
     }
-//$product[] = $result->fetch_assoc();
-//    echo $result->num_rows;
     $product = $array[0];
-
-// Check if the product exists (array is not empty)
+    // Check if the product exists (array is not empty)
     if (!$product) {
-// Simple error to display if the id for the product doesn't exists (array is empty)
+        // Simple error to display if the id for the product doesn't exists (array is empty)
         exit('Product does not exist!');
     }
 } else {
-// Simple error to display if the id wasn't specified
+    // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
 ?>

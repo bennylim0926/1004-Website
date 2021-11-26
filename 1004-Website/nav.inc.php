@@ -27,7 +27,7 @@
                         <a class="nav-link" href="/1004-Website/cart/test_home.php">Products</a>
                     </li>  
                     <li class="nav-item">
-                        <a class="nav-link" href="/1004-Website/cart/add_to_cart.php">Products</a>
+                        <a class="nav-link" href="/1004-Website/cart/cart.php">Products</a>
                     </li>  
                 </ul>
                 <ul class="navbar-nav ml-auto">

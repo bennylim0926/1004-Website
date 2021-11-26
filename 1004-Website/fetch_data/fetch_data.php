@@ -25,7 +25,7 @@ if(isset($_POST['search']['value']))
 	$sql .= " WHERE uname like '%".$search_value."%'";
 	$sql .= " OR email like '%".$search_value."%'";
 	$sql .= " OR lname like '%".$search_value."%'";
-	$sql .= " OR uname like '%".$search_value."%'";
+	$sql .= " OR fname like '%".$search_value."%'";
 }
 
 if(isset($_POST['order']))
@@ -36,7 +36,7 @@ if(isset($_POST['order']))
 }
 else
 {
-	$sql .= " ORDER BY acc_id desc";
+	$sql .= " ORDER BY admin desc";
 }
 
 if($_POST['length'] != -1)
@@ -55,8 +55,11 @@ while($row = mysqli_fetch_assoc($query))
 	$sub_array[] = $row['acc_id'];
 	$sub_array[] = $row['uname'];
 	$sub_array[] = $row['email'];
+        $sub_array[] = $row['fname'];
 	$sub_array[] = $row['lname'];
-	$sub_array[] = $row['fname'];
+        $sub_array[] = $row['mobile_number'];
+        $sub_array[] = $row['admin'];
+        
 	$sub_array[] = '<a href="javascript:void();" data-id="'.$row['acc_id'].'"  class="btn btn-info btn-sm editbtn" >Edit</a>  <a href="javascript:void();" data-id="'.$row['acc_id'].'"  class="btn btn-danger btn-sm deleteBtn" >Delete</a>';
 	$data[] = $sub_array;
 }

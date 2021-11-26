@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../Session/SessionExpiry.php');// check for session expiry
+include('session/SessionExpiry.php');// check for session expiry
 ?>
 <head>
     <title>IT Shop</title>

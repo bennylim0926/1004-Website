@@ -13,7 +13,7 @@ include('session/SessionCheckUser.php');
     <main class="container">
         <h1>Change Account Password</h1>
         
-        <form action="/1004-Website/proccess/process_account_edit.php" class="sign-in-form" method="POST">
+        <form action="/1004-Website/process/process_account_edit.php" class="sign-in-form" method="POST">
             <div class="form-group">
                 <label for="edit_pwd">
                     Old Password:

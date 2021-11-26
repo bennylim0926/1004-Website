@@ -93,7 +93,8 @@ function saveMemberToDB() {
         <meta http-equiv="refresh" content="2;url=/1004-Website/account.php" />
     </head>
     <body>
-
+        <?php
+include '../nav.inc.php'; ?>
         <main class="container">
 
             <?php

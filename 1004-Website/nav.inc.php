@@ -35,12 +35,12 @@
                         <?php
                         if (isset($_SESSION["uname"])) {
                             echo "<li class='nav-item'> <a class='nav-link'><span class='material-icons'>account_box</span> Welcome back, " . $_SESSION["uname"] . "</a></li>";
-                            echo "<li class='nav-item'> <a class='nav-link' href='account.php'><span class='material-icons'>account_circle</span>Edit Account</a></li>";
+                            echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/account.php'><span class='material-icons'>account_circle</span>Edit Account</a></li>";
                             if (($_SESSION['admin']) == true) {
-                                echo "<li class='nav-item'> <a class='nav-link' href='adminpage.php'><span class='material-icons'>account_circle</span>User management</a></li>";
+                                echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/adminpage.php'><span class='material-icons'>account_circle</span>User management</a></li>";
                             }
                             
-                            echo "<li class='nav-item'> <a class='nav-link' href='logout.php'><span class='material-icons'>logout</span>Logout</a></li>";
+                            echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/logout.php'><span class='material-icons'>logout</span>Logout</a></li>";
                         } else {
                             ?>
                         <li class="nav-item">

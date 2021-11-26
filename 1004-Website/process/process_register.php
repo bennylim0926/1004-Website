@@ -71,25 +71,25 @@
             {
             echo "<h1>Registration was successful!</h1>";
             echo "<h2>Thanks for signing up, " . $lname . "</h2>";
-            echo "<a href='../login.php' class='btn btn-success'>Login</a>"; 
+            echo "<a href='/1004-Website/login.php' class='btn btn-success'>Login</a>"; 
             }
             else 
             {   if(strpos($errorMsg, $email) !== false)
                 { // check if errormsg from sql states email that user input is already being used.
                     echo "<h1>The following errors were detected: </h1>";
                     echo  "<h3> Email Address is Already Registered, Please use another email address </p>";
-                    echo "<a href='../register.php' class='btn btn-danger'>Try again</a>"; 
+                    echo "<a href='/1004-Website/register.php' class='btn btn-danger'>Try again</a>"; 
                 }
                else if(strpos($errorMsg, $uname) !== false)
                 {
                     echo "<h1>The following errors were detected: </h1>";
                     echo  "<h3>The username," . $uname . " is taken, please user another username</p>"; 
-                    echo "<a href='../register.php' class='btn btn-danger'>Try again</a>";
+                    echo "<a href='/1004-Website/register.php' class='btn btn-danger'>Try again</a>";
                 }
                 else{
                     echo "<h1>The following errors were detected: </h1>";
                     echo  "<h3>" . $errorMsg . "</p>";
-                    echo "<a href='../register.php' class='btn btn-danger'>Try again</a>";
+                    echo "<a href='/1004-Website/register.php' class='btn btn-danger'>Try again</a>";
                 }
             }
         }  
@@ -97,7 +97,7 @@
         {
             echo "<h1>The following errors were detected: </h1>";
             echo  "<h3>" . $errorMsg . "</p>";
-            echo "<a href='register.php' class='btn btn-danger'>Try again</a>";
+            echo "<a href='/1004-Website/register.php' class='btn btn-danger'>Try again</a>";
         }     
             echo "</div>";
         
@@ -150,7 +150,7 @@
         }
         ?>
         <?php
-        include 'footer.inc.php';
+        include '../footer.inc.php';
         ?>   
     </body>
 </html>

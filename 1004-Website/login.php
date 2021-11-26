@@ -13,7 +13,7 @@
                 Existing members log in here. For new members, 
                 please go to the <a href="register.php">Sign up page</a>
             </p>
-            <form action="proccess/process_login.php" method="post">
+            <form action="process/process_login.php" method="post">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input class="form-control" type="email" id="email" required name="email"

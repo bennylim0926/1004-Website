@@ -38,7 +38,7 @@
         } else {
             echo "<p><h1>The following errors were detected: </h1>";
             echo  "<h3>" . $errorMsg . "</p>";
-            echo "<a href='1004-Website/login.php' class='btn btn-danger'>Try again</a>";
+            echo "<a href='/1004-Website/login.php' class='btn btn-danger'>Try again</a>";
         }
         echo "</div>";
         
@@ -96,7 +96,7 @@
         }
         ?>       
         <?php
-        include 'footer.inc.php';
+        include '../footer.inc.php';
         ?> 
     </body>
 </html>

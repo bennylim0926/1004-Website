@@ -3,60 +3,151 @@
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
 session_start();
-
+$config = parse_ini_file('../../../private/db-config.ini');
+$conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 //for remove button
-if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['cart']) && isset($_SESSION['cart'][$_GET['remove']])) {
-    // Remove the product from the shopping cart
-    //unset($_SESSION['cart'][$_GET["remove"]]);
-    $data = $_SESSION['cart'];    // Get the value
-    unset($data[$_GET["remove"]]);               // Remove an item (hardcoded the second here)
-    $_SESSION['cart'] = $data;
-    header("location: cart.php");
-    exit;
+if (isset($_GET['remove']) && is_numeric($_GET['remove'])) {
+    if (isset($_SESSION['uname'])) {
+        $stmt = $conn->prepare("DELETE FROM accounts_has_products WHERE products_id=?");
+        $stmt->bind_param("i", $_GET['remove']);
+        $stmt->execute();
+        //need to reload after load from database
+    } else {
+        if (isset($_COOKIE['cart'])) {
+            $cookie_data = stripslashes($_COOKIE['cart']);
+            $cartdata = json_decode($cookie_data, true);
+            unset($cartdata[$_GET["remove"]]);
+            $item_data = json_encode($cartdata);
+            setcookie('cart', $item_data, time() + (86400 * 30));
+            //if user login
+            //connect to db and remove all the record
+            header("location: cart.php");
+            exit;
+        }
+    }
 }
-if (isset($_GET['removeAll']) && is_numeric($_GET['removeAll']) && isset($_SESSION['cart'])) {
-    unset($_SESSION['cart']);
+if (isset($_POST['removeAll']) && is_numeric($_POST['removeAll'])) {
+    if (isset($_SESSION['uname'])) {
+        $stmt = $conn->prepare("DELETE FROM accounts_has_products");
+        $stmt->execute();
+    } else {
+        if (isset($_COOKIE['cart'])) {
+            setcookie('cart', "", time() - 3600);
+        }
+    }
 }
 
-//$product_id = (int) $_POST['product_id'];
-//$quantity = (int) $_POST['quantity'];
 // for update button
-if (isset($_GET['update']) && isset($_SESSION['cart'])) {
+if (isset($_POST['update'])) {
     // Loop through the post data so we can update the quantities for every product in cart
-    echo 'run this shit';
     foreach ($_POST as $k => $v) {
         if (strpos($k, 'quantity') !== false && is_numeric($v)) {
             $id = str_replace('quantity-', '', $k);
             $quantity = (int) $v;
-            // Always do checks and validation
-            if (is_numeric($id) && isset($_SESSION['cart'][$id]) && $quantity > 0) {
-                // Update new quantity
-                $_SESSION['cart'][$id] = $quantity;
+            $cookie_data = stripslashes($_COOKIE['cart']);
+            $cartdata = json_decode($cookie_data, true);
+
+            if (is_numeric($id) && $quantity > 0) {
+                if ($_SESSION['uname']) {
+                    $stmt = $conn->prepare("SELECT acc_id FROM accounts WHERE uname=?");
+                    $stmt->bind_param("s", $_SESSION["uname"]);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();
+                    $stmt2 = $conn->prepare("UPDATE accounts_has_products SET quantity=? "
+                            . "WHERE products_id=? AND accounts_acc_id=?");
+                    $stmt2->bind_param("iii", $quantity, $id, $row['acc_id']);
+                    $stmt2->execute();
+                } else {
+                    if (isset($cartdata[$id])) {
+                        $cartdata[$id] = $quantity;
+                        $item_data = json_encode($cartdata);
+                        setcookie('cart', $item_data, time() + (86400 * 30));
+                    }
+                }
             }
         }
     }
-    header("location: cart.php");
-    exit;
 }
 
-if (isset($_GET['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-    unset($_SESSION['cart']);
-//    header("location: place_order.php");
-//    exit;
+if (isset($_GET['placeorder'])) {
+    if (isset($_SESSION['uname'])) {
+        //query using the user id
+        $stmt = $conn->prepare("SELECT acc_id FROM accounts WHERE uname=?");
+        $stmt->bind_param("s", $_SESSION["uname"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        //get the result
+        $stmt = $conn->prepare("SELECT * FROM accounts_has_products WHERE accounts_acc_id=?");
+        $stmt->bind_param("i", $row['acc_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $items = array();
+        while ($row = $result->fetch_assoc()) {
+            $items[] = $row;
+        }
+        //use foreach loop to query delete from main database
+        foreach ($items as $item) {
+            //check original stock
+            $stmt = $conn->prepare("SELECT * FROM products WHERE id=? ");
+            $stmt->bind_param("i", $item['products_id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row1 = $result->fetch_assoc();
+           
+            //minus the user quanity
+            $new_quantity = $row1['quantity'] - $item["quantity"];
+            $stmt = $conn->prepare("UPDATE products SET quantity=? "
+                    . "WHERE id=?");
+            $stmt->bind_param("ii", $new_quantity,$item["products_id"]);
+            $stmt->execute();
+        }
+
+        $stmt = $conn->prepare("DELETE FROM accounts_has_products");
+        $stmt->execute();
+    } else {
+        if (isset($_COOKIE['cart'])) {
+            setcookie('cart', "", time() - 3600);
+        }
+    }
 }
 
-$products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+if ($_SESSION["uname"]) {
+    $stmt = $conn->prepare("SELECT acc_id FROM accounts WHERE uname=?");
+    $stmt->bind_param("s", $_SESSION["uname"]);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt = $conn->prepare("SELECT * FROM accounts_has_products WHERE accounts_acc_id=?");
+    $stmt->bind_param("i", $row['acc_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $cart_data = array();
+    while ($row = $result->fetch_assoc()) {
+        $cart_data[$row['products_id']] = $row['quantity'];
+        $test_data[] = $row;
+//        print_r($test_data);
+    }
+    foreach ($test_data as $data) {
+        print_r($data["products_id"]);
+    }
+} else {
+    $product_in_cookies = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : array();
+    $cookie_data = stripslashes($product_in_cookies);
+    $cart_data = json_decode($cookie_data, true);
+    print_r($cart_data);
+}
 $subtotal = 0.00;
 $totalItem = 0;
 $products = array();
-////// If there are products in cart
-if ($products_in_cart) {
-    $key = array_keys($products_in_cart);
+if ($cart_data) {
+    $key = array_keys($cart_data);
     $i = 1;
     // There are products in the cart so we need to select those products from the database
     // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
-    $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-    $array_to_i_marks = implode("", array_fill(0, count($products_in_cart), 'i'));
+    $array_to_question_marks = implode(',', array_fill(0, count($cart_data), '?'));
+    $array_to_i_marks = implode("", array_fill(0, count($cart_data), 'i'));
     $config = parse_ini_file('../../../private/db-config.ini');
     $newconn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
     $newstmt = $newconn->prepare('SELECT * FROM products WHERE id IN (' . $array_to_question_marks . ')');
@@ -66,10 +157,9 @@ if ($products_in_cart) {
     while ($row = $result->fetch_assoc()) {
         $products[] = $row;
     }
-//    echo $result->num_rows;
     foreach ($products as $product) {
-        $subtotal += (float) $product["price"] * (int) $products_in_cart[$product['id']];
-        $totalItem += (int) $products_in_cart[$product['id']];
+        $subtotal += (float) $product["price"] * (int) $cart_data[$product['id']];
+        $totalItem += (int) $cart_data[$product['id']];
     }
 }
 ?>
@@ -87,7 +177,6 @@ if ($products_in_cart) {
             </div>
         </nav>
         <main class="container">
-            <!--<form action="cart.php" method="post">-->
             <div class="table-responsive-sm" id='cart_table'>
                 <table class="table">
                     <thead>
@@ -99,61 +188,54 @@ if ($products_in_cart) {
                             <td class="text-right">Action</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>                    
                         <?php if (empty($products)): ?>
                             <tr class='cartStatus'>
                                 <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
                             </tr>
                         <?php else: ?>
                             <?php foreach ($products as $product): ?>
-                                <tr class='wholeCart'>
+                                <tr>
                                     <td class="cart-img">
-                                        <a href="test_product_template.php?id=<?= $product['id'] ?>">
+                                        <a href="product_page.php?id=<?= $product['id'] ?>">
                                             <img src="../images/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
                                         </a>
-                                        <a href="test_product_template.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
+                                        <a href="product_page.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
                                     </td>
                                     <td class="price text-right align-middle">&dollar;<?= $product['price'] ?></td>
                                     <td class="quantity text-right align-middle">
-                                        <form action="cart.php" method="post">
-                                            <input type="number" name="quantity-<?= $product['id'] ?>" value="<?= $products_in_cart[$product['id']] ?>" min="1" max="<?= $product['quantity'] ?>" placeholder="<?= $products_in_cart[$product['id']] ?>" >
-                                        </form>
+                                        <div >
+                                            <button class='decrement'>-</button>
+                                            <input class='quantity' id="<?= $product['id'] ?>" type="number" name="quantity-<?= $product['id'] ?>" value="<?= $cart_data[$product['id']] ?>" min="1" max="<?= $product['quantity'] ?>" placeholder="<?= $cart_data[$product['id']] ?>"readonly >
+                                            <button class='increment'>+</button>
+                                        </div>
                                     </td>
-                                    <td class="price text-right align-middle">&dollar;<?= $product['price'] * $products_in_cart[$product['id']] ?></td>
+                                    <td class="price text-right align-middle toReload">&dollar;<?= $product['price'] * $cart_data[$product['id']] ?></td>
                                     <td class="text-right align-middle"><a href="cart.php?remove=<?= $product['id'] ?>" class="remove">Remove</a></td> 
-
                                 </tr>
-
                             <?php endforeach; ?>
                         <?php endif; ?>
-                        <tr>
+                        <tr class>
                             <td class="align-middle">
-                                <form id="update" action="cart.php" method="post">
-                                    <input type="submit" value="Update" name="update">
-                                </form>
-                                <!--<form action="cart.php" method="post">-->
-                                    <!--<input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">-->
-                                <!--</form>-->
-                                <a href="cart.php?removeAll=1" class=" align-middle">Remove All</a>
+                                <button><a id="remove_all" href="cart.php" class="remove">Remove ALL</a></button> 
                             </td>
                             <td>
-                                <form action="cart.php" method="post">
-                                    <input type="hidden" name="remove" id='remove' type="submit" value="1">
-                                </form>
+
                             </td> 
                             <td class="text-right"></td>
-                            <td class="text-right align-middle"> Total Item(s): <?= $totalItem ?></td>
-                            <td class="text-right align-middle">&dollar;<?= $subtotal ?></td>
+                            <td class="text-right align-middle toReload_totalItem"> Total Item(s): <?= $totalItem ?></td>
+                            <td class="text-right align-middle toReload_all_price">&dollar;<?= $subtotal ?></td>
                             <td class="text-right">
                             <td class="align-middle">  
-                                <form id='checkout' action="cart.php" method="post">
+                                id="checkout"
+                                <form  id="checkout" action="cart.php" method="post">
                                     <input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">
                                     <input type="submit" value="Check Out" name="placeorder" id='placeorder'>
                                 </form>
                             </td>
+                            <td>                                    
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>

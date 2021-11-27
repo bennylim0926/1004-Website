@@ -20,6 +20,7 @@ $(document).ready(function () {
     checkEmptyCart();
     increment();
     decrement();
+    goCheckout();
 });
 
 function showPopUp(e) {
@@ -136,6 +137,20 @@ function checkEmptyCart() {
     })
 }
 
+function goCheckout() {
+    $("#placeorder").submit(function (e) {
+        e.preventDefault(); 
+        $.post("checkout_confirmation.php", {
+                total_item: $("#total_item").val(),
+                total_price: $("#total_price").val(),
+            }, function () {
+//                console.log("try");
+                window.location.href = "checkout_confirmation.php";
+            });
+        return false;
+    })
+}
+
 function removeAllItem() {
     $("#remove_all").click(function () {
         $set = 1;
@@ -148,6 +163,7 @@ function removeAllItem() {
         return false;
     });
 }
+
 function increment() {
     $set = 1;
     $(".increment").on('click', function (e) {

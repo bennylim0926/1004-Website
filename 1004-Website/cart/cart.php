@@ -224,10 +224,11 @@ if ($cart_data) {
                             <th class="text-right align-middle toReload_all_price">Total Price: &dollar;<?= $subtotal ?></th>
                             
                             <th class="align-middle">  
-                                <form  action="checkout_confirmation.php" method="post">
+                                <!--id="placeorder"--> 
+                                <form action="checkout_confirmation.php" method="post">
+                                    <input class="btn btn-outline-secondary"type="submit" value="Check Out" name="placeorder">
                                     <input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">
                                     <input type="hidden" name="total_price" id="total_price" value="<?= $subtotal?>">
-                                    <input class="btn btn-outline-secondary"type="submit" value="Check Out" name="checkout" id='checkout'>
                                 </form>
 <!--<a class='btn btn-outline-secondary float-right'href="checkout_confirmation.php">Check Out</a>-->
                             </th>

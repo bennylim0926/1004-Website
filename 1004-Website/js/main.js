@@ -6,7 +6,7 @@
 
 
 //$(document).ready(function (e) {
-    //$(".img-thumbnail").on("click", showPopUp);
+//$(".img-thumbnail").on("click", showPopUp);
 $(document).ready(function () {
     $(".img-thumbnail").on("click", goToProductDesc);
     $(".img-thumbnail").on("click", showPopUp);
@@ -16,8 +16,10 @@ $(document).ready(function () {
     });
     activateMenu();
     submitCartItem();
-    removeCartItem();
+    removeAllItem();
     checkEmptyCart();
+    increment();
+    decrement();
 });
 
 function showPopUp(e) {
@@ -28,24 +30,24 @@ function showPopUp(e) {
     //since we are using jquery, there need a jquery way to access e.target
     //which is $(e.target) / $(e.currentTarget) to access.
     /*if ($(this).parent().children().length > 2) {
-        $(".img-popup").remove();
-        return;
-    }
-    if ($(".img-popup").length != 0) {
-        $(".img-popup").remove();
-    }
-    var popUpImage = $("<img>");
-    var imageSrc = $(this).attr("src");
-    $(popUpImage).attr({
-        "alt": "popoutImage",
-        "title": "PopoutImage",
-        "src": imageSrc
-    });
-    var popUp = $("<span class='img-popup'></span>").append(popUpImage);
-    $(this).parent().append(popUp);
-    console.log("Hi");
-    //prevent the event furhter bubbling.
-    e.stopPropagation();*/
+     $(".img-popup").remove();
+     return;
+     }
+     if ($(".img-popup").length != 0) {
+     $(".img-popup").remove();
+     }
+     var popUpImage = $("<img>");
+     var imageSrc = $(this).attr("src");
+     $(popUpImage).attr({
+     "alt": "popoutImage",
+     "title": "PopoutImage",
+     "src": imageSrc
+     });
+     var popUp = $("<span class='img-popup'></span>").append(popUpImage);
+     $(this).parent().append(popUp);
+     console.log("Hi");
+     //prevent the event furhter bubbling.
+     e.stopPropagation();*/
 }
 
 function activateMenu()
@@ -75,14 +77,14 @@ function submitCartItem() {
             data: formData,
             error: function ()
             {
-                alert("Request Failed");
+                alert("Request 2 Failed");
             },
             success: function (response)
             {
-                var overlay = jQuery("<div class='alert alert-success' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
+                var overlay = jQuery("<div class='alert alert-success success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
                 overlay.appendTo(document.body)
-                $("#success-alert").delay(4000).slideUp(200, function () {
-                    $("#success-alert").alert('close');
+                $(".success-alert").delay(4000).slideUp(200, function () {
+                    $(".success-alert").alert('close');
                 });
             }
         });
@@ -91,10 +93,12 @@ function submitCartItem() {
 }
 function checkEmptyCart() {
     $("#checkout").submit(function (e) {
+        console.log("yo");
         e.preventDefault();
         var formData = {
             total_item: $("#total_item").val(),
         };
+        console.log(formData.total_item);
         $.ajax({
             type: "POST",
             url: "cart.php",
@@ -106,10 +110,10 @@ function checkEmptyCart() {
             success: function (response)
             {
                 if (formData.total_item == 0) {
-                    var overlay = jQuery("<div class='alert alert-danger' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
+                    var overlay = jQuery("<div class='alert alert-danger failed-alert' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
                     overlay.appendTo(document.body);
-                    $("#failed-alert").delay(4000).slideUp(200, function () {
-                        $("#failed-alert").alert('close');
+                    $(".failed-alert").delay(4000).slideUp(200, function () {
+                        $(".failed-alert").alert('close');
                     });
                 } else {
                     $.ajax({
@@ -121,55 +125,88 @@ function checkEmptyCart() {
                         },
                         success: function (response)
                         {
-                            console.log("succesful checckout")
-                            window.location.href = 'place_order.php';                       
+//                            console.log("succesful checckout")
+                            window.location.href = 'place_order.php';
                         }
                     });
                 }
+                return false;
             }
         });
         return false;
     })
 }
 
-function removeCartItem() {
-    $("#cart_page").submit(function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: "GET",
-            url: "cart.php?removeAll=1",
-            error: function ()
-            {
-                alert("Request Failed");
-            },
-            success: function (response)
-            {
-                $('#cart_table').empty();
-                $('#cart_table').load(location.href + ' #cart_table>*', "");
-            }
+function removeAllItem() {
+    $("#remove_all").click(function () {
+        $set = 1;
+        $.post("cart.php", {
+            removeAll: $set
+        }, function () {
+
+            location.reload();
         });
         return false;
-    })
+    });
 }
-function updateCartItem() {
-    $("#cart_page").submit(function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: "GET",
-            url: "cart.php?update=1",
-            error: function ()
-            {
-                alert("Request Failed");
-            },
-            success: function (response)
-            {
-//                $('#cart_table').empty();
-//                $('#cart_table').load(location.href + ' #cart_table>*', "");
-            }
-        });
-        return false;
-    })
+function increment() {
+    $set = 1;
+    $(".increment").on('click', function (e) {
+        $selector = "quantity-" + $(e.target).siblings(".quantity").attr("id");
+        $original = $(e.target).siblings(".quantity").val();
+        $quantity = $(e.target).siblings(".quantity").val();
+        $max = $(e.target).siblings(".quantity").attr("max");
+        if ($quantity < $max) {
+            $quantity++;
+            $new = $quantity;
+            $(e.target).siblings(".quantity").val($quantity);
+            $.post("cart.php", {
+                update: $set,
+                [$selector]: $new,
+            }, function () {
+                location.reload();
+            });
+        } else {
+            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong> You have reached to maximum quanity.</div>");
+            overlay.appendTo(document.body)
+            $(".success-alert").delay(4000).slideUp(200, function () {
+                $(".success-alert").alert('close');
+            });
+        }
+    });
+    return false;
+}
+function decrement() {
+    $set = 1;
+    $(".decrement").on('click', function (e) {
+        $selector = "quantity-" + $(e.target).siblings(".quantity").attr("id");
+        $original = $(e.target).siblings(".quantity").val();
+        $quantity = $(e.target).siblings(".quantity").val();
+        $min = $(e.target).siblings(".quantity").attr("min");
+        if ($quantity > $min) {
+            $quantity--;
+            $new = $quantity;
+            $(e.target).siblings(".quantity").val($quantity);
+            $.post("cart.php", {
+                update: $set,
+                [$selector]: $new,
+            }, function () {
+                location.reload();
+            });
+        } else {
+            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong> If you want to remove this item, click remove instead.</div>");
+            overlay.appendTo(document.body)
+            $(".success-alert").delay(4000).slideUp(200, function () {
+                $(".success-alert").alert('close');
+            });
+        }
+    });
+    return false;
 }
 
+function goToProductDesc()
+{
+    window.open("product_page_1.php", '_blank');
+}
 
 

@@ -4,12 +4,12 @@
 
 <html>
   <?php
-    include "head.inc.php";
+    include "/1004-Website/head.inc.php";
     ?>
   <body>
     <div id="all">
     <?php
-        include "nav.inc.php";
+        include "/1004-Website/nav.inc.php";
     ?>
     <div id="content">
       <div class="container">

@@ -14,7 +14,7 @@
             For existing members, please go to the <a href="login.php#">Sign In Page</a>
         </p>
         
-        <form action="process_register.php" method="post">
+        <form action="process/process_register.php" method="post">
             <div class="form-group">
                 <label for="fname">
                     First Name(optional):

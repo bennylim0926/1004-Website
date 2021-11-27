@@ -72,6 +72,10 @@ if (isset($_POST['update'])) {
 
 if (isset($_GET['placeorder'])) {
     if (isset($_SESSION['uname'])) {
+        //query using the user id
+        //get the result
+        //use foreach loop to query delete from main database
+        
         $stmt = $conn->prepare("DELETE FROM accounts_has_products");
         $stmt->execute();
     } else {

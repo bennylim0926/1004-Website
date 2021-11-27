@@ -81,10 +81,10 @@ function submitCartItem() {
             },
             success: function (response)
             {
-                var overlay = jQuery("<div class='alert alert-success' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
+                var overlay = jQuery("<div class='alert alert-success success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
                 overlay.appendTo(document.body)
-                $("#success-alert").delay(4000).slideUp(200, function () {
-                    $("#success-alert").alert('close');
+                $(".success-alert").delay(4000).slideUp(200, function () {
+                    $(".success-alert").alert('close');
                 });
             }
         });
@@ -110,10 +110,10 @@ function checkEmptyCart() {
             success: function (response)
             {
                 if (formData.total_item == 0) {
-                    var overlay = jQuery("<div class='alert alert-danger' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
+                    var overlay = jQuery("<div class='alert alert-danger failed-alert' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
                     overlay.appendTo(document.body);
-                    $("#failed-alert").delay(4000).slideUp(200, function () {
-                        $("#failed-alert").alert('close');
+                    $(".failed-alert").delay(4000).slideUp(200, function () {
+                        $(".failed-alert").alert('close');
                     });
                 } else {
                     $.ajax({
@@ -129,7 +129,8 @@ function checkEmptyCart() {
                             window.location.href = 'place_order.php';
                         }
                     });
-                }return false;
+                }
+                return false;
             }
         });
         return false;
@@ -154,16 +155,24 @@ function increment() {
         $selector = "quantity-" + $(e.target).siblings(".quantity").attr("id");
         $original = $(e.target).siblings(".quantity").val();
         $quantity = $(e.target).siblings(".quantity").val();
-        $quantity++;
-        $new = $quantity;
-
-        $(e.target).siblings(".quantity").val($quantity)
-        $.post("cart.php", {
-            update: $set,
-            [$selector]: $new,
-        }, function () {
-            location.reload();
-        });
+        $max = $(e.target).siblings(".quantity").attr("max");
+        if ($quantity < $max) {
+            $quantity++;
+            $new = $quantity;
+            $(e.target).siblings(".quantity").val($quantity);
+            $.post("cart.php", {
+                update: $set,
+                [$selector]: $new,
+            }, function () {
+                location.reload();
+            });
+        } else {
+            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong> You have reached to maximum quanity.</div>");
+            overlay.appendTo(document.body)
+            $(".success-alert").delay(4000).slideUp(200, function () {
+                $(".success-alert").alert('close');
+            });
+        }
     });
     return false;
 }
@@ -173,16 +182,24 @@ function decrement() {
         $selector = "quantity-" + $(e.target).siblings(".quantity").attr("id");
         $original = $(e.target).siblings(".quantity").val();
         $quantity = $(e.target).siblings(".quantity").val();
-        $quantity--;
-        $new = $quantity;
-
-        $(e.target).siblings(".quantity").val($quantity)
-        $.post("cart.php", {
-            update: $set,
-            [$selector]: $new,
-        }, function () {
-            location.reload();
-        });
+        $min = $(e.target).siblings(".quantity").attr("min");
+        if ($quantity > $min) {
+            $quantity--;
+            $new = $quantity;
+            $(e.target).siblings(".quantity").val($quantity);
+            $.post("cart.php", {
+                update: $set,
+                [$selector]: $new,
+            }, function () {
+                location.reload();
+            });
+        } else {
+            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong> If you want to remove this item, click remove instead.</div>");
+            overlay.appendTo(document.body)
+            $(".success-alert").delay(4000).slideUp(200, function () {
+                $(".success-alert").alert('close');
+            });
+        }
     });
     return false;
 }

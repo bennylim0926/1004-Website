@@ -1,10 +1,12 @@
 <?php
 session_start();
-include('../Session/SessionExpiry.php');// check for session expiry
+
+include('session/SessionExpiry.php');// check for session expiry
+include('../Session/SessionExpiry.php'); // check for session expiry
 ?>
 <head>
     <title>IT Shop</title>
-     <!-- Required meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.10.25/af-2.3.7/date-1.1.0/r-2.2.9/rg-1.1.3/sc-2.0.4/sp-1.3.0/datatables.min.css"/>
@@ -35,6 +37,6 @@ include('../Session/SessionExpiry.php');// check for session expiry
     <!<!-- Custom JS -->
     <script defer src="/1004-Website/js/main.js"></script>
 
-   
-    </style>
+
+</style>
 </head>

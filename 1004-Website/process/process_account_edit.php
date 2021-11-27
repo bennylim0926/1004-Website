@@ -1,5 +1,5 @@
 <?php
-        include 'head.inc.php';
+        include '../head.inc.php';
         
 session_start();
 // Define and initialize variables to hold our form data:
@@ -28,11 +28,11 @@ else
 {
     if (isset($_SESSION['uname'])) {
         echo "<h2>This page is not meant to be run directly.</h2>";
-        echo "<a href='account.php'>Go to My Account Page...</a>";
+        echo "<a href='/1004-Website/account.php'>Go to My Account Page...</a>";
     } else {
         echo "<h2>This page is not meant to be run directly.</h2>";
         echo "<p>You can register at the link below:</p>";
-        echo "<a href='index.php'>Go to Sign up page...</a>";
+        echo "<a href='/1004-Website/index.php'>Go to Sign up page...</a>";
     }
     exit();
 }
@@ -41,7 +41,7 @@ function saveMemberToDB() {
     global $email, $pwd_hashed, $old_password, $errorMsg, $success;
 
     // Create database connection.
-     $config = parse_ini_file('../../private/db-config.ini');
+     $config = parse_ini_file('../../../private/db-config.ini');
      $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 
     // Check connection
@@ -90,21 +90,22 @@ function saveMemberToDB() {
     <head>
         <title>Change Password</title>
        
-        <meta http-equiv="refresh" content="5;url=account.php" />
+        <meta http-equiv="refresh" content="2;url=/1004-Website/account.php" />
     </head>
     <body>
-
+        <?php
+include '../nav.inc.php'; ?>
         <main class="container">
 
             <?php
             if ($success) {
                 echo "<h3>You have successfully changed your password!</h3>";
-                echo "<h4>You will be redirected back to My Account page in 3 seconds...</h4>";
+                echo "<h4>You will be redirected back to My Account page</h4>";
             } else {
                 echo "<h3>Oops!</h3>";
                 echo "<h4>The following input errors were detected:</h4>";
                 echo "<p>" . $errorMsg . "</p>";
-                echo "<a class=\"btn btn-danger\" href=\"account.php\">Return to My Account</a>";
+                echo "<a class=\"btn btn-danger\" href=\"/1004-Website/account.php\">Return to My Account</a>";
             }
             ?>
         </main>

@@ -60,6 +60,7 @@ figcaption{
 }
 
 footer{
+    margin: auto;
     border-top: 2px black solid;
     text-align: center;  
     font-size: 85%; 

@@ -2,17 +2,10 @@
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
-            <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
+    <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
-                <a class="navbar-brand" href="index.php"><img src="/1004-Website/images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>
-                <ul class="navbar-nav"> 
-                <li class="nav-item">
-                <a class="nav-link" href="about.php">ABOUT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="product_page.php">OUR PRODUCTS</a>
-            </li>                    
+                <!--<a class="navbar-brand" href="index.php"><img src="/1004-Website/images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>-->
+                <ul class="nav navbar-nav navbar-left">   
                     <li class="nav-item">
                         <a class="nav-link" href="/1004-Website/index.php">Home</a>
                     </li>

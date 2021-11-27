@@ -14,22 +14,61 @@ and open the template in the editor.
 
 .deliveryInfo{
     margin-left: 10px;
-    
+
 }
 #success-alert{
+    font-size: 25px;
+    text-align: center;
     position:fixed; 
-    top: 0px; 
-    left: 0px; 
-    width: 100%;
+    width: 500px;
+    /*padding:50px;*/
+    height: 100px;
+    top: 50%; 
+    left: 50%;
+    margin-top: -50px; /* Negative half of height. */
+    margin-left: -250px; /* Negative half of width. */
     z-index:9999; 
-    border-radius:0px
+    border-radius:20px
 }
 #failed-alert{
+    font-size: 25px;
+    text-align: center;
     position:fixed; 
-    top: 0px; 
-    left: 0px; 
-    width: 100%;
+    width: 500px;
+    /*padding:50px;*/
+    height: 100px;
+    top: 50%; 
+    left: 50%;
+    margin-top: -50px; /* Negative half of height. */
+    margin-left: -250px; /* Negative half of width. */
+    /*width: 100%;*/
     z-index:9999; 
-    border-radius:0px
+    border-radius:20px
+}
+
+.danger-link{
+    color: black;
+    text-decoration: none;
+}
+.danger-link:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.emptyBackground{
+    height: 500px;
+    position: relative;
+}
+
+.noProduct{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.cart-table{
+    font-size: 20px;
 }
 

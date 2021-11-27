@@ -81,7 +81,7 @@ function submitCartItem() {
             },
             success: function (response)
             {
-                var overlay = jQuery("<div class='alert alert-success success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong> Product have added to your wishlist.</div>");
+                var overlay = jQuery("<div class='alert alert-success success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong><p>Product have added to your wishlist.</p></div>");
                 overlay.appendTo(document.body)
                 $(".success-alert").delay(4000).slideUp(200, function () {
                     $(".success-alert").alert('close');
@@ -93,7 +93,6 @@ function submitCartItem() {
 }
 function checkEmptyCart() {
     $("#checkout").submit(function (e) {
-        console.log("yo");
         e.preventDefault();
         var formData = {
             total_item: $("#total_item").val(),
@@ -101,7 +100,7 @@ function checkEmptyCart() {
         console.log(formData.total_item);
         $.ajax({
             type: "POST",
-            url: "cart.php",
+            url: "checkout_confirmation.php",
             data: formData,
             error: function ()
             {
@@ -110,7 +109,7 @@ function checkEmptyCart() {
             success: function (response)
             {
                 if (formData.total_item == 0) {
-                    var overlay = jQuery("<div class='alert alert-danger failed-alert' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong> There is no item in your cart!</div>");
+                    var overlay = jQuery("<div class='alert alert-danger failed-alert' id='failed-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Unable to checkout! </strong><p>There is no item in your cart!</p></div>");
                     overlay.appendTo(document.body);
                     $(".failed-alert").delay(4000).slideUp(200, function () {
                         $(".failed-alert").alert('close');
@@ -167,7 +166,7 @@ function increment() {
                 location.reload();
             });
         } else {
-            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong> You have reached to maximum quanity.</div>");
+            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong><p>You have reached to maximum quanity.</p></div>");
             overlay.appendTo(document.body)
             $(".success-alert").delay(4000).slideUp(200, function () {
                 $(".success-alert").alert('close');
@@ -194,7 +193,7 @@ function decrement() {
                 location.reload();
             });
         } else {
-            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong> If you want to remove this item, click remove instead.</div>");
+            var overlay = jQuery("<div class='alert alert-danger success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Warning! </strong><p>If you want to remove this item, click remove instead.</p></div>");
             overlay.appendTo(document.body)
             $(".success-alert").delay(4000).slideUp(200, function () {
                 $(".success-alert").alert('close');

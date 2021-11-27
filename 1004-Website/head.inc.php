@@ -17,7 +17,7 @@ include('../Session/SessionExpiry.php'); // check for session expiry
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/1004-Website/css/main.css">
     <link rel="stylesheet" href="/1004-Website/css/checkout.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
     <!<!-- jQuery -->
     <script defer 
             src="https://code.jquery.com/jquery-3.4.1.min.js"

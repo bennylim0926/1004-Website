@@ -14,7 +14,7 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class ="carousel-item active">
-            <img class ="fill" src = "images/blank_monitor.jpg">
+            <img class ="fill" src = "images/blank_monitor.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
             <img class="fill" src="images/benq_monitor.jpg" alt="Second slide">

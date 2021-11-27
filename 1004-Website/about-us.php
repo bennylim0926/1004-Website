@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html lang="en">
     <head>
         <?php
             include "head.inc.php";
@@ -20,49 +20,57 @@ and open the template in the editor.
                 <h1>About Us</h1>
                 <h2>Meet our team</h2>
                 <div class="row">
-                    <article class="col-sm">
-                        <figure class="card">
-                            <img src="images/doge.jpg" alt ="member 1"/>
+                    <article class="col-sm-2"></article>
+                    <article class="col-sm-2">
+                        <figure class="card mb-4 border-0">
+                            <img class="card-img-top embed-responsive-item" src="images/memberProfile/member01_Pikachu.jpg" alt ="member 1"/>
                         </figure>
-                        <figcaption>Member 1 Name</figcaption>
+                        <figcaption>Jun Jie</figcaption>
                         <p>Member 1 description</p>
                     </article>
-                    <article class="col-sm">
-                        <figure class="card">
-                            <img src="images/doge.jpg" alt ="member 2"/>
+                    <article class="col-sm-1"></article>
+                    <article class="col-sm-2">
+                        <figure class="card mb-4 border-0">
+                            <img class="card-img-top embed-responsive-item" src="images/memberProfile/member02_Torchic.jpg" alt ="member 2"/>
                         </figure>
-                        <figcaption>Member 2 Name</figcaption>
+                        <figcaption>Benny</figcaption>
                         <p>Member 2 description</p>
                     </article>
-                    <article class="col-sm">
-                        <figure class="card">
-                            <img src="images/doge.jpg" alt ="member 3"/>
+                    <article class="col-sm-1"></article>
+                    <article class="col-sm-2">
+                        <figure class="card mb-4 border-0">
+                            <img class="card-img-top embed-responsive-item" src="images/memberProfile/member03_Mudkip.jpg" alt ="member 3"/>
                         </figure>
-                        <figcaption>Member 3 Name</figcaption>
+                        <figcaption>Adriel</figcaption>
                         <p>Member 3 description</p>
                     </article>
+                    <article class="col-sm-2"></article>
                 </div>
                 <div class="row">
-                    <article class="col-sm-1"></article>
-                    <article class="col-sm-4">
-                        <figure class="card">
-                            <img src="images/doge.jpg" alt ="member 4"/>
+                    <article class="col-sm-3"></article>
+                    <article class="col-sm-2">
+                        <figure class="card mb-4 border-0">
+                            <img class="card-img-top embed-responsive-item" src="images/memberProfile/member04_Treecko.jpg" alt ="member 4"/>
                         </figure>
-                        <figcaption>Member 4 Name</figcaption>
+                        <figcaption>Jevan</figcaption>
                         <p>Member 4 description</p>
                     </article>
                     <article class="col-sm-2"></article>
-                    <article class="col-sm-4">
-                        <figure class="card">
-                            <img src="images/doge.jpg" alt ="member 5"/>
+                    <article class="col-sm-2">
+                        <figure class="card mb-4 border-0">
+                            <img class="card-img-top embed-responsive-item" src="images/memberProfile/member05_Cyndaquil.jpg" alt ="member 5"/>
                         </figure>
-                        <figcaption>Member 5 Name</figcaption>
+                        <figcaption>Lay Kiat</figcaption>
                         <p>Member 5 description</p>
                     </article>
+                    <article class="col-sm-3"></article>
                 </div>
             </section>
         <section id="about-website">
             <p></p>
         </section>
+        <?php
+            include "footer.inc.php";
+        ?>
     </body>
 </html>

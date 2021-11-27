@@ -70,9 +70,23 @@ footer{
 .jumbotron{
     padding-top: 2%;
     padding-bottom: 2%;
+}   
+
+.sidebar{
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    padding: 10px;
+    font-family: Georgia, serif;
+    font-size: 15px;
+   
 }
 
-
+.product-container{
+    
+    margin-left: 160px;
+    padding: 0px, 10px;
+}
 
 
 

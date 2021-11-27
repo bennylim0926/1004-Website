@@ -33,14 +33,12 @@ and open the template in the editor.
         
         <div class ="main-category">
                 <div class="col-md-5 col-sm-6 my-3 my-md-0">
-                    <div class="category-he ading">
-                        <p>CATEGORIES</p>
-                    </div>
+                    
                     <div class ="items">
                         <?php
-                                include 'categories.php';     
+                                  
                                 
-                                $config =  parse_ini_file('/var/www/private/db-config.ini');
+        $config =  parse_ini_file('/var/www/private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
    
         if ($conn->connect_error)   

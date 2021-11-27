@@ -1,5 +1,7 @@
-
-<?php
+<html>
+       <h4>Categories</h4>
+       <ul style="list-style-type:none;">
+   <?php
     
         $config =  parse_ini_file('/var/www/private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
@@ -18,7 +20,8 @@
                 {
             ?>     
     
-<a href="productlist.php?cid=<?php echo $row['id']?>"><li><?php 
+<a href="product_page.php#<?php 
+echo $row['categoryname']?>"><li><?php 
 echo $row['categoryname']?></li></a>
         
         <?php } 
@@ -31,4 +34,8 @@ echo $row['categoryname']?></li></a>
    
      $conn->close();
 
-?>
+?>    
+       </ul>   
+   </div>
+    
+</html>

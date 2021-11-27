@@ -1,6 +1,7 @@
-<?php
-
-$config =  parse_ini_file('/var/www/private/db-config.ini');
+<html>
+    <main class="container">
+        <?php
+        $config =  parse_ini_file('/var/www/private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
    
         if ($conn->connect_error)   
@@ -16,24 +17,16 @@ $config =  parse_ini_file('/var/www/private/db-config.ini');
                 while($row=mysqli_fetch_assoc($result))
                 {
             ?>
-<div class="container">
-            <div class="col-md-4 md-2">
-                    <div class="col-md-12">
+            <article class="col-sm">
+                    <div class="row">
                                 <img class="card-img-top" src="images/camera.jpg" alt="product">
                                 <div class="dog">
                                     <a href="productid.php?id=<?php echo $row['id']?>">
-                                    <span><?php echo $row['name']?></span>
+                                        <span><?php echo $row['name']?></span></a>
                                     <p><?php echo $row['price']?></p>
                                 </div>
-                                <hr class="hr2">
-                                <div class="cart-btn">
-                                    <i class="fa fa-plus-circle iconn" aria-hidden="true"></i>
-                                    <input type ="submit" name="a" value="Add to cart">
-                                </div>
                         </div>
-            </div>
-</div>
-
+            </article>
                 <?php 
                 
                 }

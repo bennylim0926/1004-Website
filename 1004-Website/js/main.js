@@ -170,9 +170,6 @@ function updateCartItem() {
         return false;
     })
 }
-function goToProductDesc()
-{
-    window.open("product_page_1.php",'_blank');
-}
+
 
 

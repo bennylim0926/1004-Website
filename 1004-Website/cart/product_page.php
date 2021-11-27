@@ -73,6 +73,8 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
                 setcookie('cart', $item_data, time() + (86400 * 30));
             }
         }
+    } else {
+        //its out of stock
     }
 }
 
@@ -117,9 +119,14 @@ if (isset($_GET['id'])) {
                 <?php endif; ?>
             </span>
             <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
-                <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
-                <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
-                <input type="submit" value="Add To Cart">
+                <?php if ($product['quantity'] > 0): ?>
+                    <input type="number" name="quantity" id="quantity" value="1" min="0" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
+                    <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
+                    <input type="submit" value="Add To Cart">
+                <?php else: ?>
+                    <p>Out of stock</p>
+                <?php endif; ?>
+
             </form>
             <div class="description">
                 <?= $product['desc'] ?>

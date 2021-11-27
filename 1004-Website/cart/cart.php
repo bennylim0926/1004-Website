@@ -56,7 +56,7 @@ if (isset($_POST['update'])) {
                     $row = $result->fetch_assoc();
                     $stmt2 = $conn->prepare("UPDATE accounts_has_products SET quantity=? "
                             . "WHERE products_id=? AND accounts_acc_id=?");
-                    $stmt2->bind_param("iii", $quantity, $id ,$row['acc_id']);
+                    $stmt2->bind_param("iii", $quantity, $id, $row['acc_id']);
                     $stmt2->execute();
                 } else {
                     if (isset($cartdata[$id])) {
@@ -73,9 +73,37 @@ if (isset($_POST['update'])) {
 if (isset($_GET['placeorder'])) {
     if (isset($_SESSION['uname'])) {
         //query using the user id
+        $stmt = $conn->prepare("SELECT acc_id FROM accounts WHERE uname=?");
+        $stmt->bind_param("s", $_SESSION["uname"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
         //get the result
+        $stmt = $conn->prepare("SELECT * FROM accounts_has_products WHERE accounts_acc_id=?");
+        $stmt->bind_param("i", $row['acc_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $items = array();
+        while ($row = $result->fetch_assoc()) {
+            $items[] = $row;
+        }
         //use foreach loop to query delete from main database
-        
+        foreach ($items as $item) {
+            //check original stock
+            $stmt = $conn->prepare("SELECT * FROM products WHERE id=? ");
+            $stmt->bind_param("i", $item['products_id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row1 = $result->fetch_assoc();
+           
+            //minus the user quanity
+            $new_quantity = $row1['quantity'] - $item["quantity"];
+            $stmt = $conn->prepare("UPDATE products SET quantity=? "
+                    . "WHERE id=?");
+            $stmt->bind_param("ii", $new_quantity,$item["products_id"]);
+            $stmt->execute();
+        }
+
         $stmt = $conn->prepare("DELETE FROM accounts_has_products");
         $stmt->execute();
     } else {
@@ -98,6 +126,11 @@ if ($_SESSION["uname"]) {
     $cart_data = array();
     while ($row = $result->fetch_assoc()) {
         $cart_data[$row['products_id']] = $row['quantity'];
+        $test_data[] = $row;
+//        print_r($test_data);
+    }
+    foreach ($test_data as $data) {
+        print_r($data["products_id"]);
     }
 } else {
     $product_in_cookies = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : array();
@@ -194,7 +227,8 @@ if ($cart_data) {
                             <td class="text-right align-middle toReload_all_price">&dollar;<?= $subtotal ?></td>
                             <td class="text-right">
                             <td class="align-middle">  
-                                <form id="checkout" action="cart.php" method="post">
+                                id="checkout"
+                                <form  id="checkout" action="cart.php" method="post">
                                     <input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">
                                     <input type="submit" value="Check Out" name="placeorder" id='placeorder'>
                                 </form>

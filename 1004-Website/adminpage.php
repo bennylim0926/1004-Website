@@ -1,7 +1,7 @@
 
 
 <?php
-session_start(); 
+//session_start(); 
 include('session/SessionCheckAdmin.php');
 
 ?>
@@ -14,7 +14,7 @@ include('session/SessionCheckAdmin.php');
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.10.25/af-2.3.7/date-1.1.0/r-2.2.9/rg-1.1.3/sc-2.0.4/sp-1.3.0/datatables.min.css"/>
-  <title>Server Side CRUD Ajax Operations</title>
+  <title>Admin User Management Page</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">

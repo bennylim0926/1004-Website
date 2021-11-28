@@ -52,7 +52,7 @@
                             $conn->close();
                             $profile_pic = $result->fetch_assoc()["photo"];
                             //echo "<li class='nav-item'><img src='$profile_pic' alt='Profile Picture'></li></div>";
-                            echo "<li class='nav-item'><img class='rounded-circle article-img' src='$profile_pic' id='img'></li>";
+                            echo "<li class='nav-item'><img alt='Avatar' class='avatar' src='$profile_pic' id='avatarimg'></li>";
                             unset($profile_pic);
                            
                            

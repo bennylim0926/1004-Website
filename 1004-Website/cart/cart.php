@@ -95,12 +95,12 @@ if (isset($_GET['placeorder'])) {
             $stmt->execute();
             $result = $stmt->get_result();
             $row1 = $result->fetch_assoc();
-           
+
             //minus the user quanity
             $new_quantity = $row1['quantity'] - $item["quantity"];
             $stmt = $conn->prepare("UPDATE products SET quantity=? "
                     . "WHERE id=?");
-            $stmt->bind_param("ii", $new_quantity,$item["products_id"]);
+            $stmt->bind_param("ii", $new_quantity, $item["products_id"]);
             $stmt->execute();
         }
 
@@ -126,17 +126,11 @@ if ($_SESSION["uname"]) {
     $cart_data = array();
     while ($row = $result->fetch_assoc()) {
         $cart_data[$row['products_id']] = $row['quantity'];
-        $test_data[] = $row;
-//        print_r($test_data);
-    }
-    foreach ($test_data as $data) {
-        print_r($data["products_id"]);
     }
 } else {
     $product_in_cookies = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : array();
     $cookie_data = stripslashes($product_in_cookies);
     $cart_data = json_decode($cookie_data, true);
-    print_r($cart_data);
 }
 $subtotal = 0.00;
 $totalItem = 0;
@@ -167,31 +161,36 @@ if ($cart_data) {
     <?php
     include '../head.inc.php';
     ?>
-    <body>
+    <body  style='background-color:whitesmoke;'>
         <?php
         include '../nav.inc.php';
         ?>   
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="collapse navbar-collapse">
-                <a class="navbar-brand">Shopping Cart</a>
+                <a class="navbar-brand">SHOPPING CART</a>
             </div>
         </nav>
         <main class="container">
             <div class="table-responsive-sm" id='cart_table'>
-                <table class="table">
+                <table class="table table-light my-3">
                     <thead>
                         <tr>
-                            <td>Product(s)</td>
-                            <td class="text-right">Unit Price</td>
-                            <td class="text-right">Quantity</td>
-                            <td class="text-right">Total Price</td>
-                            <td class="text-right">Action</td>
+                            <th class="cart-table">Product(s)</th>
+                            <th class="text-right cart-table">Unit Price</th>
+                            <th class="text-right cart-table">Quantity</th>
+                            <th class="text-right cart-table">Total Price</th>
+                            <th class="text-right cart-table">Action</th>
                         </tr>
                     </thead>
                     <tbody>                    
                         <?php if (empty($products)): ?>
                             <tr class='cartStatus'>
-                                <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                                <td class='emptyBackground'colspan="5" style="text-align:center;">
+                                    <div class='noProduct'>
+                                        <h1>Your shopping cart is empty!</h1>
+                                        <a class="btn btn-outline-secondary" href="/1004-Website/cart/test_home.php">Go Shopping Now</a>
+                                    </div>
+                                </td>
                             </tr>
                         <?php else: ?>
                             <?php foreach ($products as $product): ?>
@@ -200,61 +199,58 @@ if ($cart_data) {
                                         <a href="product_page.php?id=<?= $product['id'] ?>">
                                             <img src="../images/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
                                         </a>
-                                        <a href="product_page.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
+                                        <a style="color:black;" href="product_page.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
                                     </td>
                                     <td class="price text-right align-middle">&dollar;<?= $product['price'] ?></td>
                                     <td class="quantity text-right align-middle">
                                         <div >
-                                            <button class='decrement'>-</button>
-                                            <input class='quantity' id="<?= $product['id'] ?>" type="number" name="quantity-<?= $product['id'] ?>" value="<?= $cart_data[$product['id']] ?>" min="1" max="<?= $product['quantity'] ?>" placeholder="<?= $cart_data[$product['id']] ?>"readonly >
-                                            <button class='increment'>+</button>
+
+                                            <input class='quantity form-control' id="<?= $product['id'] ?>" type="number" name="quantity-<?= $product['id'] ?>" value="<?= $cart_data[$product['id']] ?>" min="1" max="<?= $product['quantity'] ?>" placeholder="<?= $cart_data[$product['id']] ?>"readonly >
+                                            <button class='decrement btn btn-outline-secondary'>-</button>
+                                            <button class='increment btn btn-outline-secondary'>+</button>
                                         </div>
                                     </td>
                                     <td class="price text-right align-middle toReload">&dollar;<?= $product['price'] * $cart_data[$product['id']] ?></td>
-                                    <td class="text-right align-middle"><a href="cart.php?remove=<?= $product['id'] ?>" class="remove">Remove</a></td> 
+                                    <td class="text-right align-middle"><a class="btn btn-outline-danger" href="cart.php?remove=<?= $product['id'] ?>" class="remove">Remove</a></td> 
                                 </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                        <tr class>
+                        <tr>
                             <td class="align-middle">
-                                <button><a id="remove_all" href="cart.php" class="remove">Remove ALL</a></button> 
-                            </td>
-                            <td>
-
+                                <a class="btn btn-outline-danger" id="remove_all" href="cart.php" class="remove">Remove ALL</a>
                             </td> 
-                            <td class="text-right"></td>
-                            <td class="text-right align-middle toReload_totalItem"> Total Item(s): <?= $totalItem ?></td>
-                            <td class="text-right align-middle toReload_all_price">&dollar;<?= $subtotal ?></td>
-                            <td class="text-right">
-                            <td class="align-middle">  
-                                id="checkout"
-                                <form  id="checkout" action="cart.php" method="post">
+                            <th class="text-right">
+                            <th class="text-right align-middle toReload_totalItem"> Total Item(s): <?= $totalItem ?></th>
+                            <th class="text-right align-middle toReload_all_price">Total Price: &dollar;<?= $subtotal ?></th>
+
+                            <th class="align-middle">  
+                                <!--id="placeorder"--> 
+                                <form action="checkout_confirmation.php" method="post">
+                                    <input class="btn btn-outline-secondary"type="submit" value="Check Out" name="placeorder">
                                     <input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">
-                                    <input type="submit" value="Check Out" name="placeorder" id='placeorder'>
+                                    <input type="hidden" name="total_price" id="total_price" value="<?= $subtotal ?>">
                                 </form>
-                            </td>
-                            <td>                                    
-                            </td>
+                                <!--<a class='btn btn-outline-secondary float-right'href="checkout_confirmation.php">Check Out</a>-->
+                            </th>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <!--</form>-->
-            <div>
-                <h3>YOU MAY ALSO LIKE</h3>
-                <figure style="display:inline;margin:auto">
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />                                                                          
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />                                                                            
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />   
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />  
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />       
-                </figure>
-            </div>
+            <!--            <div>
+                            <h3>YOU MAY ALSO LIKE</h3>
+                            <figure style="display:inline;margin:auto">
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />                                                                          
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />                                                                            
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />   
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />  
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />       
+                            </figure>
+                        </div>-->
         </main>
         <?php
         include '../footer.inc.php';

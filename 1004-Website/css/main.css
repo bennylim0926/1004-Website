@@ -27,10 +27,7 @@ and open the template in the editor.
   background-position:center
   ;background-size:cover;
  }
- 
- #about-section{
-     text-align: center;
- }
+
 .card img{
     display: inline-block;
     max-width:350px;
@@ -64,25 +61,26 @@ figcaption{
     font-style: italic; 
     text-align: center; 
 }
-#maps{
-    display: inline-block;
-    text-align: center;
+.mapouter{
+    margin-left: auto;
+    margin-right: auto;
 }
 footer{
-    border-top: 2px black solid;
+    /*border-top: 2px black solid;*/
     text-align: center;  
     font-size: 85%; 
     background-color: whitesmoke;
     clear: both;
-}
-footer p{
     margin-bottom: 0px;
 }
+/*footer p{
+    
+}*/
 /*footer .container{
     padding-top: 10px;
     padding-bottom: 20px;
 }*/
-.img-popup{
+/*.img-popup{
     position:absolute;
     width: 150%;
     bottom: 60px;
@@ -91,12 +89,12 @@ footer p{
     background-color: lightgray;
     box-shadow: 3px 3px 5px gray;
     border-radius: 5px;
-}
-
+}*/
+/*
 .img-popup>img{
     width: 100%;
     border: 2px black solid;
-}
+}*/
 
 .fl{
      float: right; 
@@ -123,14 +121,6 @@ body{
     background-color: whitesmoke;
     color: #020202;
 }
-
-a:hover{
-    color: black;
-}
-
-
-
-
 
 
 

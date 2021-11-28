@@ -1,12 +1,10 @@
 
 <nav class="navbar navbar-expand-sm navbar-custom " >
-
-
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler ml-auto navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
-                <a class="navbar-brand logo" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
+                <a class="navbar-brand logo" href="/1004-Website/index.php"><img src="/1004-Website/images/site_logo.png" alt="Logo" title="Logo" width="86" height="103"/></a>
                 <!--<a class="navbar-brand" href="index.php"><img src="/1004-Website/images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>-->
                 <ul class="nav navbar-nav navbar-left">   
                     <li class="nav-item">

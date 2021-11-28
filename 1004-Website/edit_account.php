@@ -43,7 +43,7 @@ include('session/SessionCheckUser.php');
                 <form action="/1004-Website/process/process_edit_account.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-5 col-md-3 text-center" id="change-pic">
-                            <img class="avatar" src="<?=$user_details["photo"]?>" alt="Profile Picture">
+                            <img class="avatar2" src="<?=$user_details["photo"]?>" alt="Profile Picture">
                             <p class="h5"><?=$user_details["uname"]?></p>
                             <p class="h6"><?=$user_details["email"]?></p>
                         </div>

@@ -7,6 +7,7 @@
              {
                 $errorMsg = "Connection failed: " . $conn->connect_error;
                 $success = false;
+                $conn->close();
              }
              if(mysqli_connect_errno())
             {

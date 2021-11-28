@@ -2,7 +2,7 @@
 session_start();
 
 include('session/SessionExpiry.php');// check for session expiry
-include('../Session/SessionExpiry.php'); // check for session expiry
+
 ?>
 <head>
     <title>IT Shop</title>

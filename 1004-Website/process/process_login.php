@@ -30,6 +30,7 @@
              $_SESSION["email"] = $email;
              $_SESSION["uname"] = $uname;
              $_SESSION["admin"] = $admin;
+             $_SESSION["userID"] = $userID;
            
             echo "<h4 class='display-4'>Login Successful!</h4>";
             echo "<p><b>Welcome back, " . $uname ."</b></p>";
@@ -44,7 +45,7 @@
         
         // Helper function to authenticate the login
         function authenticateUser() {
-            global $fname, $lname, $email, $admin, $pwd_hashed, $uname, $errorMsg, $success;
+            global $fname, $lname, $email, $admin, $pwd_hashed, $uname, $errorMsg, $success,$userID;
 
             // Create database connection
             $config = parse_ini_file('../../../private/db-config.ini');
@@ -69,6 +70,7 @@
                     $fname = $row['fname'];
                     $lname = $row['lname'];
                     $uname = $row['uname'];
+                    $userID = $row['acc_id'];
                     if($row['admin']==1)
                         $admin = true;
                     else

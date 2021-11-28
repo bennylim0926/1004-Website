@@ -77,21 +77,21 @@ if (isset($_GET['placeorder'])) {
             <form>
                 <div class="input-group">
                     <label class="mb-0 mt-2 mr-2" for="email">Email Address: </label>
-                    <input type="email" class="form-control mr-2" id="email" placeholder="user@gmail.com" value=<?= $row['email'] ?> >
+                    <input type="email" class="form-control mr-2" id="email" placeholder="JohnDoe123@email.com" value=<?= $row['email'] ?> >
                     <label class="mb-0 mt-2 mr-2" for="name">Name: </label>
                     <input type="name" class="form-control mr-2" id="name" placeholder="John Doe" value=<?= $row['lname'] ?> >
                 </div>
             </form>
             <form id="checkout" action="checkout_confirmation.php" method="post">
                 <div class="input-group">
-                    <div class="form-group col-sm-5 p-0">
+                    <!--<div class="form-group col-sm-5 p-0">-->
                         <label class="mb-0 mt-2 mr-2" for="address">Delivery Address</label>
                         <input type="text" class="form-control mr-2" id="email" placeholder="Enter delivery address"required>
-                    </div>
-                    <div class="form-group col-sm-3 p-0">
+                    <!--</div>-->
+                    <!--<div class="form-group col-sm-3 p-0">-->
                         <label class="mb-0 mt-2 mr-2" for="phone">Contact Number</label>
                         <input type="tel" class="form-control mr-2" id="phone" placeholder="Enter contact number" pattern="[0-9]{8}" required>
-                    </div>
+                    <!--</div>-->
                 </div>
                 <h2 class="mt-5">Payment Type</h2>
                 <div>

@@ -187,8 +187,8 @@ if ($cart_data) {
                             <tr class='cartStatus'>
                                 <td class='emptyBackground'colspan="5" style="text-align:center;">
                                     <div class='noProduct'>
-                                    <h1>Your shopping cart is empty!</h1>
-                                    <a class="btn btn-outline-secondary" href="/1004-Website/cart/test_home.php">Go Shopping Now</a>
+                                        <h1>Your shopping cart is empty!</h1>
+                                        <a class="btn btn-outline-secondary" href="/1004-Website/cart/test_home.php">Go Shopping Now</a>
                                     </div>
                                 </td>
                             </tr>
@@ -222,35 +222,35 @@ if ($cart_data) {
                             <th class="text-right">
                             <th class="text-right align-middle toReload_totalItem"> Total Item(s): <?= $totalItem ?></th>
                             <th class="text-right align-middle toReload_all_price">Total Price: &dollar;<?= $subtotal ?></th>
-                            
+
                             <th class="align-middle">  
                                 <!--id="placeorder"--> 
                                 <form action="checkout_confirmation.php" method="post">
                                     <input class="btn btn-outline-secondary"type="submit" value="Check Out" name="placeorder">
                                     <input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">
-                                    <input type="hidden" name="total_price" id="total_price" value="<?= $subtotal?>">
+                                    <input type="hidden" name="total_price" id="total_price" value="<?= $subtotal ?>">
                                 </form>
-<!--<a class='btn btn-outline-secondary float-right'href="checkout_confirmation.php">Check Out</a>-->
+                                <!--<a class='btn btn-outline-secondary float-right'href="checkout_confirmation.php">Check Out</a>-->
                             </th>
                         </tr>
                     </tbody>
                 </table>
             </div>
-<!--            <div>
-                <h3>YOU MAY ALSO LIKE</h3>
-                <figure style="display:inline;margin:auto">
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />                                                                          
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />                                                                            
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />   
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />  
-                    <img src="../images/dogeLogo.jfif" alt="Poodle"
-                         title="View larger image..." />       
-                </figure>
-            </div>-->
+            <!--            <div>
+                            <h3>YOU MAY ALSO LIKE</h3>
+                            <figure style="display:inline;margin:auto">
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />                                                                          
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />                                                                            
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />   
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />  
+                                <img src="../images/dogeLogo.jfif" alt="Poodle"
+                                     title="View larger image..." />       
+                            </figure>
+                        </div>-->
         </main>
         <?php
         include '../footer.inc.php';

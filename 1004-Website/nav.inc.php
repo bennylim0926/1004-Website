@@ -1,27 +1,19 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" >
+<nav class="navbar navbar-expand-sm navbar-custom " >
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
-        <ul class="navbar-nav" >
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
-                <a class="navbar-brand" href="index.php"><img src="/1004-Website/images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>
-                <ul class="navbar-nav"> 
-                <li class="nav-item">
-                <a class="nav-link" href="about.php">ABOUT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="product_page.php">OUR PRODUCTS</a>
-            </li>                    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
+                <a class="navbar-brand logo" href="/1004-Website/index.php"><img src="/1004-Website/images/dogeLogo.jfif" alt="Logo" title="Logo" width="86" height="103"/></a>
+                <!--<a class="navbar-brand" href="index.php"><img src="/1004-Website/images/general/itstuff.jpg" alt="Logo" title="Logo" width="120" height="90"/></a>-->
+                <ul class="nav navbar-nav navbar-left">   
                     <li class="nav-item">
                         <a class="nav-link" href="/1004-Website/index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/1004-Website/index.php#dogs">Dogs</a>
+                        <a class="nav-link" href="/1004-Website/about-us.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/1004-Website/index.php#cats">Cats</a>
+                        <a class="nav-link" href="/1004-Website/locate-us.php">Locate Us</a>
                     </li>    
                     <li class="nav-item">
                         <a class="nav-link" href="/1004-Website/cart/test_home.php">Products</a>
@@ -30,7 +22,7 @@
                         <a class="nav-link" href="/1004-Website/cart/cart.php">Products</a>
                     </li>  
                 </ul>
-                <ul class="navbar-nav ml-auto">
+                <ul class="nav navbar-nav navbar-right ml-auto">
                     <li>
                         <?php
                         if (isset($_SESSION["uname"])) {
@@ -44,7 +36,10 @@
                         } else {
                             ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>REGISTER</a> 
+                            <a class="nav-link" href="#"><span class="material-icons">shopping_cart</span>Shopping Cart</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>Register</a> 
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/1004-Website/login.php"><span class="material-icons">login</span>LOGIN</a> 
@@ -56,6 +51,5 @@
 
                     </li>
                 </ul>
-        </ul>
     </div>
 </nav>     

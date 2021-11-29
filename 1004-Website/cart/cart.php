@@ -142,7 +142,8 @@ while ($row = $result->fetch_assoc()) {
 }
 
 $subtotal = 0.00;
-$totalItem = 0;
+global $totalItem;
+$totalItem=0;
 $products = array();
 if ($cart_data) {
     $key = array_keys($cart_data);

@@ -28,28 +28,17 @@
                 <ul class="nav navbar-nav navbar-right ml-auto">
                     <li>
                         <?php
-                       $profile_pic = "";
-                            $config = parse_ini_file('../../private/db-config.ini');
-                            $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
-
-                            if ($conn->connect_error) 
-                            {
-                               $errorMsg = "Connection failed: " . $conn->connect_error;
-                               $success = false;
-                               $conn->close();
-                            }
-                            if(mysqli_connect_errno())
-                           {
-                           echo 'Database Connection Error';
-                           }
-                           $stmt = $conn->prepare("SELECT photo FROM accounts WHERE uname=?");
-                           $stmt->bind_param("s", $_SESSION["uname"]);
-                           require("Connection/handle_sql_execute_failure.php");
-                            $conn->close();
-                            $profile_pic = $result->fetch_assoc()["photo"];
+                      
                            
                             
                         if (isset($_SESSION["uname"])) {
+                            $profile_pic = "";
+                           include("Connection/connection.php");
+                           $stmt = $conn->prepare("SELECT photo FROM accounts WHERE uname=?");
+                           $stmt->bind_param("s", $_SESSION["uname"]);
+                           include("Connection/handle_sql_execute_failure.php");
+                            $conn->close();
+                            $profile_pic = $result->fetch_assoc()["photo"];
                             echo "<li class='nav-item'> <img alt='Avatar' class='avatar' src='$profile_pic' id='avatarimg'> Welcome back, " . $_SESSION["uname"] . "</a></li>";
                             unset($profile_pic);
                            

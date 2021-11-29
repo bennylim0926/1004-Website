@@ -148,16 +148,16 @@ if (isset($_GET['id'])) {
         <div class="row">
             <article class="col-sm-1">
                     </article>
-            <article class="col-sm-5">
+            <article class="col-sm-4">
                 <br><br>
                 <figure>
                     <img class="image-thumbnail" src="../images/products/<?= $product['img'] ?>" width="400" height="300"alt="<?= $product['name'] ?>">
-                    <h1 class="name1"><?= $product['name'] ?></h1>
+                    <h1 class="product-name"><?= $product['name'] ?></h1>
                 </figure>
             </article>
             <article class="col-sm-1">
                     </article>
-            <article class="col-sm-4">
+            <article class="col-sm-5">
                 <br><br><br>
             <h3 class="price">
                 &dollar;<?= $product['price'] ?>

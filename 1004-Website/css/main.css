@@ -13,7 +13,6 @@ and open the template in the editor.
     text-decoration: underline;
 }
 
-<<<<<<< HEAD
 .carousel-inner{
     max-height: 600px;
     background: #777;
@@ -45,10 +44,16 @@ and open the template in the editor.
 }
 .producttitle{
     font-family: Georgia, serif;
-=======
+}
 .producttitle1{
     font-family: 'Brush Script MT';
->>>>>>> 068351b (jevan part)
+    font-size: 60px;
+    color: red;
+    text-align: center;
+}
+
+.producttitle1{
+    font-family: 'Brush Script MT';
     font-size: 60px;
     color: red;
     text-align: center;
@@ -144,11 +149,13 @@ footer p{
     padding-bottom: 1%;
 }
 
-<<<<<<< HEAD
 .navbar-custom{
     background-color: #B7CAE3;
-=======
+
 .name1{
+}
+
+.product-name{
     text-align: center;
     color: mediumvioletred;
     font-family: 'Brush Script MT';
@@ -174,9 +181,6 @@ footer p{
 }
 
 
-
-
->>>>>>> 068351b (jevan part)
 
 }
 .navbar .nav-link{

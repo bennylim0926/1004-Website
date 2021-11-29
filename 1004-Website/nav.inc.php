@@ -35,7 +35,7 @@
                     $conn->close();
                     $profile_pic = $result->fetch_assoc()["photo"];
                     if($profile_pic == null)
-                        $profile_pic ="images/default_avatar.png";
+                        $profile_pic ="/1004-Website/images/default_avatar.png";
                     echo "<li class='nav-item'> <img alt='Avatar' class='avatar' src='$profile_pic' id='avatarimg'> Welcome back, " . $_SESSION["uname"] . "</a></li>";
                     unset($profile_pic);
                     

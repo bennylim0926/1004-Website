@@ -3,6 +3,8 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
+
+STATIC PAGE FOR REFERENCE
 -->
 <html>
     <?php
@@ -18,7 +20,7 @@ and open the template in the editor.
         <a class="nav-link" href="index.php"><span class="material-icons">home</span></a>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="product_page.php">BACK TO CATALOG</a>
+                <a class="nav-link" href="product_static.php">BACK TO CATALOG</a>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">

@@ -19,7 +19,7 @@
                 <a class="nav-link" href="/1004-Website/locate-us.php">Locate Us</a>
             </li>    
             <li class="nav-item">
-                <a class="nav-link" href="/1004-Website/cart/test_home.php">Products</a>
+                <a class="nav-link" href="/1004-Website/catalogue.php">Products</a>
             </li>  
             <li class="nav-item">
                 <a class="nav-link" href="/1004-Website/cart/cart.php">Products</a>

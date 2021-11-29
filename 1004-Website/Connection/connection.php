@@ -1,6 +1,6 @@
 <?php
         global $errorMsg, $success;
-             $config = parse_ini_file('../../private/db-config.ini');
+             $config = parse_ini_file('/var/www/private/db-config.ini');
              $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
              
              if ($conn->connect_error) 

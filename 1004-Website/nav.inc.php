@@ -41,8 +41,7 @@
                             $profile_pic = $result->fetch_assoc()["photo"];
                             echo "<li class='nav-item'> <img alt='Avatar' class='avatar' src='$profile_pic' id='avatarimg'> Welcome back, " . $_SESSION["uname"] . "</a></li>";
                             unset($profile_pic);
-                           
-                                      
+                                     
                             echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/edit_account.php'><span class='material-icons'>account_circle</span>Edit Account</a></li>";
                             if (($_SESSION['admin']) == true) {
                                 echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/adminpage.php'><span class='material-icons'>account_circle</span>User management</a></li>";

@@ -93,7 +93,7 @@ include('session/SessionCheckUser.php');
         </main>
         
         <?php
-        include "../footer.inc.php";
+        include "footer.inc.php";
         unset($result, $userID, $user_details);
         ?>
     </body>

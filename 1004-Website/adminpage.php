@@ -1,7 +1,7 @@
 
 
 <?php
-//session_start(); 
+
 include('session/SessionCheckAdmin.php');
 
 ?>
@@ -367,6 +367,9 @@ $usertype = 1;
     </div>
   </div>
 </div>
+<?php 
+include "footer.inc.php";
+ ?>
 </body>
 </html>
 

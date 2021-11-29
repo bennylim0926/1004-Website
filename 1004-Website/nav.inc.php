@@ -28,11 +28,7 @@
                 <ul class="nav navbar-nav navbar-right ml-auto">
                     <li>
                         <?php
-                       
-                        if (isset($_SESSION["uname"])) {
-                            echo "<li class='nav-item'> <a class='nav-link'><span class='material-icons'>account_box</span> Welcome back, " . $_SESSION["uname"] . "</a></li>";
-                            
-                           $profile_pic = "";
+                       $profile_pic = "";
                             $config = parse_ini_file('../../private/db-config.ini');
                             $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 
@@ -51,11 +47,13 @@
                            require("Connection/handle_sql_execute_failure.php");
                             $conn->close();
                             $profile_pic = $result->fetch_assoc()["photo"];
-                            //echo "<li class='nav-item'><img src='$profile_pic' alt='Profile Picture'></li></div>";
-                            echo "<li class='nav-item'><img alt='Avatar' class='avatar' src='$profile_pic' id='avatarimg'></li>";
+                           
+                            
+                        if (isset($_SESSION["uname"])) {
+                            echo "<li class='nav-item'> <img alt='Avatar' class='avatar' src='$profile_pic' id='avatarimg'> Welcome back, " . $_SESSION["uname"] . "</a></li>";
                             unset($profile_pic);
                            
-                           
+                                      
                             echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/edit_account.php'><span class='material-icons'>account_circle</span>Edit Account</a></li>";
                             if (($_SESSION['admin']) == true) {
                                 echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/adminpage.php'><span class='material-icons'>account_circle</span>User management</a></li>";

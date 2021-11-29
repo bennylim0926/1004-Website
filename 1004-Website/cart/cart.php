@@ -204,7 +204,7 @@ if ($cart_data) {
                                 <tr>
                                     <td class="cart-img">
                                         <a href="product_page.php?id=<?= $product['id'] ?>">
-                                            <img src="../images/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
+                                            <img src="../images/products/<?= $product['img'] ?>" width="150" height="100" alt="<?= $product['name'] ?>">
                                         </a>
                                         <a style="color:black;" href="product_page.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
                                     </td>

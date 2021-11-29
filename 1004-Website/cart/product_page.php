@@ -107,18 +107,74 @@ if (isset($_GET['id'])) {
     ?>
     <body>
         <?php
-        include '../nav.inc.php';
-        ?> 
-        <img src="../images/<?= $product['img'] ?>" width="500" height="500" alt="<?= $product['name'] ?>">
-        <div>
-            <h1 class="name"><?= $product['name'] ?><?= $product['id'] ?></h1>
-            <span class="price">
+        include 'nav.inc.php';
+        ?>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        
+        <a class="nav-link" href="/1004-Website/index.php"><span class="material-icons">home</span></a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/1004-Website/catalogue.php">BACK TO CATALOG</a>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+                    <li>
+                        <?php
+                        if (isset($_SESSION["uname"])) {
+                            echo "<li class='nav-item'> <a class='nav-link'><span class='material-icons'>account_box</span> Welcome back, " . $_SESSION["uname"] . "</a></li>";
+                            echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/account.php'><span class='material-icons'>account_circle</span>Edit Account</a></li>";
+                            if (($_SESSION['admin']) == true) {
+                                echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/adminpage.php'><span class='material-icons'>account_circle</span>User management</a></li>";
+                            }
+                            
+                            echo "<li class='nav-item'> <a class='nav-link' href='/1004-Website/logout.php'><span class='material-icons'>logout</span>Logout</a></li>";
+                        } else {
+                            ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>REGISTER</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/1004-Website/login.php"><span class="material-icons">login</span>LOGIN</a> 
+                        </li>
+
+                        <?php
+                    }
+                    ?>
+
+                    </li>
+                </ul>
+    </div>
+</nav>
+        <div class="row">
+            <article class="col-sm-1">
+                    </article>
+            <article class="col-sm-4">
+                <br><br>
+                <figure>
+                    <img class="image-thumbnail" src="../images/products/<?= $product['img'] ?>" width="400" height="300"alt="<?= $product['name'] ?>">
+                    <h1 class="product-name"><?= $product['name'] ?></h1>
+                </figure>
+            </article>
+            <article class="col-sm-1">
+                    </article>
+            <article class="col-sm-5">
+                <br><br><br>
+            <h3 class="price">
                 &dollar;<?= $product['price'] ?>
                 <?php if ($product['rrp'] > 0): ?>
                     <span class="rrp">&dollar;<?= $product['rrp'] ?></span>
                 <?php endif; ?>
-            </span>
-            <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
+            </h3>
+                
+            <div class="description">
+                <?= $product['desc'] ?>
+            </div>
+                <br>
+                <h4>Quantity</h4>
+                <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
                 <?php if ($product['quantity'] > 0): ?>
                     <input type="number" name="quantity" id="quantity" value="1" min="0" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
                     <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
@@ -128,9 +184,10 @@ if (isset($_GET['id'])) {
                 <?php endif; ?>
 
             </form>
-            <div class="description">
-                <?= $product['desc'] ?>
-            </div>
+            </article>
         </div>
+        <?php
+        include '../footer.inc.php';
+        ?>
     </body>
 </div>

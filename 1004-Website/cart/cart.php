@@ -250,7 +250,7 @@ if ($cart_data) {
                     <?php foreach ($you_may_like as $product): ?>
                         <div class="column">
                             <a href="product_page.php?id=<?= $product['id'] ?>" class="product">
-                                <img src="../images/dogeLogo.jfif" alt="<?= $product['name'] ?>"  style="width: 100%;height: auto;">     
+                                <img src="../images/products/<?= $product['img']?>" alt="<?= $product['name'] ?>"  style="width: 100%;height: auto;">     
                             </a>
                         </div>
                     <?php endforeach; ?>

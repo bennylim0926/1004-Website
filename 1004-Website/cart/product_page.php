@@ -174,6 +174,7 @@ if (isset($_GET['id'])) {
             </div>
                 <br>
                 <h4>Quantity</h4>
+                <h5>Stock available: <?= $product['quantity'] ?></h5>
                 <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
                 <?php if ($product['quantity'] > 0): ?>
                     <input type="number" name="quantity" id="quantity" value="1" min="0" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>

@@ -142,7 +142,8 @@ while ($row = $result->fetch_assoc()) {
 }
 
 $subtotal = 0.00;
-$totalItem = 0;
+global $totalItem;
+$totalItem=0;
 $products = array();
 if ($cart_data) {
     $key = array_keys($cart_data);
@@ -204,7 +205,7 @@ if ($cart_data) {
                                 <tr>
                                     <td class="cart-img">
                                         <a href="product_page.php?id=<?= $product['id'] ?>">
-                                            <img src="../images/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
+                                            <img src="../images/products/<?= $product['img'] ?>" width="150" height="100" alt="<?= $product['name'] ?>">
                                         </a>
                                         <a style="color:black;" href="product_page.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
                                     </td>
@@ -249,7 +250,7 @@ if ($cart_data) {
                     <?php foreach ($you_may_like as $product): ?>
                         <div class="column">
                             <a href="product_page.php?id=<?= $product['id'] ?>" class="product">
-                                <img src="../images/dogeLogo.jfif" alt="<?= $product['name'] ?>"  style="width: 100%;height: auto;">     
+                                <img src="../images/products/<?= $product['img']?>" alt="<?= $product['name'] ?>"  style="width: 100%;height: auto;">     
                             </a>
                         </div>
                     <?php endforeach; ?>

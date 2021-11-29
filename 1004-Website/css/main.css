@@ -44,8 +44,46 @@ and open the template in the editor.
 }
 .producttitle{
     font-family: Georgia, serif;
+}
+.producttitle1{
+    font-family: 'Brush Script MT';
     font-size: 60px;
-    color: blueviolet;
+    color: red;
+    text-align: center;
+}
+
+.producttitle1{
+    font-family: 'Brush Script MT';
+    font-size: 60px;
+    color: red;
+    text-align: center;
+}
+
+.producttitle2{
+    font-family: 'Brush Script MT';
+    font-size: 60px;
+    color: orange;
+    text-align: center;
+}
+
+.producttitle3{
+    font-family: 'Brush Script MT';
+    font-size: 60px;
+    color: greenyellow;
+    text-align: center;
+}
+
+.producttitle4{
+    font-family: 'Brush Script MT';
+    font-size: 60px;
+    color: limegreen;
+    text-align: center;
+}
+
+.producttitle5{
+    font-family: 'Brush Script MT';
+    font-size: 60px;
+    color: blue;
     text-align: center;
 }
 .embed-responsive .card-img-top {
@@ -107,12 +145,42 @@ footer p{
 }
 
 .jumbotron{
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 .navbar-custom{
     background-color: #B7CAE3;
+
+.name1{
+}
+
+.product-name{
+    text-align: center;
+    color: mediumvioletred;
+    font-family: 'Brush Script MT';
+}
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+
+.image-name{
+    color: grey;
+    font-style: italic; 
+    justify-content: center; 
+}
+
+
 
 }
 .navbar .nav-link{

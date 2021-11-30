@@ -11,14 +11,15 @@
                                 <a href="/1004-Website/index.php">Home</a>
                             </li>
                             <li>
+                                <a href="/1004-Website/catalogue.php">Catalogue</a>
+                            </li>
+                            <li>
                                 <a href="/1004-Website/about-us.php">About Us</a>
                             </li>
                             <li>
                                 <a href="/1004-Website/locate-us.php">Locate Us</a>
                             </li>
-                            <li>
-                                <a href="#">Catalogue?</a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>

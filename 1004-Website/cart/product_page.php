@@ -108,29 +108,49 @@ if (isset($_GET['id'])) {
     <body>
         <?php
         include '../nav.inc.php';
-        ?> 
-        <img src="../images/<?= $product['img'] ?>" width="500" height="500" alt="<?= $product['name'] ?>">
-        <div>
-            <h1 class="name"><?= $product['name'] ?><?= $product['id'] ?></h1>
-            <span class="price">
+        ?>
+        
+        <div class="row">
+            <article class="col-sm-1">
+                    </article>
+            <article class="col-sm-4">
+                <br><br>
+                <figure>
+                    <img class="image-thumbnail" src="../images/products/<?= $product['img'] ?>" width="400" height="300"alt="<?= $product['name'] ?>">
+                    <h1 class="product-name"><?= $product['name'] ?></h1>
+                </figure>
+            </article>
+            <article class="col-sm-1">
+                    </article>
+            <article class="col-sm-5">
+                <br><br>
+            <h3 class="price">
                 &dollar;<?= $product['price'] ?>
                 <?php if ($product['rrp'] > 0): ?>
                     <span class="rrp">&dollar;<?= $product['rrp'] ?></span>
                 <?php endif; ?>
-            </span>
-            <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
+            </h3>
+                
+            <div class="description">
+                <?= $product['desc'] ?>
+            </div>
+                <br>
+                <h4>Quantity</h4>
+                <h5>Stock available: <?= $product['quantity'] ?></h5>
+                <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
                 <?php if ($product['quantity'] > 0): ?>
                     <input type="number" name="quantity" id="quantity" value="1" min="0" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
                     <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
-                    <input type="submit" value="Add To Cart">
+                    <input class="btn btn-outline-secondary" type="submit" value="Add To Cart">
                 <?php else: ?>
                     <p>Out of stock</p>
                 <?php endif; ?>
 
             </form>
-            <div class="description">
-                <?= $product['desc'] ?>
-            </div>
+            </article>
         </div>
+        <?php
+        include '../footer.inc.php';
+        ?>
     </body>
 </div>

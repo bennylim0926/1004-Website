@@ -6,6 +6,7 @@ $stmt = $conn->prepare("SELECT * FROM accounts WHERE uname=?");
 $stmt->bind_param("i", $_SESSION["uname"]);
 $stmt->execute();
 $result = $stmt->get_result();
+$user = $result->fetch_assoc();
 //include('../Session/SessionCheckUser.php');
 if(isset($_POST['placeorder'])){
     $_SESSION['total_item'] = $_POST["total_item"];
@@ -66,9 +67,7 @@ if (isset($_GET['placeorder'])) {
         include '../nav.inc.php';
         ?> 
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <div class="collapse navbar-collapse">
                 <a class="navbar-brand">CHECK OUT</a>
-            </div>
         </nav>
         <main class="container">
             <h2 class="mt-5">
@@ -77,9 +76,9 @@ if (isset($_GET['placeorder'])) {
             <form>
                 <div class="input-group">
                     <label class="mb-0 mt-2 mr-2" for="email">Email Address: </label>
-                    <input type="email" class="form-control mr-2" id="email" placeholder="JohnDoe123@email.com" value=<?= $row['email'] ?> >
+                    <input type="email" class="form-control mr-2" id="email" placeholder="JohnDoe123@email.com" value=<?= $user['email'] ?> >
                     <label class="mb-0 mt-2 mr-2" for="name">Name: </label>
-                    <input type="name" class="form-control mr-2" id="name" placeholder="John Doe" value=<?= $row['lname'] ?> >
+                    <input type="name" class="form-control mr-2" id="name" placeholder="John Doe" value=<?= $user['lname'] ?> >
                 </div>
             </form>
             <form id="checkout" action="checkout_confirmation.php" method="post">
@@ -90,7 +89,7 @@ if (isset($_GET['placeorder'])) {
                     <!--</div>-->
                     <!--<div class="form-group col-sm-3 p-0">-->
                         <label class="mb-0 mt-2 mr-2" for="phone">Contact Number</label>
-                        <input type="tel" class="form-control mr-2" id="phone" placeholder="Enter contact number" pattern="[0-9]{8}" required>
+                        <input type="tel" class="form-control mr-2" id="phone" placeholder="Enter contact number" min="8" maxlength="8" pattern="[0-9]{8}" required>
                     <!--</div>-->
                 </div>
                 <h2 class="mt-5">Payment Type</h2>
@@ -107,8 +106,8 @@ if (isset($_GET['placeorder'])) {
                         </label>
                     </div>
                 </div>
-                <p>Total Items: <?= $_SESSION["total_item"] ?></p>
-                <p>Total Price: &dollar;<?= $_SESSION["total_price"] ?></p>
+                <h3 class="mt-5">Total Items: <?= $_SESSION["total_item"] ?></h3>
+                <h3>Total Price: &dollar;<?= $_SESSION["total_price"] ?></h3>
                 <div>
                     <input type="submit" class="btn-lg btn-outline-primary mr-3 my-3" value="Place Order" name="checkout" id='checkout'>
                     <input type="hidden" name="total_item" id="total_item" value="<?= $_SESSION["total_item"] ?>">

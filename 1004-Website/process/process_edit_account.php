@@ -244,7 +244,7 @@ function saveProfileChanges()
     </head>
     <body class="d-flex flex-column min-vh-100">
         <?php
-        include "1004-Website/nav.inc.php";
+        include "../nav.inc.php";
         ?>
         <main class="container flex-grow-1 text-center">
             <?php

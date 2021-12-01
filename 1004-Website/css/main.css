@@ -89,10 +89,13 @@ img {
 
 .product-name{
     text-align: center;
-    color: mediumvioletred;
-    font-family: 'Brush Script MT';
+    color: black;
+    /*font-family: 'Brush Script MT';*/
 }
 
+.product-container{
+    background-color: white;
+}
 .embed-responsive .card-img-top {
     object-fit: cover;
 }

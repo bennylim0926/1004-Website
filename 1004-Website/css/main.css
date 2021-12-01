@@ -94,11 +94,22 @@ img {
 .product-container{
     background-color: white;
 }
-.embed-responsive .card-img-top {
-    object-fit: cover;
+.product-img{
+    width: 22rem;
+    height: 17rem;
+    margin: 0 auto;
+}
+
+/*    object-fit: cover;*/
+/*.embed-responsive .card-img-top {
+    height: 100%;
+    width: 100%;
 }*/
 
-
+.img-product {
+    height: 100%;
+    width: 100%;
+}
 figcaption{
     color: black;
     font-style: italic; 
@@ -323,4 +334,18 @@ hr.light_full{
         font-size: 1.9em;
         padding: 0.6rem;
     }
+}
+
+.map-responsive{
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }

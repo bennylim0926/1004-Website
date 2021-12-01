@@ -1,3 +1,4 @@
+<?php ?>
 <footer>
     <div class="container-fluid padding">
         <div class="row text-center">

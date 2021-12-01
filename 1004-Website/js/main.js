@@ -82,7 +82,7 @@ function submitCartItem() {
             },
             success: function (response)
             {
-                var overlay = jQuery("<div class='alert alert-success success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong><p>Product have added to your wishlist.</p></div>");
+                var overlay = jQuery("<div class='alert alert-success success-alert' id='success-alert'><button type='button' class='close' data-dismiss='alert'>x</button><strong>Success! </strong><p>Product have added to your cart.</p></div>");
                 overlay.appendTo(document.body)
                 $(".success-alert").delay(4000).slideUp(200, function () {
                     $(".success-alert").alert('close');

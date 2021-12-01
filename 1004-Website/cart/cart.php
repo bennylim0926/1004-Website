@@ -234,7 +234,7 @@ if ($cart_data) {
                             <th class="align-middle">  
                                 <!--id="placeorder"--> 
                                 <form action="checkout_confirmation.php" method="post">
-                                    <input class="btn btn-outline-secondary"type="submit" value="Check Out" name="placeorder">
+                                    <input class="btn btn-lg btn-outline-secondary"type="submit" value="Check Out" name="placeorder">
                                     <input type="hidden" name="total_item" id="total_item" value="<?= $totalItem ?>">
                                     <input type="hidden" name="total_price" id="total_price" value="<?= $subtotal ?>">
                                 </form>
@@ -246,12 +246,11 @@ if ($cart_data) {
             </div>
             <div>
                 <h3>YOU MAY ALSO LIKE</h3>
-                <div class="row">
+                <div class="row mb-5">
                     <?php foreach ($you_may_like as $product): ?>
-                        <div class="card ml-1 mb-2">
+                        <div class="card ml-1">
                             <a href="product_page.php?id=<?= $product['id'] ?>" style="text-decoration:none;color:black;text-align: center;" >
                                 <img class="card-img-top" src="../images/products/<?= $product['img'] ?>" alt="<?= $product['name'] ?>" style="width:100%;height:100%;object-fit:cover;">
-
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title text-center align-text-bottom" style="font-size:15px;"><?= $product['name'] ?></h5>
                                     <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->

@@ -8,7 +8,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 //include('../Session/SessionCheckUser.php');
-if(isset($_POST['placeorder'])){
+if (isset($_POST['placeorder'])) {
     $_SESSION['total_item'] = $_POST["total_item"];
     $_SESSION['total_price'] = $_POST["total_price"];
     header("location: checkout_confirmation.php");
@@ -67,7 +67,7 @@ if (isset($_GET['placeorder'])) {
         include '../nav.inc.php';
         ?> 
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <a class="navbar-brand">CHECK OUT</a>
+            <a class="navbar-brand">CHECK OUT</a>
         </nav>
         <main class="container">
             <h2 class="mt-5">
@@ -76,20 +76,20 @@ if (isset($_GET['placeorder'])) {
             <form>
                 <div class="input-group">
                     <label class="mb-0 mt-2 mr-2" for="email">Email Address: </label>
-                    <input type="email" class="form-control mr-2" id="email" placeholder="JohnDoe123@email.com" value=<?= $user['email'] ?> >
+                    <input type="email" class="form-control mr-2" id="email" placeholder="Enter email" value=<?= $user['email'] ?> >
                     <label class="mb-0 mt-2 mr-2" for="name">Name: </label>
-                    <input type="name" class="form-control mr-2" id="name" placeholder="John Doe" value=<?= $user['lname'] ?> >
+                    <input type="name" class="form-control mr-2" id="name" placeholder="Enter name" value=<?= $user['lname'] ?> >
                 </div>
             </form>
             <form id="checkout" action="checkout_confirmation.php" method="post">
                 <div class="input-group">
                     <!--<div class="form-group col-sm-5 p-0">-->
-                        <label class="mb-0 mt-2 mr-2" for="address">Delivery Address</label>
-                        <input type="text" class="form-control mr-2" id="email" placeholder="Enter delivery address"required>
+                    <label class="mb-0 mt-2 mr-2" for="address">Delivery Address</label>
+                    <input type="text" class="form-control mr-2" id="email" placeholder="Enter delivery address"required>
                     <!--</div>-->
                     <!--<div class="form-group col-sm-3 p-0">-->
-                        <label class="mb-0 mt-2 mr-2" for="phone">Contact Number</label>
-                        <input type="tel" class="form-control mr-2" id="phone" placeholder="Enter contact number" min="8" maxlength="8" pattern="[0-9]{8}" required>
+                    <label class="mb-0 mt-2 mr-2" for="phone">Contact Number</label>
+                    <input type="tel" class="form-control mr-2" id="phone" placeholder="Enter contact number" min="8" maxlength="8" pattern="[0-9]{8}" required>
                     <!--</div>-->
                 </div>
                 <h2 class="mt-5">Payment Type</h2>
@@ -115,5 +115,9 @@ if (isset($_GET['placeorder'])) {
                 </div>
             </form>
         </main>
+        <?php
+        include '../footer.inc.php';
+        ?>
     </body>
+
 </html>

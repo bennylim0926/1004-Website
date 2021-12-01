@@ -248,20 +248,16 @@ if ($cart_data) {
                 <h3>YOU MAY ALSO LIKE</h3>
                 <div class="row">
                     <?php foreach ($you_may_like as $product): ?>
-                        <!--                        <div class="col-sm">
-                                                    <a href="product_page.php?id=<?= $product['id'] ?>" class="product">
-                                                        <img src="../images/products/<?= $product['img'] ?>" alt="<?= $product['name'] ?>"  style="width:100%;height:100%;object-fit:cover;">     
-                                                    </a>
-                                                    <a class="product-link" href="product_page.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
-                        
-                                                </div>-->
-                        <div class="card" style="width: 20%;">
-                            <img class="card-img-top" src="../images/products/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $product['name'] ?></h5>
-                                <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                            </div>
+                        <div class="card ml-1 mb-2">
+                            <a href="product_page.php?id=<?= $product['id'] ?>" style="text-decoration:none;color:black;text-align: center;" >
+                                <img class="card-img-top" src="../images/products/<?= $product['img'] ?>" alt="<?= $product['name'] ?>" style="width:100%;height:100%;object-fit:cover;">
+
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title text-center align-text-bottom" style="font-size:15px;"><?= $product['name'] ?></h5>
+                                    <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                                </div>
+                            </a>
                         </div>
                     <?php endforeach; ?>
                 </div>

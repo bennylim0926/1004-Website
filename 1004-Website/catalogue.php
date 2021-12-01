@@ -49,9 +49,15 @@ if($result1->num_rows > 0)
         <article class="col-sm">
                         <figure>
                             <figcaption>
+                                <span class="rounded">
+                                <div class="card" style="width: 22rem; height: 17rem;">
                             <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id']?>">
-                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">              
+                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">
+                                <div class="card-body">
                                     <span class="image-name"><?php echo $row['name']?></span></a>
+                                </div>
+                                </div>
+                                </span>
                             </figcaption>
                                 </figure>
             <br><br>
@@ -89,9 +95,13 @@ if($result2->num_rows > 0)
         <article class="col-sm">
                         <figure>
                             <figcaption>
+                            <div class="card" style="width: 22rem; height: 17rem;">
                             <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id']?>">
-                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">              
+                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">
+                                <div class="card-body">
                                     <span class="image-name"><?php echo $row['name']?></span></a>
+                                </div>
+                                </div>
                             </figcaption>
                                 </figure>
             <br><br>
@@ -131,9 +141,13 @@ if($result3->num_rows > 0)
         <article class="col-sm">
                         <figure>
                             <figcaption>
+                            <div class="card" style="width: 22rem; height: 17rem;">
                             <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id']?>">
-                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">              
+                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">
+                                <div class="card-body">
                                     <span class="image-name"><?php echo $row['name']?></span></a>
+                                </div>
+                                </div>
                             </figcaption>
                                 </figure>
             <br><br>
@@ -172,9 +186,13 @@ if($result4->num_rows > 0)
         <article class="col-sm">
                         <figure>
                             <figcaption>
+                            <div class="card" style="width: 22rem; height: 17rem;">
                             <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id']?>">
-                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">              
+                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">
+                                <div class="card-body">
                                     <span class="image-name"><?php echo $row['name']?></span></a>
+                                </div>
+                                </div>
                             </figcaption>
                                 </figure>
             <br><br>
@@ -215,9 +233,13 @@ if($result5->num_rows > 0)
         <article class="col-sm">
                         <figure>
                             <figcaption>
+                            <div class="card" style="width: 22rem; height: 17rem;">
                             <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id']?>">
-                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">              
+                                <img class="card-img-top" src="images/products/<?php echo $row['img']?>" alt="<?php echo $row['name']?>">
+                                <div class="card-body">
                                     <span class="image-name"><?php echo $row['name']?></span></a>
+                                </div>
+                                </div>
                             </figcaption>
                                 </figure>
             <br>

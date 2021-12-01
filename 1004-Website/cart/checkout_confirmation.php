@@ -1,5 +1,8 @@
 <?php
 session_start();
+require('../session/SessionCheckUser.php');
+$userID = $_SESSION["userID"];
+require('../Connection/connection.php');
 $config = parse_ini_file('../../../private/db-config.ini');
 $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
 $stmt = $conn->prepare("SELECT * FROM accounts WHERE uname=?");

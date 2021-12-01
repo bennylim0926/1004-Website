@@ -1,36 +1,39 @@
 
 <?php
-    session_start();
+session_start();
 ?>
 
 <?php
 //    include "head.inc.php";
 ?>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="main_slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#main_slides" data-slide-to="0" class="active"></li>
+        <li data-target="#main_slides" data-slide-to="1"></li>
+        <li data-target="#main_slides" data-slide-to="2"></li>
+    </ul>
     <div class="carousel-inner">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class ="carousel-item active">
-            <img class ="fill" src = "images/blank_monitor.jpg" alt="First slide">
+        <div class="carousel-item active">
+            <img src="images/bg1.jpg">
+            <div class="carousel-caption">
+                <h1 class="display-2">Upgrading your IT setup has never been so easy</h1>
+                <h3>change your peripherals like buying groceries</h3>
+            </div>
         </div>
         <div class="carousel-item">
-            <img class="fill" src="images/benq_monitor.jpg" alt="Second slide">
+            <img src="images/bg2.jpg">
+            <div class="carousel-caption">
+                <!--                <h1 class="display-2">Welcome</h1>
+                                <h3>To IT Shop</h3>-->
+            </div>
         </div>
         <div class="carousel-item">
-            <img class="fill" src="images/eizo_img.jpg" alt="Third slide">
+            <img src="images/bg3.jpg">
+            <div class="carousel-caption">
+                <!--                <h1 class="display-2">Welcome</h1>
+                                <h3>To IT Shop</h3>-->
+            </div>
         </div>
-        
-        
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
 </div>
+

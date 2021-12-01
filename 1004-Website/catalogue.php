@@ -12,40 +12,9 @@ PAGE WITH ALL PRODUCTS(FINAL)
     include 'head.inc.php';
     ?>
     <body>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        
-        <a class="nav-link" href="index.php"><span class="material-icons">home</span></a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#monitors">MONITOR</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#keyboards">KEYBOARD</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#computer-mouse">MOUSE</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#webcams">WEBCAM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#speakers">SPEAKER</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                         <a class="nav-link" href="register.php"><span class="material-icons">account_circle</span>REGISTER</a> 
-                     </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="login.php"><span class="material-icons">login</span>LOGIN</a> 
-                     </li>
-        </ul>
-    </div>
-</nav>
+        <?php
+    include 'nav.inc.php';
+    ?>
         <header class="jumbotron text-center">
             <h1 class="display-4">Product Page</h1>
             <h5>Click on each product for more details!</h5>

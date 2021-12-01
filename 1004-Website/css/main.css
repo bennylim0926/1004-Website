@@ -87,6 +87,13 @@ and open the template in the editor.
     color: blue;
     text-align: center;
 }
+
+.product-name{
+    text-align: center;
+    color: mediumvioletred;
+    font-family: 'Brush Script MT';
+}
+
 .embed-responsive .card-img-top {
     object-fit: cover;
 }
@@ -154,12 +161,6 @@ footer p{
     background-color: #B7CAE3;
 
 .name1{
-}
-
-.product-name{
-    text-align: center;
-    color: mediumvioletred;
-    font-family: 'Brush Script MT';
 }
 
 .wrapper{

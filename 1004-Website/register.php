@@ -33,8 +33,10 @@
                 <label for="uname">
                     Username:
                 </label>
-                <input type="text" class="form-control" id="uname" name="uname" placeholder="Username must be unique and contain no more than 15 alphanumeric characters" maxlength="15" required>
-              
+                <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter Username" maxlength="15" required>
+              <small class="form-text text-muted">
+                                    Username cannot be more than 15 alphanumeric characters and must be unique
+                                </small>
             </div>
             <div class="form-group">  
                 <label for="email">

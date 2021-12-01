@@ -171,8 +171,10 @@ function increment() {
         $original = $(e.target).siblings(".quantity").val();
         $quantity = $(e.target).siblings(".quantity").val();
         $max = $(e.target).siblings(".quantity").attr("max");
-        if ($quantity < $max) {
+        console.log($quantity);
+        if (parseInt($quantity) < parseInt($max)) {
             $quantity++;
+            console.log($quantity);
             $new = $quantity;
             $(e.target).siblings(".quantity").val($quantity);
             $.post("cart.php", {
@@ -188,6 +190,7 @@ function increment() {
                 $(".success-alert").alert('close');
             });
         }
+        return false;
     });
     return false;
 }

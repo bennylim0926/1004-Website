@@ -73,14 +73,14 @@ include('session/SessionCheckUser.php');
                             </div>
                             <div class="form-group">
                                 <label for="pwd">New Password</label>
-                                <input class="form-control" type="password" id="pwd" name="new_pwd" minlength="3" placeholder="Enter new password">
+                                <input class="form-control" type="password" id="pwd" name="new_pwd" minlength="6" placeholder="Enter new password">
                                 <small class="form-text text-muted">
-                                    Your password must be at least 8 characters long, contain upper and lowercase letters, and include numbers.
+                                    Your password must be at least 6 characters long, with at least 1 letter and number.
                                 </small>
                             </div>
                             <div class="form-group">
                                 <label for="pwd_confirm">Confirm Password</label>
-                                <input class="form-control" type="password" id="pwd_confirm" name="pwd_confirm" minlength="3" placeholder="Re-enter new password">
+                                <input class="form-control" type="password" id="pwd_confirm" name="pwd_confirm" minlength="6" placeholder="Re-enter new password">
                             </div>
 
                             <div class="form-group">

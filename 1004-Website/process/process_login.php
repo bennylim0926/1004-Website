@@ -33,8 +33,11 @@
              $_SESSION["userID"] = $userID;
            
             echo "<h4 class='display-4'>Login Successful!</h4>";
-            echo "<p><b>Welcome back, " . $uname ."</b></p>";
-            echo "<p><a href='/1004-Website/index.php' class='btn btn-success'>Back to Home</a></p>";
+            echo "<h3><b>Welcome back, " . $uname ."</b></h3>";
+            //echo "<div class='alert alert-info'> <b><strong>Welcome back, '$uname'</strong></b> </div>";
+       
+            //echo "<p><a href='/1004-Website/index.php' class='btn btn-success'>Back to Home</a></p>";
+            echo '<meta http-equiv="refresh" content="2;url=/1004-Website/index.php" />Redirecting to Home page</a>';
                
         } else {
             echo "<p><h1>The following errors were detected: </h1>";

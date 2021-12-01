@@ -25,6 +25,7 @@ include('session/SessionExpiry.php');// check for session expiry
     <link rel="stylesheet" href="css/responsive.css">
     <!--Checkout CSS-->
     <link rel="stylesheet" href="/1004-Website/css/checkout.css">
+    <link rel="stylesheet" href="/1004-Website/css/forms.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
     <!<!-- jQuery -->
     <script  

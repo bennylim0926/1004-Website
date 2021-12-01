@@ -145,26 +145,26 @@ $stmt->close();
                     $errorMsg .= "New passwords do not match.<br>";
                     $success = false;
                 }
-//                else
-//                // Additional check to make sure new password is well-formed
-//                {
-//                    if (strlen($_POST["new_pwd"]) < 8) {
-//                        $errorMsg .= "Password must contain at least 8 characters.<br>";
-//                        $success = false;
-//                    }
-//                    if (!preg_match("#[0-9]+#", $_POST["new_pwd"])) {
-//                        $errorMsg .= "Password must contain at least 1 number.<br>";
-//                        $success = false;
-//                    }
-//                    if (!preg_match("#[a-z]+#", $_POST["new_pwd"])) {
-//                        $errorMsg .= "Password must contain at least 1 lowercase letter.<br>";
-//                        $success = false;
-//                    }
+                else
+                // Additional check to make sure new password is well-formed
+                {
+                    if (strlen($_POST["new_pwd"]) < 6) {
+                        $errorMsg .= "Password must contain at least 6 characters.<br>";
+                        $success = false;
+                    }
+                    if (!preg_match("#[0-9]+#", $_POST["new_pwd"])) {
+                        $errorMsg .= "Password must contain at least 1 number.<br>";
+                        $success = false;
+                    }
+                    if (!preg_match("#[a-z]+#", $_POST["new_pwd"])) {
+                        $errorMsg .= "Password must contain at least 1 lowercase letter.<br>";
+                        $success = false;
+                    }
 //                    if (!preg_match("#[A-Z]+#", $_POST["new_pwd"])) {
 //                        $errorMsg .= "Password must contain at least 1 uppercase letter.<br>";
 //                        $success = false;
 //                    }
-//                }
+                }
             }
 
             $pwd_hashed = password_hash($_POST["new_pwd"], PASSWORD_DEFAULT);
@@ -251,8 +251,9 @@ function saveProfileChanges()
             if ($success)
             {
                 
-                echo "<h1 class='display-4 mt-3'>Profile Update Successful</h1><br>";
-                echo '<meta http-equiv="refresh" content="1;url=/1004-Website/edit_account.php" />Returning to Profile page</a>';
+                echo "<div class='alert alert-success'><strong>Profile Update Successful</strong> </div>";
+                echo '<meta http-equiv="refresh" content="2;url=/1004-Website/edit_account.php" />Returning to Profile page...</a>';
+                
             }
             else
             {

@@ -8,13 +8,14 @@
     ?>
     
     <main class="container">
-        <h1>Member Registration</h1>
         
-        <p>
-            For existing members, please go to the <a href="login.php#">Sign In Page</a>
-        </p>
-        
-        <form action="process/process_register.php" method="post">
+        <h2 align="center">
+            For registered members, please go to the <a href="login.php#">Sign In Page</a>
+        </h2>
+         <div id="registration-form">
+            <div class='fieldset'>
+            <legend>Member Registration</legend>
+		<form action="process/process_register.php" method="post">
             <div class="form-group">
                 <label for="fname">
                     First Name(optional):
@@ -32,9 +33,9 @@
                 <label for="uname">
                     Username:
                 </label>
-                <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter your preferred Username" maxlength="45" required>
+                <input type="text" class="form-control" id="uname" name="uname" placeholder="Username must be unique and contain no more than 15 alphanumeric characters." maxlength="15" required>
+              
             </div>
-            
             <div class="form-group">  
                 <label for="email">
                     Email:
@@ -48,16 +49,20 @@
                 <label for="pwd">
                     Password:
                 </label>
-                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter Password" required>
-               
+                <input type="password" class="form-control" id="pwd" name="pwd" minlength="6" placeholder="Enter Password (Minimum length:6)" required>
+                <small class="form-text text-muted">
+                                    Your password must be at least 6 characters long
+                                </small>
             </div>
             
             <div class="form-group">
                 <label for="pwd_confirm">
                     Confirm Password:
                 </label>
-                <input type="password" class="form-control" id="pwd_confirm" name="pwd_confirm" placeholder="Confirm Password" required>
-                             
+                <input type="password" class="form-control" id="pwd_confirm" name="pwd_confirm" minlength="6" placeholder="Confirm Password (Minimum length:6)" required>
+                       <small class="form-text text-muted">
+                                    Your password must be at least 6 characters long
+                                </small>        
             </div>
             
             <div class="form-check">
@@ -71,9 +76,15 @@
                 <button class="btn btn-primary" type="submit">Submit</button>
             </div>
         </form>
+	</div>
+</div>
+        
     </main>
     
     <?php
         include "footer.inc.php";
     ?>
 </body>
+
+
+

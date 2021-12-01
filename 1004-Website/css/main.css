@@ -8,7 +8,24 @@ and open the template in the editor.
     Author     : benny
 */
 
-
+.card img{
+    display: inline-block;
+    max-width:350px;
+    max-height:202px;
+    width: auto;
+    height: auto;
+}
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+.image-name{
+    color: grey;
+    text-decoration: none; 
+}
+.image-name:hover{
+    color: grey;
+    text-decoration: none; 
+}
 .sectiontitle{
     text-decoration: underline;
 }
@@ -18,15 +35,15 @@ img {
     height:auto;
 }
 .fill{
-  width: 100%;
-  height:500px !important;
-  background-position:center;
-  background-size:cover;
- }
- 
- #about-section{
-     text-align: center;
- }
+    width: 100%;
+    height:500px !important;
+    background-position:center;
+    background-size:cover;
+}
+
+#about-section{
+    text-align: center;
+}
 
 
 .logo img{
@@ -245,7 +262,7 @@ hr.light {
     width: 75%;
     margin-top: .8rem;
     margin-bottom: 1rem;
-    
+
 }
 footer a{
     color: #d5d5d5;

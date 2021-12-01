@@ -20,7 +20,7 @@ PAGE WITH ALL PRODUCTS(FINAL)
             <h5>We sell Click on each product for more details!</h5>
         </header>       
         <main class="container">
-            <section id="monitors">
+            <section id="monitors" class="mb-5">
                 <h2 class="producttitle1">Monitors</h2>
                 <div class="row">
 
@@ -42,12 +42,12 @@ PAGE WITH ALL PRODUCTS(FINAL)
 
                             //echo $row['img'];
                             ?>
-                            <article class="col-sm text-center">
+                            <article class="col-sm text-center d-flex justify-content-center">
                                 <div class="card" style="width: 22rem; height: 17rem;">
-                                    <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
+                                    <a class="image-name" href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
                                         <img class="card-img-top" src="images/products/<?php echo $row['img'] ?>" alt="<?php echo $row['name'] ?>">
                                         <div class="card-body">
-                                            <span class="image-name"><?php echo $row['name'] ?></span>
+                                            <span><?php echo $row['name'] ?></span>
                                         </div>
                                     </a>
                                 </div>
@@ -63,7 +63,7 @@ PAGE WITH ALL PRODUCTS(FINAL)
             </section>
             <hr>
 
-            <section id="keyboards">
+            <section id="keyboards" class="mb-5">
                 <h2 class="producttitle2">Keyboards</h2>
                 <div class="row">
 
@@ -82,19 +82,15 @@ PAGE WITH ALL PRODUCTS(FINAL)
                     if ($result2->num_rows > 0) {
                         while ($row = $result2->fetch_assoc()) {
                             ?>
-                            <article class="col-sm">
-                                <figure>
-                                    <figcaption>
+                            <article class="col-sm text-center d-flex justify-content-center">
                                         <div class="card" style="width: 22rem; height: 17rem;">
-                                            <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
+                                            <a class="image-name" href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
                                                 <img class="card-img-top" src="images/products/<?php echo $row['img'] ?>" alt="<?php echo $row['name'] ?>">
                                                 <div class="card-body">
-                                                    <span class="image-name"><?php echo $row['name'] ?></span>
+                                                    <span><?php echo $row['name'] ?></span>
                                                 </div>
                                             </a>
                                         </div>
-                                    </figcaption>
-                                </figure>
                                 <br><br>
                             </article>
                             <?php
@@ -106,7 +102,7 @@ PAGE WITH ALL PRODUCTS(FINAL)
 
             </section>
             <hr>
-            <section id="computer-mouse">
+            <section id="computer-mouse" class="mb-5">
                 <h2 class="producttitle3">Computer Mice</h2>
                 <div class="row">
 
@@ -127,19 +123,15 @@ PAGE WITH ALL PRODUCTS(FINAL)
 
                             //echo $row['img'];
                             ?>
-                            <article class="col-sm">
-                                <figure>
-                                    <figcaption>
+                            <article class="col-sm text-center d-flex justify-content-center">
                                         <div class="card" style="width: 22rem; height: 17rem;">
-                                            <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
+                                            <a class="image-name" href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
                                                 <img class="card-img-top" src="images/products/<?php echo $row['img'] ?>" alt="<?php echo $row['name'] ?>">
                                                 <div class="card-body">
-                                                    <span class="image-name"><?php echo $row['name'] ?></span>
+                                                    <span><?php echo $row['name'] ?></span>
                                                 </div>
                                             </a>
                                         </div>
-                                    </figcaption>
-                                </figure>
                                 <br><br>
                             </article>
                             <?php
@@ -150,7 +142,7 @@ PAGE WITH ALL PRODUCTS(FINAL)
 
             </section>
             <hr>
-            <section id="webcams">
+            <section id="webcams" class="mb-5">
                 <h2 class="producttitle4">Webcams</h2>
                 <div class="row">
 
@@ -171,19 +163,15 @@ PAGE WITH ALL PRODUCTS(FINAL)
 
                             //echo $row['img'];
                             ?>
-                            <article class="col-sm">
-                                <figure>
-                                    <figcaption>
+                            <article class="col-sm text-center d-flex justify-content-center">
                                         <div class="card" style="width: 22rem; height: 17rem;">
-                                            <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
+                                            <a class="image-name" href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
                                                 <img class="card-img-top" src="images/products/<?php echo $row['img'] ?>" alt="<?php echo $row['name'] ?>">
                                                 <div class="card-body">
-                                                    <span class="image-name"><?php echo $row['name'] ?></span>
+                                                    <span><?php echo $row['name'] ?></span>
                                                 </div>
                                             </a>
                                         </div>
-                                    </figcaption>
-                                </figure>
                                 <br><br>
                             </article>
                             <?php
@@ -195,9 +183,9 @@ PAGE WITH ALL PRODUCTS(FINAL)
 
             </section>
             <hr>
-            <section id="speakers">
+            <section id="speakers" class="mb-5">
                 <h2 class="producttitle5">Speakers</h2>
-                <div class="row">
+                <div class="row text-center">
 
                     <?php
                     //require_once('component.php');
@@ -216,19 +204,15 @@ PAGE WITH ALL PRODUCTS(FINAL)
 
                             //echo $row['img'];
                             ?>
-                            <article class="col-sm">
-                                <figure>
-                                    <figcaption>
+                            <article class="col-sm text-center d-flex justify-content-center">
                                         <div class="card" style="width: 22rem; height: 17rem;">
-                                            <a href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
+                                            <a class="image-name" href="/1004-Website/cart/product_page.php?id=<?php echo $row['id'] ?>">
                                                 <img class="card-img-top" src="images/products/<?php echo $row['img'] ?>" alt="<?php echo $row['name'] ?>">
                                                 <div class="card-body">
-                                                    <span class="image-name"><?php echo $row['name'] ?></span>
+                                                    <span><?php echo $row['name'] ?></span>
                                                 </div>
                                             </a>
                                         </div>
-                                    </figcaption>
-                                </figure>
                                 <br>
                             </article>
                             <?php

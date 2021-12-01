@@ -113,7 +113,7 @@ $stmt->close();
                 $errorMsg .= "Username contains non-alphanumeric characters.<br>";
                 $success = false;
             }
-            if (strlen($username) > 30)
+            if (strlen($username) > 15)
             {
                 $errorMsg .= "Username contains more than 15 characters.<br>";
                 $success = false;

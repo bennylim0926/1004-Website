@@ -196,7 +196,7 @@ if ($cart_data) {
                                 <td class='emptyBackground'colspan="5" style="text-align:center;">
                                     <div class='noProduct'>
                                         <h1>Your shopping cart is empty!</h1>
-                                        <a class="btn btn-outline-secondary" href="/1004-Website/cart/test_home.php">Go Shopping Now</a>
+                                        <a class="btn btn-outline-secondary" href="/1004-Website/catalogue.php">Go Shopping Now</a>
                                     </div>
                                 </td>
                             </tr>

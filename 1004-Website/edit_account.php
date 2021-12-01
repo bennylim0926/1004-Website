@@ -8,18 +8,11 @@ include('session/SessionCheckUser.php');
     // Retrieves user info from database
      $stmt = $conn->prepare("SELECT * FROM accounts WHERE acc_id=?");
      $stmt->bind_param("s", $userID);
-        if (!$stmt->execute())
-      {
-          echo "<h2>Execute failed: (' . $stmt->errno . ') ' . $stmt->error</h2>";
-          echo "<h2>Please try again</h2>";
-          exit();
-      }
-      $result = $stmt->get_result();
-      $stmt->close();
+
+     include('Connection/handle_sql_execute_failure.php');
       $conn->close();     
 
     $user_details = $result->fetch_assoc();
- 
     
 ?>
 
@@ -42,10 +35,31 @@ include('session/SessionCheckUser.php');
             <div>
                 <form action="/1004-Website/process/process_edit_account.php" method="post" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col-sm-5 col-md-3 text-center" id="change-pic">
+                        <div class="col-sm-5 col-md-3 text-left" id="change-pic">
                             <img class="avatar2" src="<?=$user_details["photo"]?>" alt="Profile Picture">
-                            <p class="h5"><?=$user_details["uname"]?></p>
-                            <p class="h6"><?=$user_details["email"]?></p>
+                            
+                            <table class="table table-bordered" >
+                            
+                              <tr>
+                                <th>Username:</th>
+                                <th><?=$user_details["uname"]?></th>  
+                              </tr>
+                             
+                              <tr>
+                                <th>Email:</th>
+                                <th><?=$user_details["email"]?></th>
+
+                              </tr>
+                              <tr>
+                                <th>Mobile number:</th>
+                                <th><?=$user_details["mobile_number"]?> </th>
+
+                              </tr>                      
+                          </table>
+                          
+<!--                            <p class="h5">Username: <?=$user_details["uname"]?></p>
+                            <p class="h5">Email: <?=$user_details["email"]?></p>
+                            <p class="h5">Mobile number: <?=$user_details["mobile_number"]?></p>-->
                         </div>
                         <div class="col-sm-7 col-md-9 my-4">
                             <div class="form-group">
@@ -55,15 +69,21 @@ include('session/SessionCheckUser.php');
                             <div class="form-group">
                                 <label for="username">New Username</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
+<!--                                    <div class="input-group-prepend">
                                         <div class="input-group-text"></div>
-                                    </div>
+                                    </div>-->
                                     <input class="form-control" type="text" id="username" name="username" placeholder="Enter new username" maxlength="15">
                                 </div>
                                 <small class="form-text text-muted">
                                     Username must be unique and contain no more than 15 alphanumeric characters.
                                 </small>
                             </div>
+                             <div class="form-group">
+                            <label for="mobile">Mobile</label>
+                            <div class="input-group">
+                               <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile Number" maxlength="12" >
+                            </div>
+                          </div>
                             <div class="form-group">
                                 <label for="old_pwd">Old Password</label>
                                 <input class="form-control" type="password" id="old_pwd" name="old_pwd" minlength="3" placeholder="Enter old password">

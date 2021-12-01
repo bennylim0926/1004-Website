@@ -335,7 +335,7 @@ $usertype = 1;
             </div>
           </div>
            <div class="mb-3 row">
-            <label for="addMobileField" class="col-md-3 form-label">Mobile Name</label>
+            <label for="addMobileField" class="col-md-3 form-label">Mobile</label>
             <div class="col-md-9">
                <input type="text" class="form-control" id="addMobileField" name="mobile" placeholder="Enter Mobile Number" maxlength="12" >
             </div>

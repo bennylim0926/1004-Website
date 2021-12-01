@@ -33,7 +33,7 @@
                 <label for="uname">
                     Username:
                 </label>
-                <input type="text" class="form-control" id="uname" name="uname" placeholder="Username must be unique and contain no more than 15 alphanumeric characters." maxlength="15" required>
+                <input type="text" class="form-control" id="uname" name="uname" placeholder="Username must be unique and contain no more than 15 characters." maxlength="15" required>
               
             </div>
             <div class="form-group">  

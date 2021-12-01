@@ -37,6 +37,7 @@ $stmt->close();
 
     $user_details = $result->fetch_assoc();
     $username = $user_details["uname"];
+    $mobile = $user_details["mobile_number"];
     $pwd_hashed = $user_details["password"];
     $profile_pic = $user_details["photo"];
 
@@ -119,6 +120,31 @@ $stmt->close();
             }
         }
     }
+    
+      // Sanitise and validate mobile number
+    if (isset($_POST["mobile"]) && !empty($_POST["mobile"]))
+    {
+        $mobile = sanitize_input($_POST["mobile"]);
+
+       
+        $stmt = $conn->prepare("SELECT * FROM accounts WHERE mobile_number=?");
+        $stmt->bind_param("s", $mobile);
+        if (!$stmt->execute())
+        {
+            echo "<h2>Execute failed: (' . $stmt->errno . ') ' . $stmt->error</h2>";
+            echo "<h2>Please try again</h2>";
+            exit();
+        }
+        $result = $stmt->get_result();
+        $stmt->close();
+
+            if (strlen($mobile) > 12)
+            {
+                $errorMsg .= "Mobile number is longer than 12 characters<br>";
+                $success = false;
+            }
+        
+    }
 
 
     // If user wants to change their password
@@ -175,7 +201,7 @@ $stmt->close();
         saveProfileChanges();
 
     $conn->close();
-    unset($allowed_extensions, $file_err_num, $file_extension, $file_upload, $pwd_hashed, $profile_pic, $result, $userID, $user_details, $username);
+    unset($allowed_extensions, $file_err_num, $file_extension, $file_upload, $pwd_hashed, $profile_pic, $result, $userID, $user_details, $username, $mobile);
 }
 else
 {
@@ -199,7 +225,7 @@ function sanitize_input($data)
 //Helper function to write the member data to the DB
 function saveProfileChanges()
 {
-    global $conn, $userID, $file_upload, $username, $pwd_hashed, $profile_pic, $errorMsg, $success;
+    global $conn, $userID, $file_upload, $username, $pwd_hashed, $profile_pic, $errorMsg, $success, $mobile;
 
     // If user wants to change his profile picture
     if (($_FILES['file_upload']['error']) != UPLOAD_ERR_NO_FILE)
@@ -211,8 +237,8 @@ function saveProfileChanges()
     }
 
     // Update user profile details in database
-    $stmt = $conn->prepare("UPDATE accounts SET uname=?, photo=?, password=? WHERE acc_id=?");
-    $stmt->bind_param("ssss", $username, $profile_pic, $pwd_hashed, $userID);
+    $stmt = $conn->prepare("UPDATE accounts SET uname=?, photo=?, password=?, mobile_number=? WHERE acc_id=?");
+    $stmt->bind_param("sssss", $username, $profile_pic, $pwd_hashed, $mobile, $userID);
     if (!$stmt->execute())
     {
         echo "<h2>Execute failed: (' . $stmt->errno . ') ' . $stmt->error</h2>";

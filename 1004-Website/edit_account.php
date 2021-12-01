@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('session/SessionCheckUser.php');
+    require('session/SessionCheckUser.php');
        $userID = $_SESSION["userID"];
       require('Connection/connection.php');  
           

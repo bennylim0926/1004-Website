@@ -1,8 +1,7 @@
 
 
 <?php
-
-include('session/SessionCheckAdmin.php');
+require('session/SessionCheckAdmin.php');
 include "head.inc.php";
 ?>
  

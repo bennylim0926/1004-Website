@@ -23,7 +23,7 @@
       </div>
     </div>
      <?php
-        include "footer.inc.php";
+        include "../footer.inc.php";
     ?>
     </div>
   </body>

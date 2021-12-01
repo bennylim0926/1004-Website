@@ -101,56 +101,60 @@ if (isset($_GET['id'])) {
     exit('Product does not exist!');
 }
 ?>
-<div>
+<html>
     <?php
     include '../head.inc.php';
     ?>
-    <body>
+    <body style="background-color: whitesmoke">
         <?php
         include '../nav.inc.php';
         ?>
-        
-        <div class="row">
-            <article class="col-sm-1">
-                    </article>
-            <article class="col-sm-4">
-                <br><br>
-                <figure>
-                    <img class="image-thumbnail" src="../images/products/<?= $product['img'] ?>" width="400" height="300"alt="<?= $product['name'] ?>">
-                    <h1 class="product-name"><?= $product['name'] ?></h1>
-                </figure>
-            </article>
-            <article class="col-sm-1">
-                    </article>
-            <article class="col-sm-5">
-                <br><br>
-            <h3 class="price">
-                &dollar;<?= $product['price'] ?>
-                <?php if ($product['rrp'] > 0): ?>
-                    <span class="rrp">&dollar;<?= $product['rrp'] ?></span>
-                <?php endif; ?>
-            </h3>
-                
-            <div class="description">
-                <?= $product['desc'] ?>
-            </div>
-                <br>
-                <h4>Quantity</h4>
-                <h5>Stock available: <?= $product['quantity'] ?></h5>
-                <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
-                <?php if ($product['quantity'] > 0): ?>
-                    <input type="number" name="quantity" id="quantity" value="1" min="0" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
-                    <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
-                    <input class="btn btn-outline-secondary" type="submit" value="Add To Cart">
-                <?php else: ?>
-                    <p>Out of stock</p>
-                <?php endif; ?>
+        <main class="container">
+            <div class="row product-container my-5">
+                <!--            <article class="col-sm-1">
+                                    </article>-->
+                <article class="col-sm-4">
+                    <br><br>
+                    <figure style="text-align: center">
+                        <img class="image-thumbnail" src="../images/products/<?= $product['img'] ?>" width="400" height="300"alt="<?= $product['name'] ?>">
+                        <h1 class="product-name"><?= $product['name'] ?></h1>
+                    </figure>
+                </article>
+                <article class="col-sm-2">
+                </article>
+                <article class="col-sm-4">
+                    <br><br>
+                    <h3>Quantity</h3>
+                    <h5 class="price">
+                        &dollar;<?= $product['price'] ?>
+                        <?php if ($product['rrp'] > 0): ?>
+                            <span class="rrp">&dollar;<?= $product['rrp'] ?></span>
+                        <?php endif; ?>
+                    </h5>
+                    <br>
+                    <div class="description">
+                        <?= $product['desc'] ?>
+                    </div>
+                    <br>
+                    <h3>Quantity</h3>
+                    <h5><?= $product['quantity'] ?> pieces available</h5>
+                    <form id="add-to-cart" action="product_page.php?id=<?= $product['id'] ?>" method="post">
+                        <?php if ($product['quantity'] > 0): ?>
+                            <input type="number" name="quantity" id="quantity" value="1" min="0" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
+                            <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
+                            <input class="btn btn-outline-secondary" type="submit" value="Add To Cart">
+                        <?php else: ?>
+                            <p>Out of stock</p>
+                        <?php endif; ?>
 
-            </form>
-            </article>
-        </div>
+                    </form>
+                </article>
+                <article class="col-sm-2">
+                </article>
+            </div>
+        </main>
         <?php
         include '../footer.inc.php';
         ?>
     </body>
-</div>
+</html>

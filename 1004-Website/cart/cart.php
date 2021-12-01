@@ -143,7 +143,7 @@ while ($row = $result->fetch_assoc()) {
 
 $subtotal = 0.00;
 global $totalItem;
-$totalItem=0;
+$totalItem = 0;
 $products = array();
 if ($cart_data) {
     $key = array_keys($cart_data);
@@ -176,7 +176,7 @@ if ($cart_data) {
         include '../nav.inc.php';
         ?>   
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <a class="navbar-brand">SHOPPING CART</a>
+            <a class="navbar-brand">SHOPPING CART</a>
         </nav>
         <main class="container">
             <div class="table-responsive-sm" id='cart_table'>
@@ -246,12 +246,22 @@ if ($cart_data) {
             </div>
             <div>
                 <h3>YOU MAY ALSO LIKE</h3>
-                <div class="row" style="display:inline;margin:auto">
+                <div class="row">
                     <?php foreach ($you_may_like as $product): ?>
-                        <div class="column">
-                            <a href="product_page.php?id=<?= $product['id'] ?>" class="product">
-                                <img src="../images/products/<?= $product['img']?>" alt="<?= $product['name'] ?>"  style="width: 100%;height: auto;">     
-                            </a>
+                        <!--                        <div class="col-sm">
+                                                    <a href="product_page.php?id=<?= $product['id'] ?>" class="product">
+                                                        <img src="../images/products/<?= $product['img'] ?>" alt="<?= $product['name'] ?>"  style="width:100%;height:100%;object-fit:cover;">     
+                                                    </a>
+                                                    <a class="product-link" href="product_page.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
+                        
+                                                </div>-->
+                        <div class="card" style="width: 20%;">
+                            <img class="card-img-top" src="../images/products/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $product['name'] ?></h5>
+                                <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

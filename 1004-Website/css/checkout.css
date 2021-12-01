@@ -7,6 +7,12 @@ and open the template in the editor.
     Created on : 19 Nov 2021, 9:34:52 pm
     Author     : benny
 */
+.product-link{
+    text-decoration: none;
+    color:black;
+    text-align: center;
+}
+
 .deliveryContainer{    
     margin-top: 15px;
     margin-bottom: 15px;
@@ -89,4 +95,6 @@ and open the template in the editor.
         width: 100%;
     }
 }
+
+
 

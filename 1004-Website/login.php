@@ -8,11 +8,14 @@
         include 'nav.inc.php';
         ?>
         <main class="container">
-            <h1>Member Login</h1>
-            <p>
-                Existing members log in here. For new members, 
+            
+            <h2 align="center">
+                For new members, 
                 please go to the <a href="register.php">Sign up page</a>
-            </p>
+            </h2>
+            <div id="registration-form">
+            <div class='fieldset'>
+                <legend>Member Login</legend>
             <form action="process/process_login.php" method="post">
                 <div class="form-group">
                     <label for="email">Email:</label>
@@ -29,6 +32,8 @@
                 </div>
                 
             </form>
+    </div>
+</div>
         </main>
         <?php
         include 'footer.inc.php';

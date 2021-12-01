@@ -100,6 +100,14 @@ if (isset($_GET['id'])) {
     // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
+$stmt = $conn->prepare('SELECT P.name,P.img, P.id FROM products P, categories C WHERE P.categoryid=C.id AND C.id= ? AND P.name!= ?');
+$stmt->bind_param("is", $product['categoryid'], $product["name"]);
+$stmt->execute();
+$result = $stmt->get_result();
+$similarList = array();
+while ($row = $result->fetch_assoc()) {
+    $similarList[] = $row;
+}
 ?>
 <html>
     <?php
@@ -111,8 +119,6 @@ if (isset($_GET['id'])) {
         ?>
         <main class="container">
             <div class="row product-container my-5">
-                <!--            <article class="col-sm-1">
-                                    </article>-->
                 <article class="col-sm-4">
                     <br><br>
                     <figure style="text-align: center">
@@ -124,7 +130,7 @@ if (isset($_GET['id'])) {
                 </article>
                 <article class="col-sm-4">
                     <br><br>
-                    <h3>Quantity</h3>
+                    <h3>Price</h3>
                     <h5 class="price">
                         &dollar;<?= $product['price'] ?>
                         <?php if ($product['rrp'] > 0): ?>
@@ -132,6 +138,7 @@ if (isset($_GET['id'])) {
                         <?php endif; ?>
                     </h5>
                     <br>
+                    <h3>Description</h3>
                     <div class="description">
                         <?= $product['desc'] ?>
                     </div>
@@ -142,7 +149,7 @@ if (isset($_GET['id'])) {
                         <?php if ($product['quantity'] > 0): ?>
                             <input type="number" name="quantity" id="quantity" value="1" min="0" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
                             <input type="hidden" name="product_id" id="product_id" value="<?= $product['id'] ?>">
-                            <input class="btn btn-outline-secondary" type="submit" value="Add To Cart">
+                            <input class="btn btn-secondary" type="submit" value="Add To Cart">
                         <?php else: ?>
                             <p>Out of stock</p>
                         <?php endif; ?>
@@ -151,6 +158,23 @@ if (isset($_GET['id'])) {
                 </article>
                 <article class="col-sm-2">
                 </article>
+            </div>
+            <div>
+                <h3>SIMILAR ITEMS</h3>
+                <div class="row mb-5">
+                    <?php foreach ($similarList as $product): ?>
+                        <div class="card ml-1">
+                            <a href="product_page.php?id=<?= $product['id'] ?>" style="text-decoration:none;color:black;text-align: center;" >
+                                <img class="card-img-top" src="../images/products/<?= $product['img'] ?>" alt="<?= $product['name'] ?>" style="width:100%;height:100%;object-fit:cover;">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title text-center align-text-bottom" style="font-size:15px;"><?= $product['name'] ?></h5>
+                                    <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </main>
         <?php

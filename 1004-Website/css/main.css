@@ -8,7 +8,24 @@ and open the template in the editor.
     Author     : benny
 */
 
-
+.card img{
+    display: inline-block;
+    max-width:350px;
+    max-height:202px;
+    width: auto;
+    height: auto;
+}
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+.image-name{
+    color: grey;
+    text-decoration: none; 
+}
+.image-name:hover{
+    color: grey;
+    text-decoration: none; 
+}
 .sectiontitle{
     text-decoration: underline;
 }
@@ -39,44 +56,32 @@ img {
 }
 
 .producttitle1{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: red;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle1{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: red;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle2{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: orange;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle3{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: greenyellow;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle4{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: limegreen;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle5{
-    font-family: 'Brush Script MT';
     font-size: 60px;
-    color: blue;
     text-align: center;
 }
 

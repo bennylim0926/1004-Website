@@ -16,60 +16,42 @@ and open the template in the editor.
         <?php
         include "nav.inc.php";
         ?>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mt-5">
-                    <h1><strong>About Us</strong></h1>
-                    <div class="row">
-                        <article class="col-sm-2"></article>
-                        <article class="col-sm-2">
-                            <figure class="card mb-4 border-0">
-                                <img class="card-img-top embed-responsive-item" src="images/memberProfile/member01_Pikachu.jpg" alt ="member 1"/>
-                            </figure>
-                            <figcaption>Jun Jie</figcaption>
-                            <p>2102596</p>
-                        </article>
-                        <article class="col-sm-1"></article>
-                        <article class="col-sm-2">
-                            <figure class="card mb-4 border-0">
-                                <img class="card-img-top embed-responsive-item" src="images/memberProfile/member02_Torchic.jpg" alt ="member 2"/>
-                            </figure>
-                            <figcaption>Benny</figcaption>
-                            <p>2101955</p>
-                        </article>
-                        <article class="col-sm-1"></article>
-                        <article class="col-sm-2">
-                            <figure class="card mb-4 border-0">
-                                <img class="card-img-top embed-responsive-item" src="images/memberProfile/member03_Mudkip.jpg" alt ="member 3"/>
-                            </figure>
-                            <figcaption>Adriel</figcaption>
-                            <p>2101296</p>
-                        </article>
-                        <!--<article class="col-sm-2"></article>-->
+        <main role="main">
+            <div class="container-fluid padding">
+                <div class="row members padding text-center">
+                    <div class="col-12">
+                        <h1>Meet the Team.</h1>
                     </div>
-                    <div class="row">
-                        <article class="col-sm-3"></article>
-                        <article class="col-sm-2">
-                            <figure class="card mb-4 border-0">
-                                <img class="card-img-top embed-responsive-item" src="images/memberProfile/member04_Treecko.jpg" alt ="member 4"/>
-                            </figure>
-                            <figcaption>Jevan</figcaption>
-                            <p>2101144</p>
-                        </article>
-                        <article class="col-sm-2"></article>
-                        <article class="col-sm-2">
-                            <figure class="card mb-4 border-0">
-                                <img class="card-img-top embed-responsive-item" src="images/memberProfile/member05_Cyndaquil.jpg" alt ="member 5"/>
-                            </figure>
-                            <figcaption>Lay Kiat</figcaption>
-                            <p>2101035</p>
-                        </article>
-                        <!--<article class="col-sm-3"></article>-->
+                    <div class="col-md-4">
+                        <img class="avatar3" src="images/memberProfile/member1.jpg" alt="member 1"/>
+                        <h2 class="member-name">Jun Jie</h2>
+                        <p class="member-detail">2102596</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="avatar3" src="images/memberProfile/member2.jpg" alt="member 2"/>
+                        <h2 class="member-name">Benny</h2>
+                        <p class="member-detail">2101955</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="avatar3" src="images/memberProfile/member3.jpg" alt="member 3"/>
+                        <h2 class="member-name">Adriel</h2>
+                        <p class="member-detail">2101296</p>
+                    </div>
+                </div>
+                <div class="row members padding text-center">
+                    <div class="col-md-6">
+                        <img class="avatar3" src="images/memberProfile/member4.jpg" alt="member 1"/>
+                        <h2 class="member-name">Jevan</h2>
+                        <p class="member-detail">2101144</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="avatar3" src="images/memberProfile/member5.jpg" alt="member 2"/>
+                        <h2 class="member-name">Lay Kiat</h2>
+                        <p class="member-detail">2101035</p>
                     </div>
                 </div>
             </div>
-
-        </div>
+        </main>
         <?php
         include "footer.inc.php";
         ?>

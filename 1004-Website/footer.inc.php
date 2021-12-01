@@ -1,4 +1,4 @@
-<footer>
+<footer role="contentinfo">
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-12">
                 <hr class="light_full">
-                <h5>Copyright &copy; 2021 IT Shop</h5>
+                <h3>Copyright &copy; 2021 IT Shop</h3>
             </div>
         </div>
     </div>

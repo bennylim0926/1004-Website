@@ -11,8 +11,8 @@ Hide the label if placeholder is supported
 
 #registration-form {
   font-family:'Open Sans Condensed', sans-serif;
-  width: 700px;
-  min-width:250px;
+  width: 50%;
+  min-width:200px;
   margin: 20px auto;
   position: relative;
 }

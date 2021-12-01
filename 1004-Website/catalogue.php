@@ -17,7 +17,8 @@ PAGE WITH ALL PRODUCTS(FINAL)
         ?>
         <header class="jumbotron text-center">
             <h1 class="display-4">Our Products</h1>
-            <h5>We sell Click on each product for more details!</h5>
+            <h5>We sell different IT peripherals to meet our customers' need.</h5>
+            <h5>Click on each product for more details!</h5>
         </header>       
         <main class="container">
             <section id="monitors" class="mb-5">

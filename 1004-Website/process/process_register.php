@@ -43,12 +43,12 @@
            else if($key == "uname")
         {
                $uname = $value; 
-            if (!ctype_alnum($username))
+            if (!ctype_alnum($uname))
             {
                 $errorMsg .= "Username contains non-alphanumeric characters.<br>";
                 $success = false;
             }
-            if (strlen($username) > 15)
+            if (strlen($uname) > 15)
             {
                 $errorMsg .= "Username contains more than 15 characters.<br>";
                 $success = false;

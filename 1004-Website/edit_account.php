@@ -77,16 +77,27 @@ session_start();
                                 </small>
                             </div>
                             <div class="form-group">
+                                <div class="row">
+                            <label for="fname">First Name</label>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder=<?=$user_details["fname"]?> maxlength="45"> 
+                            <label for="lname">Last Name</label>
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder=<?=$user_details["lname"]?> maxlength="45" required>
+                            </div>
+                            </div>
+            
+                           
+                              
+                            <div class="form-group">
                             <label for="email" >Email</label>  
-                            <div class="input-group">    
+           
                                <input type="email" class="form-control" id="email" name="email" placeholder=<?=$user_details["email"]?> maxlength="45" >        
-                          </div>
+                       
                             </div>
                              <div class="form-group">
                             <label for="mobile" >Mobile</label>
-                            <div class="input-group">       
+                             
                                <input type="text" class="form-control" id="mobile" name="mobile" placeholder=<?=$user_details["mobile_number"]?> maxlength="12" >
-                            </div>
+                           
                           </div>
                             <div class="form-group">
                                 <label for="old_pwd">Old Password</label>

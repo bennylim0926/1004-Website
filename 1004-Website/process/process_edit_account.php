@@ -41,6 +41,8 @@ $stmt->close();
     $pwd_hashed = $user_details["password"];
     $profile_pic = $user_details["photo"];
     $email = $user_details["email"];
+    $fname = $user_details["fname"];
+    $lname = $user_details["lname"];
 
 
     // If user uploaded a file
@@ -83,8 +85,19 @@ $stmt->close();
 
         $file_upload = $_FILES["file_upload"]["tmp_name"];
     }
+    
 
-
+     if (isset($_POST["fname"]) && !empty($_POST["fname"]))
+    {
+       $fname = sanitize_input2($_POST["fname"]);
+        
+    }
+     // Sanitise and validate last name
+    if (isset($_POST["lname"]) && !empty($_POST["lname"]))
+    {
+        $lname = sanitize_input($_POST["lname"]);
+    }
+    
     // Sanitise and validate username input
     if (isset($_POST["username"]) && !empty($_POST["username"]))
     {
@@ -230,7 +243,7 @@ $stmt->close();
         saveProfileChanges();
 
     $conn->close();
-    unset($allowed_extensions, $file_err_num, $file_extension, $file_upload, $pwd_hashed, $profile_pic, $result, $userID, $user_details, $username, $mobile, $email);
+    unset($allowed_extensions, $file_err_num, $file_extension, $file_upload, $pwd_hashed, $profile_pic, $result, $userID, $user_details, $username, $mobile, $email, $fname, $lname);
 }
 else
 {
@@ -250,11 +263,18 @@ function sanitize_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+function sanitize_input2($data)
+{
+    
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 
 //Helper function to write the member data to the DB
 function saveProfileChanges()
 {
-    global $conn, $userID, $file_upload, $username, $pwd_hashed, $profile_pic, $errorMsg, $success, $mobile, $email;
+    global $conn, $userID, $file_upload, $username, $pwd_hashed, $profile_pic, $errorMsg, $success, $mobile, $email, $fname, $lname;
 
     // If user wants to change his profile picture
     if (($_FILES['file_upload']['error']) != UPLOAD_ERR_NO_FILE)
@@ -266,8 +286,8 @@ function saveProfileChanges()
     }
 
     // Update user profile details in database
-    $stmt = $conn->prepare("UPDATE accounts SET uname=?, photo=?, password=?, mobile_number=?, email=? WHERE acc_id=?");
-    $stmt->bind_param("ssssss", $username, $profile_pic, $pwd_hashed, $mobile,$email, $userID, );
+    $stmt = $conn->prepare("UPDATE accounts SET uname=?, photo=?, password=?, mobile_number=?, email=?, fname=?, lname=? WHERE acc_id=?");
+    $stmt->bind_param("ssssssss", $username, $profile_pic, $pwd_hashed, $mobile,$email, $fname, $lname, $userID );
     if (!$stmt->execute())
     {
         echo "<h2>Execute failed: (' . $stmt->errno . ') ' . $stmt->error</h2>";

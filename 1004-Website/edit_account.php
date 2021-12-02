@@ -13,7 +13,11 @@ session_start();
       $conn->close();     
 
     $user_details = $result->fetch_assoc();
-    
+    $default_pic="";
+    if($user_details["photo"] ==null)
+    $default_pic = "/1004-Website/images/default_avatar.png";
+    else
+        $default_pic = $user_details["photo"];
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +40,7 @@ session_start();
                 <form action="/1004-Website/process/process_edit_account.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-5 col-md-3 text-left" id="change-pic">
-                            <img class="avatar2" src="<?=$user_details["photo"]?>" alt="Profile Picture">
+                            <img class="avatar2" src="<?=$default_pic?>" alt="Profile Picture">
                             
                             <table class="table table-bordered" >
                             
@@ -77,31 +81,30 @@ session_start();
                                 </small>
                             </div>
                             <div class="form-group">
-                                <div class="row">
                             <label for="fname">First Name</label>
-                            <input type="text" class="form-control" id="fname" name="fname" placeholder=<?=$user_details["fname"]?> maxlength="45"> 
-                            <label for="lname">Last Name</label>
-                            <input type="text" class="form-control" id="lname" name="lname" placeholder=<?=$user_details["lname"]?> maxlength="45" required>
-                            </div>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder='<?=$user_details["fname"]?>' maxlength="45">
                             </div>
             
-                           
-                              
+                            <div class="form-group">
+                                <label for="lname">Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname" placeholder='<?=$user_details["lname"]?>' maxlength="45">
+                            </div>
+                               <div class="form-group">
                             <div class="form-group">
                             <label for="email" >Email</label>  
            
-                               <input type="email" class="form-control" id="email" name="email" placeholder=<?=$user_details["email"]?> maxlength="45" >        
+                               <input type="email" class="form-control" id="email" name="email" placeholder='<?=$user_details["email"]?>' maxlength="45" >        
                        
                             </div>
                              <div class="form-group">
                             <label for="mobile" >Mobile</label>
                              
-                               <input type="text" class="form-control" id="mobile" name="mobile" placeholder=<?=$user_details["mobile_number"]?> maxlength="12" >
+                               <input type="text" class="form-control" id="mobile" name="mobile" maxlength="12" placeholder='<?=$user_details["mobile_number"]?>' >
                            
                           </div>
                             <div class="form-group">
                                 <label for="old_pwd">Old Password</label>
-                                <input class="form-control" type="password" id="old_pwd" name="old_pwd" minlength="3" placeholder="Enter old password">
+                                <input class="form-control" type="password" id="old_pwd" name="old_pwd" minlength="6" placeholder="Enter old password">
                                 <small class="form-text text-muted">
                                     You have to enter your old password before you can change your password.
                                 </small>

@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-sm navbar-custom navbar-light sticky-top" >
+<nav class="navbar navbar-expand-sm navbar-custom navbar-dark sticky-top" role="navigation" >
     <di class="container-fluid">
         <button class="navbar-toggler ml-auto " type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,10 +49,10 @@
                     } else {
                         ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/1004-Website/cart/cart.php"><span class="material-icons">shopping_cart</span>Shopping Cart</a> 
+                        <a class="nav-link" href="/1004-Website/cart/cart.php"><span class="material-icons">shopping_cart</span>SHOPPING CART</a> 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>Register</a> 
+                        <a class="nav-link" href="/1004-Website/register.php"><span class="material-icons">account_circle</span>REGISTER</a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav_right" href="/1004-Website/login.php"><span class="material-icons">login</span>LOGIN</a> 
@@ -66,5 +66,4 @@
             </ul>
         </div>
         </div>
-
 </nav>     

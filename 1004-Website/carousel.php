@@ -14,21 +14,21 @@ session_start();
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="images/bg1.jpg">
+            <img src="/1004-Website/images/bg1.jpg" alt="Ipad background">
             <div class="carousel-caption">
                 <h1 class="display-2">Upgrading your IT setup has never been so easy</h1>
-                <h3>change your peripherals like buying groceries</h3>
+                <h2>change your peripherals like buying groceries</h2>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="images/bg2.jpg">
+            <img src="/1004-Website/images/bg2.jpg" alt="Keyboard background">
             <div class="carousel-caption">
                 <!--                <h1 class="display-2">Welcome</h1>
                                 <h3>To IT Shop</h3>-->
             </div>
         </div>
         <div class="carousel-item">
-            <img src="images/bg3.jpg">
+            <img src="/1004-Website/images/bg3.jpg" alt="Monitor background">
             <div class="carousel-caption">
                 <!--                <h1 class="display-2">Welcome</h1>
                                 <h3>To IT Shop</h3>-->

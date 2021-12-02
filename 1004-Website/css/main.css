@@ -8,7 +8,24 @@ and open the template in the editor.
     Author     : benny
 */
 
-
+.card img{
+    display: inline-block;
+    max-width:350px;
+    max-height:202px;
+    width: auto;
+    height: auto;
+}
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+.image-name{
+    color: grey;
+    text-decoration: none; 
+}
+.image-name:hover{
+    color: grey;
+    text-decoration: none; 
+}
 .sectiontitle{
     text-decoration: underline;
 }
@@ -18,23 +35,16 @@ img {
     height:auto;
 }
 .fill{
-  width: 100%;
-  height:500px !important;
-  background-position:center;
-  background-size:cover;
- }
- 
- #about-section{
-     text-align: center;
-     
- }
-.card img{
-    display: inline-block;
-    max-width:350px;
-    max-height:202px;
-    width: auto;
-    height: auto;
-}	
+    width: 100%;
+    height:500px !important;
+    background-position:center;
+    background-size:cover;
+}
+
+#about-section{
+    text-align: center;
+}
+
 
 .logo img{
     height: auto;
@@ -46,44 +56,32 @@ img {
 }
 
 .producttitle1{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: red;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle1{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: red;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle2{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: orange;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle3{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: greenyellow;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle4{
-    font-family: 'Brush Script MT';
-    font-size: 60px;
-    color: limegreen;
+    font-size: 50px;
     text-align: center;
 }
 
 .producttitle5{
-    font-family: 'Brush Script MT';
     font-size: 60px;
-    color: blue;
     text-align: center;
 }
 
@@ -96,10 +94,22 @@ img {
 .product-container{
     background-color: white;
 }
-.embed-responsive .card-img-top {
-    object-fit: cover;
+.product-img{
+    width: 22rem;
+    height: 17rem;
+    margin: 0 auto;
 }
 
+/*    object-fit: cover;*/
+/*.embed-responsive .card-img-top {
+    height: 100%;
+    width: 100%;
+}*/
+
+.img-product {
+    height: 100%;
+    width: 100%;
+}
 figcaption{
     color: black;
     font-style: italic; 
@@ -124,43 +134,15 @@ figcaption{
     padding-bottom: 1%;
 }
 
-.navbar-custom{
-    background-color: #B7CAE3;
-
-    .name1{
-    }
-
-    .wrapper{
-        display: flex;
-        width: 100%;
-        align-items: stretch;
-    }
-
-    #sidebar {
-        min-width: 250px;
-        max-width: 250px;
-        min-height: 100vh;
-    }
-
-
-    .image-name{
-        color: grey;
-        font-style: italic; 
-        justify-content: center; 
-    }
-
-
-
-}
-.navbar .nav-link{
+/*.navbar .nav-link{
     color: #000000;
+}*/
+h2.member-name{
+    font-size: 1.5rem;
 }
-
-body{
-    background-color: whitesmoke;
-    color: #020202;
+p.member-detail{
+    font-size: 0.9rem;
 }
-
 a:hover{
     color: black;
 }
@@ -178,134 +160,39 @@ a:hover{
     height: 180px;
     border-radius: 50%;
 }
-/*
-.about_section {
- width:100%;
- float:left;
+.avatar3{
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
 }
-.about_text {
- width:60%;
- float:left;
- font-size:20pt;
- color:#1c6aec;
- text-align:left;
- padding-left:30px;
- position:absolute;
- padding-top:50px;
+.avatar4{
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
 }
-.about_img {
- width:100%;
- float:left;
- position:relative;
- top:-1rem;
-}
-.about_middle {
- width:70%;
- margin:0 auto;
- text-align:center;
- position:ABSOLUTE;
- background-image:url(../images/white_bg.png);
- height:auto;
- margin-top:10rem;
- margin-left:2rem;
-}
-.about_info {
- width:100%;
- float:left;
- font-size:14px;
- color:#18191a;
- text-align:left;
- padding-right:30px;
-}
-.about_btn{
- width: 100%;
- float: left;
- position: relative;
- top: -24rem;
-}
-.read_more{
- width:18%;
- margin-left:2rem;
- text-align:center;
- color:#fff;
- background-color:#1c6aec;
- height:3rem;
- display:block;
- font-size:20px;
-}
-
-.footer_section {
-    width:100%;
-    float:left;
-    background-color: #051148;
-    height:auto;
-    padding-bottom:3rem;
-    margin-top:3rem;
-    text-align: center;
-    vertical-align: top;
-}
-.important_text {
-    width:100%;
-    float:left;
-    font-size:26px;
-    color:#fff;
-    font-weight:bold;
-    text-align: left;
-}
-.footer_menu {
-    width:100%;
-    float:left;
-    text-align: left;
-}
-@media (max-device-width: 600px) {
-    .footer_section {
-        text-align: left !important;
-    }
-}
-.footer_menu ul {
-    margin:0;
-    padding:0;
-    list-style-type: none;
-}
-.footer_menu li {
-    font-size:14px;
-    color:#fff;
-}
-.footer_menu li a {
-    color:#fff;
-}
-.footer_menu li a:hover {
-    color:#ff7e1d;
-}
-.test1{
-    text-align: center;
-}
-.copyright_text{
-    padding-top: 3rem;
-    text-align: center;
-    color:#fff;
-}*/
 .material-icons{
     vertical-align: middle;
 }
 
-
-
-/*new stuff*/
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;0,800;1,400;1,600;1,700;1,800&display=swap');
 html,body {
     height:100%;
     width: 100%;
-    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Poppins', sans-serif;*/
+    font-family: sans-serif;
     color: #222;
+}
+body{
+    background-color: whitesmoke;
+    color: #020202;
 }
 .navbar{
     padding: .4rem;
+    background-color: #3f3f3f;
 }
 .nav-link{
     font-size:1.1em !important;
 }
+
 .carousel-inner{
     width: 100%;
     height: 100%;
@@ -319,7 +206,7 @@ html,body {
     text-transform: uppercase;
     text-shadow: 1px 1px 13px #000;
 }
-.carousel-caption h3{
+.carousel-caption h2{
     font-size: 200%;
     font-weight: 500;
     text-shadow: 1px 1px 10px #000;
@@ -339,9 +226,22 @@ html,body {
     margin-top: .3rem;
     margin-bottom: 1rem;
 }
+hr{
+    margin: 0 auto;
+}
+.team-bg{
+    background-image: url("../images/teambg1.jpg");
+    min-height: 115vh;
+    /*height: 100%;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: -2rem;
+}
 .social a {
     font-size: 4.5em;
-    padding: 3rem;
+    padding: 1.1rem;
 }
 .fa-facebook-official{
     color: #3b5998;
@@ -373,7 +273,7 @@ hr.light {
     width: 75%;
     margin-top: .8rem;
     margin-bottom: 1rem;
-    
+
 }
 footer a{
     color: #d5d5d5;
@@ -384,8 +284,6 @@ hr.light_full{
     margin-top: .8rem;
     margin-bottom: 1rem;
 }
-
-
 
 
 @media (max-width: 992px){
@@ -402,7 +300,7 @@ hr.light_full{
     .carousel-caption h1{
         font-size: 350%;
     }
-    .carousel-caption h3{
+    .carousel-caption h2{
         font-size: 135%;
         font-weight: 300;
         padding-bottom: .2rem;
@@ -423,7 +321,7 @@ hr.light_full{
     .carousel-caption h1{
         font-size: 250%;
     }
-    .carousel-caption h3{
+    .carousel-caption h2{
         font-size: 110%;
     }
     .carousel-indicators{
@@ -436,4 +334,18 @@ hr.light_full{
         font-size: 1.9em;
         padding: 0.6rem;
     }
+}
+
+.map-responsive{
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }

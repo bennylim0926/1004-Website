@@ -8,6 +8,17 @@ Hide the label if placeholder is supported
 /*body{
   background:#b4b4b4;
 }*/
+/* to hide form label but still making it available for ppl using screen reader and other assistive technology */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0, 0 ,0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
 
 #registration-form {
   font-family:'Open Sans Condensed', sans-serif;

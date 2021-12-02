@@ -57,9 +57,7 @@ session_start();
                               </tr>                      
                           </table>
                           
-<!--                            <p class="h5">Username: <?=$user_details["uname"]?></p>
-                            <p class="h5">Email: <?=$user_details["email"]?></p>
-                            <p class="h5">Mobile number: <?=$user_details["mobile_number"]?></p>-->
+
                         </div>
                         <div class="col-sm-7 col-md-9 my-4">
                             <div class="form-group">
@@ -67,21 +65,27 @@ session_start();
                                 <input type="file" class="form-control-file" id="file_upload" name="file_upload" accept=".jpeg,.jpg,.png">
                             </div>
                             <div class="form-group">
-                                <label for="username">New Username</label>
+                                <label for="username">Username</label>
                                 <div class="input-group">
-<!--                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"></div>
+<!--                                    <div class="input-group-prepend">                                      
+                                        <div class="input-group-text">Current</div>
                                     </div>-->
-                                    <input class="form-control" type="text" id="username" name="username" placeholder="Enter new username" maxlength="15">
+                                    <input class="form-control" type="text" alt="UsernameField" id="username" name="username" placeholder=<?=$user_details["uname"]?> maxlength="15">
                                 </div>
                                 <small class="form-text text-muted">
-                                    Username must be unique and contain no more than 15 alphanumeric characters.
+                                    Username must be unique and contain no more than 15 alphanumeric characters(No white space allowed).
                                 </small>
                             </div>
+                            <div class="form-group">
+                            <label for="email" >Email</label>  
+                            <div class="input-group">    
+                               <input type="email" class="form-control" id="email" name="email" placeholder=<?=$user_details["email"]?> maxlength="45" >        
+                          </div>
+                            </div>
                              <div class="form-group">
-                            <label for="mobile">Mobile</label>
-                            <div class="input-group">
-                               <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile Number" maxlength="12" >
+                            <label for="mobile" >Mobile</label>
+                            <div class="input-group">       
+                               <input type="text" class="form-control" id="mobile" name="mobile" placeholder=<?=$user_details["mobile_number"]?> maxlength="12" >
                             </div>
                           </div>
                             <div class="form-group">

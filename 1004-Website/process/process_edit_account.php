@@ -40,6 +40,7 @@ $stmt->close();
     $mobile = $user_details["mobile_number"];
     $pwd_hashed = $user_details["password"];
     $profile_pic = $user_details["photo"];
+    $email = $user_details["email"];
 
 
     // If user uploaded a file
@@ -119,6 +120,34 @@ $stmt->close();
                 $success = false;
             }
         }
+    }
+     // Sanitise and validate email input
+    if (isset($_POST["email"]) && !empty($_POST["email"]))
+    {
+        $email = sanitize_input($_POST["email"]);
+
+        // Check if email has already been used
+        $stmt = $conn->prepare("SELECT email FROM accounts WHERE acc_id=?");
+        $stmt->bind_param("s", $userID);
+        if (!$stmt->execute())
+        {
+            echo "<h2>Execute failed: (' . $stmt->errno . ') ' . $stmt->error</h2>";
+            echo "<h2>Please try again</h2>";
+            exit();
+        }
+        $result = $stmt->get_result();
+        $stmt->close();
+         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errorMsg .= "Invalid Email Format. <br>";
+                $success = false;
+                
+            }      
+        if ($result->num_rows > 1)
+        {
+            $errorMsg .= "Email address is already taken, please choose another email address.<br>";
+            $success = false;
+        }
+     
     }
     
       // Sanitise and validate mobile number
@@ -201,7 +230,7 @@ $stmt->close();
         saveProfileChanges();
 
     $conn->close();
-    unset($allowed_extensions, $file_err_num, $file_extension, $file_upload, $pwd_hashed, $profile_pic, $result, $userID, $user_details, $username, $mobile);
+    unset($allowed_extensions, $file_err_num, $file_extension, $file_upload, $pwd_hashed, $profile_pic, $result, $userID, $user_details, $username, $mobile, $email);
 }
 else
 {
@@ -225,7 +254,7 @@ function sanitize_input($data)
 //Helper function to write the member data to the DB
 function saveProfileChanges()
 {
-    global $conn, $userID, $file_upload, $username, $pwd_hashed, $profile_pic, $errorMsg, $success, $mobile;
+    global $conn, $userID, $file_upload, $username, $pwd_hashed, $profile_pic, $errorMsg, $success, $mobile, $email;
 
     // If user wants to change his profile picture
     if (($_FILES['file_upload']['error']) != UPLOAD_ERR_NO_FILE)
@@ -237,8 +266,8 @@ function saveProfileChanges()
     }
 
     // Update user profile details in database
-    $stmt = $conn->prepare("UPDATE accounts SET uname=?, photo=?, password=?, mobile_number=? WHERE acc_id=?");
-    $stmt->bind_param("sssss", $username, $profile_pic, $pwd_hashed, $mobile, $userID);
+    $stmt = $conn->prepare("UPDATE accounts SET uname=?, photo=?, password=?, mobile_number=?, email=? WHERE acc_id=?");
+    $stmt->bind_param("ssssss", $username, $profile_pic, $pwd_hashed, $mobile,$email, $userID, );
     if (!$stmt->execute())
     {
         echo "<h2>Execute failed: (' . $stmt->errno . ') ' . $stmt->error</h2>";

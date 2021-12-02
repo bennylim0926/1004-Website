@@ -27,27 +27,65 @@
                     </div>
                     <div class="col-12">
                         <p class="lead">We serve our products with utmost care to ensure that they arrive to you at your doorstep in a pristine condition</p>
-                        <a href="/1004-Website/catalogue.php" class="btn btn-primary">Check out our products</a>
+                        <a href="/1004-Website/catalogue.php" class="btn btn-secondary">Check out our products</a>
                     </div>
                 </div>
             </div>
             <!--Meet the team-->
-            <div class="container-fluid padding">
-                <div class="row team text-center">
+            <div class="container-fluid padding team-bg">
+                <section class="row team text-center">
                     <div class="col-12">
-                        <h1 class="display-4">Meet the team</h1>
+                        <h1 class="display-4">Why purchase from us?</h1>
                     </div>
-                </div>
-                </div>
-                <div class="team-bg"></div>
-            <div class="container-fluid padding">
-                <div class="row team text-center">
+                    <div class="col-xs-12 col-sm-6 col-md-4 padding">
+                        <div class="buy_from_us">
+                            <h2 class="reason-title">We provide good customer support </h2>
+                            <p class="reason-detail">Feel free to to contact us from the info provided below</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 padding">
+                        <div class="buy_from_us">
+                            <h2 class="reason-title">Our items are kept in good condition </h2>
+                            <p class="reason-detail">Contact us if items received are damaged and we will get a replacement</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 padding">
+                        <div class="buy_from_us">
+                            <h2 class="reason-title">Our prices are competitive</h2>
+                            <p class="reason-detail">Our prices are competitive</p>
+                        </div>
+                    </div>
                     <div class="col-12">
-                        <a href="/1004-Website/about-us.php" class="btn btn-primary team-btn">Learn More</a>
+                        <a href="/1004-Website/about-us.php" class="btn btn-secondary team-btn">Learn More</a>
                     </div>
-                </div>
+                </section>
             </div>
-
+            <!--            Meet the team
+                        <section class="container-fluid padding">
+                            <div class="row team text-center team-bg">
+                                <div class="col-12">
+                                    <h1 class="display-4">Why </h1>
+                                </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <img class="avatar4" src="images/testimonial1.jpeg" alt="member 1"/>
+                                <p class="customer-detail">Product arrived on time and in good condition</p>
+                                <h2 class="customer-name">Customer 1</h2>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <img class="avatar4" src="images/testimonial2.jpeg" alt="member 1"/>
+                                <p class="customer-detail">Product arrived on time and in good condition</p>
+                                <h2 class="customer-name">Customer 2</h2>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <img class="avatar4" src="images/testimonial3.jpeg" alt="member 1"/>
+                                <p class="customer-detail">Product arrived on time and in good condition</p>
+                                <h2 class="customer-name">Customer 3</h2>
+                            </div>
+                            <div class="col-12">
+                                <a href="/1004-Website/about-us.php" class="btn btn-primary team-btn">Learn More</a>
+                            </div>
+                            </div>
+                        </section>-->
             <hr>
             <!--Testimonials-->
             <div class="container-fluid padding">
@@ -57,18 +95,18 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <img class="avatar4" src="images/testimonial1.jpeg" alt="member 1"/>
-                        <p class="customer-detail">Product arrived on time and in good condition</p>
-                        <h2 class="customer-name">Customer 1</h2>
+                        <p class="customer-detail">Bought a webcam for Zoom meeting during the pandemic and it works flawlessly</p>
+                        <h2 class="customer-name">Mary Jane</h2>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <img class="avatar4" src="images/testimonial2.jpeg" alt="member 1"/>
-                        <p class="customer-detail">Product arrived on time and in good condition</p>
-                        <h2 class="customer-name">Customer 2</h2>
+                        <p class="customer-detail">Delivery was on schedule, item received in a good condition</p>
+                        <h2 class="customer-name">Lucas Smith</h2>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <img class="avatar4" src="images/testimonial3.jpeg" alt="member 1"/>
-                        <p class="customer-detail">Product arrived on time and in good condition</p>
-                        <h2 class="customer-name">Customer 3</h2>
+                        <p class="customer-detail">I loved the monitor I bought for my WFH setup, it came with no physical defects</p>
+                        <h2 class="customer-name">Tom Hill</h2>
                     </div>
                 </div>
             </div>

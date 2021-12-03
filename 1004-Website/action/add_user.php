@@ -1,7 +1,7 @@
 <?php 
 global $errorMsg, $success;
              $config = parse_ini_file('../../../private/db-config.ini');
-             $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop');
+             $conn = new mysqli($config['servername'], $config['username'], $config['password'], 'ITshop'); //temporary input for dbname, yet to change config.ini on lamp.
              
              if ($conn->connect_error) 
              {
@@ -22,7 +22,7 @@ $password = $_POST['password'];
 $lname = $_POST['lname'];
 
 $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
-//$sql = "INSERT INTO `accounts` (`uname`,`email`,`password`,`lname`,`fname`,`mobile_number`,`admin`) values ('$username', '$email', '$pwd_hashed', '$lname','$fname','$mobile','$admin' )";
+
 $sql = "INSERT INTO `accounts` (`uname`,`email`,`password`,`lname`,`fname`,`mobile_number`) values ('$username', '$email', '$pwd_hashed', '$lname','$fname','$mobile')";
 
 $query= mysqli_query($conn,$sql);

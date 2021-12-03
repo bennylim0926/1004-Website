@@ -87,7 +87,7 @@ $usertype = 1;
       
           
       //if(password != '' && username != '' && lname != '' && email != '' &&  fname != '' && admin!='')
-      if(password != '' && username != '' && lname != '' && email != ''&& mobile!='')
+      if(password != '' && username != '' && lname != '' && email != '')
       {
        $.ajax({
          url:"action/add_user.php",
@@ -125,7 +125,7 @@ $usertype = 1;
        var password= $('#PasswordField').val();
        var trid= $('#trid').val();
        var id= $('#id').val();
-       if(lname != '' && username != '' && mobile != '' && email != '' )
+       if(lname != '' && username != ''  && email != '' )
        {
          $.ajax({
            url:"action/update_user.php",
@@ -265,7 +265,7 @@ $usertype = 1;
            <div class="mb-3 row">
             <label for="PasswordField" class="col-md-3 form-label">Password</label>
             <div class="col-md-9">
-              <input type="password" class="form-control" id="PasswordField" name="pwd" placeholder="Enter Password" required>
+              <input type="password" class="form-control" id="PasswordField" name="pwd" placeholder="Enter Password" >
             </div>
           </div>
           <div class="mb-3 row">
@@ -299,7 +299,7 @@ $usertype = 1;
           <div class="mb-3 row">
             <label for="addUserField" class="col-md-3 form-label">Username</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="addUserField" name="uname" placeholder="Enter your preferred Username" maxlength="45" required>
+              <input type="text" class="form-control" id="addUserField" name="uname" placeholder="Enter your preferred Username" maxlength="15" required>
             </div>
           </div>
           <div class="mb-3 row">
@@ -317,7 +317,7 @@ $usertype = 1;
             <div class="mb-3 row">
             <label for="addFirstnameField" class="col-md-3 form-label">First Name</label>
             <div class="col-md-9">
-               <input type="text" class="form-control" id="addFirstnameField" name="fname" placeholder="Enter First Name" maxlength="45">
+               <input type="text" class="form-control" id="addFirstnameField" name="fname" placeholder="Enter First Name (Optional)" maxlength="45">
             </div>
           </div>
           <div class="mb-3 row">
@@ -329,7 +329,7 @@ $usertype = 1;
            <div class="mb-3 row">
             <label for="addMobileField" class="col-md-3 form-label">Mobile</label>
             <div class="col-md-9">
-               <input type="text" class="form-control" id="addMobileField" name="mobile" placeholder="Enter Mobile Number" maxlength="12" >
+               <input type="text" class="form-control" id="addMobileField" name="mobile" placeholder="Enter Mobile Number (Optional)" maxlength="12" >
             </div>
           </div>
 <!--             

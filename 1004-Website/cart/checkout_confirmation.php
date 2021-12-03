@@ -79,9 +79,9 @@ if (isset($_GET['placeorder'])) {
             <form>
                 <div class="input-group">
                     <label class="mb-0 mt-2 mr-2" for="email">Email Address: </label>
-                    <input type="email" class="form-control mr-2" id="email" placeholder="Enter email" value=<?= $user['email'] ?> >
+                    <input type="email" class="form-control mr-2" id="email" placeholder="Enter email" >
                     <label class="mb-0 mt-2 mr-2" for="name">Name: </label>
-                    <input type="name" class="form-control mr-2" id="name" placeholder="Enter name" value=<?= $user['lname'] ?> >
+                    <input type="name" class="form-control mr-2" id="name" placeholder="Enter name" >
                 </div>
             </form>
             <form id="checkout" action="checkout_confirmation.php" method="post">
